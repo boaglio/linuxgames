@@ -1,0 +1,16 @@
+<Context path="/">
+  <Resource
+    auth="Container"
+    type="javax.sql.DataSource"
+    factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+    name="jdbc/linuxgames"
+    driverClassName="com.mysql.jdbc.Driver"
+    username="boaglio_linuxgam"
+    password="boaglio_linuxgam"
+    maxIdle="2"
+    maxWait="3000"
+    removeAbandonedTimeout="60"
+    logAbandoned="true"
+    url="jdbc:mysql://localhost/linuxgames"
+    maxActive="4"/>
+</Context>

@@ -1,0 +1,23 @@
+
+@startuml img/usecase_img04.png
+
+:Usuário público: as pub
+
+(Vota na enquete) as (enq)
+(Cadastro de usuário) as (cad)
+(Busca e acessa aos jogos) as (busca)
+(Altera o idioma do site) as (idioma)
+(Faz contato) as (cto)
+(Acessa aos artigos) as (art)
+(Acessa aos emuladores) as (emu)
+
+
+pub -> (busca)
+pub --> (cad)
+pub --> (enq)
+pub --> (idioma)
+pub --> (cto)
+pub --> (art)
+pub --> (emu)
+
+@enduml

@@ -1,0 +1,14 @@
+
+ ************************ TODO ************************
+
+usuario:
+ - revisao de jogos - todo mundo!
+ 
+ - remover texto do planeta Doom
+ - remover texto do planeta Quake
+ - remover texto do planeta ET
+ - HOWTO de contribuir ao site!
+ 
+visitante:
+- HOWTO
+ 

@@ -1,0 +1,65 @@
+.graph {
+ position    : relative; /* IE is dumb */
+ width       : 200px;
+ border      : 1px solid #336699;
+ padding     : 2px;
+ white-space : nowrap;
+}
+
+body  {
+ margin             : 0px 0px 0px 0px;
+ padding            : 0 0 0 0;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ color              : #ccc;
+ background-color   : #02101B;
+ font-size          : 10pt;
+}
+
+.graph .bar {
+  display    : block;
+  position   : relative;
+  background : #007BB5;
+  text-align : center;
+  color      : #FEFE88;
+  height     : 2em;
+  line-height: 2em;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size  : 8pt;
+}
+.graph .bar span {
+ position    : absolute;
+ left        : 1em;
+}
+
+div.linha {
+  clear       : both;
+  padding-top : 10px;
+  text-align  : left;
+  white-space : nowrap;
+  font-size   : 8pt;
+}
+
+div.linhaC {
+  clear       : both;
+  padding-top : 10px;
+  text-align  : center;
+  white-space : nowrap;
+  font-size   : 8pt;
+}
+
+.titulo {
+  clear             : both;
+  color             : #000000;
+  display           : block;
+  background-color  : #cccccc;
+  padding-top       : 4px;
+  padding-bottom    : 4px;
+  text-align        : center;
+  width             : 100%;
+  font-size         : 12px;
+  font-weight       : bold;
+}
+
+A:hover {
+ border             : 1px solid #FF0000;
+}

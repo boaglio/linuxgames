@@ -1,0 +1,16 @@
+#######################################
+# File: /lists/tiposDeJogo_en.i18n #
+#######################################
+
+1  = Action
+2  = Adventure
+3  = Arcade
+4  = Sports
+5  = Strategy
+6  = FPS
+7  = Kids
+8  = Fight
+9  = MMORPG
+10 = Puzzle
+11 = RPG
+12 = Simulator

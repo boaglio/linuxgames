@@ -1,0 +1,1 @@
+<%@ taglib uri="http://www.mentaframework.org/tags-mtw/" prefix="mtw" %><mtw:out value="msg"/>

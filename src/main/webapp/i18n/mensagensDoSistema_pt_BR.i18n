@@ -1,0 +1,958 @@
+######################### MENSAGENS DO SISTEMA #########################
+
+####### APLICACAO GERAL #######
+aplicacao.titulo.cadastro=ENTRE COM OS DADOS DO CADASTRO
+aplicacao.titulo.busca=ENTRE COM OS DADOS DA BUSCA
+aplicacao.titulo.resultadosDaBusca=RESULTADOS DA BUSCA
+aplicacao.titulo.atualizaOuRemove=ATUALIZAR OU REMOVER REGISTRO
+aplicacao.submit.cadastrar=Cadastrar
+aplicacao.submit.buscar=Buscar
+aplicacao.submit.atualizar=Atualizar
+aplicacao.submit.remover=Remover
+aplicacao.resultado.insert=Registro cadastrado com sucesso.
+aplicacao.resultado.update=Registro atualizado com sucesso.
+aplicacao.resultado.delete=Registro removido com sucesso.
+aplicacao.resultado.nenhumRegistro=Nenhum registro cadastrado.
+aplicacao.resultado.nenhumaLib=Nenhuma biblioteca cadastrada.
+aplicacao.resultado.nenhumaTela=Nenhuma tela cadastrada.
+aplicacao.resultado.nenhumaReview=Nenhuma review cadastrada.
+aplicacao.resultado.nenhumDownload=Nenhum link de download dispon&iacute;vel!
+aplicacao.resultado.total=Total de registros:
+aplicacao.nacional=Nacional
+aplicacao.internacional=Internacional
+aplicacao.total=Total:
+aplicacao.registros= registros
+aplicacao.sim=Sim
+aplicacao.nao=N&atilde;o
+aplicacao.aprovado=Aprovado
+aplicacao.reprovado=Reprovado
+aplicacao.nada=N/A
+aplicacao.ok=&nbsp;Ok&nbsp;
+aplicacao.cadastro.titulo=LinuxGames
+aplicacao.sair=::&nbsp;sair&nbsp;::
+aplicacao.naoLogado=Quem &eacute; voc&ecirc;?
+aplicacao.saudacao1=Oi&nbsp;
+aplicacao.saudacao2=!
+aplicacao.admin=admin
+aplicacao.colab=colaborador
+aplicacao.editor=editor
+aplicacao.resultados=Resultados
+aplicacao.resultadosDe=de aproximadamente
+aplicacao.rss=Assine o nosso feed!
+aplicacao.twitter=Sigam-me os bons!
+aplicacao.rodape=&copy; desde 2001 Linux Games do Brasil&nbsp;&nbsp;
+
+login.entrar=Entrar no site
+login.user=E-mail
+login.pass=Senha
+login.submit=Entrar
+login.save=registrar
+login.enviar=Enviar
+login.processando=Processando...
+login.novo=Sem cadastro ainda?
+login.cadastro=Informe seu email e senha para cadastrar
+login.pergunta=Responda a essa pergunta besta para confirmar que voc&ecirc; n&atilde;o &eacute; um web bot:
+login.pergunta2=Hoje &eacute; qual dia do m&ecirc;s?
+login.esqueceuSenha=Esqueceu a senha?
+login.esqueceuSenha2=Informe o email para enviarmos sua senha para o seu email:
+login.esqueceuEmail=Esqueceu/perdeu o email? Crie uma nova conta ou fale com a gente por
+login.esqueceuEmail2=aqui
+login.cadastrado=Usu&aacute;rio cadastrado com sucesso!
+login.esqueceuSenhaNotificado=Sua senha foi enviada para o seu email.
+
+
+####### IDIOMA #######
+idioma.nacional=Nacional
+idioma.internacional=Internacional
+
+####### INDEX #######
+
+
+# mensagens do indice
+index.titulo=Linuxgames, o maior site de games para linux do Brasil!
+index.url=Linuxgames.com.br!
+index.jogoDoDia=Jogo do minuto! Tecle F5 para mais...
+index.emuDoDia=Emulador do minuto! Tecle F5 para mais...
+index.leiaMais=Leia mais
+index.usuario=Usu&aacute;rio:
+index.senha=Senha:
+index.busca=&nbsp;Busca por jogos&nbsp;
+index.novoUsuario=novo por aqui ?
+index.novoUsuario.desc=Crie uma conta! é rapidinho!
+index.botton.img=http://www.linuxnewmedia.com.br/images/uploads/mags/el/covers/EL09_capa.jpg
+index.botton.line1=GAMES
+index.botton.line2=se voc&ecirc; acha que n&atilde;o existem bons jogos feitos para Linux, precisa rever seus conceitos. Elaboramos uma sele&ccedil;&atilde;o das melhores op&ccedil;&otilde;es de divers&atilde;o com o ping&uuml;im.
+index.botton.link.url=http://www.revistaeasylinux.com.br/el/
+index.botton.link.msg=Confira!
+index.avisoIE=O seu browser n&atilde;o suporta corretamente os padr&otilde;es W3C, logo o layout do Site n&atilde;o ficar&aacute; nada agrad&aacute;vel.
+index.avisoIE2=Se mesmo assim desejar acessar clique <a href="/games/index">aqui</a>.
+index.useFF=Para acessar o site de maneira agradável e mais segura use o Mozilla Firefox, \
+ clique no logo para fazer o download.
+index.useFFplease=USE FIREFOX POOOOR FAVOR!!!!
+index.total.jogos=Games!
+index.total.emus=Emuladores!
+
+menuEsq.titulo=Nosso site!
+menuEsq.jogos=Todos os jogos
+menuEsq.emu=Todos os emuladores
+menuEsq.howto=Linux Gamers Howto
+menuEsq.artigos=Todos artigos e tutoriais
+menuEsq.forum=Nosso f&oacute;rum!
+menuEsq.sugestoes=Fale conosco!
+menuEsq.sobre=Sobre o site
+menuEsq.destaque.titulo=Destaques
+menuEsq.destaque.doom=planeta Doom
+menuEsq.destaque.quake=planeta Quake
+menuEsq.destaque.et=planeta ET
+menuEsq.emuladores=Emuladores
+menuEsq.lgw=Linux Game World
+
+menuTopo.link1=Home
+menuTopo.href1=/games/index-home
+menuTopo.link2=Forum
+menuTopo.href2=/forums/list.games
+menuTopo.desc2=Not&iacute;cias,d&uacute;vidas,dicas,off-topic...
+menuTopo.link3=Games
+menuTopo.href3=/games/todos-jogos
+menuTopo.desc3=Games para todos os tipos e gostos! Reviews e dicas!
+menuTopo.link4=Emuladores
+menuTopo.href4=/games/todos-emuladores
+menuTopo.desc4=Saudade do seu jogo preferido de PS1?Megadrive?Atari? Descubra como transformar o seu linux numa verdadeira \
+ m&aacute;quina do tempo!
+menuTopo.link5=Compras
+menuTopo.desc5=Vamos investir um dinheiro na sua divers&atilde;o?
+menuTopo.href5=http://www.linuxmall.com.br/index.php?category=games
+menuTopo.link6=Na m&iacute;dia
+menuTopo.desc6=O que a m&iacute;dia fala dos games para Linux no mundo...
+menuTopo.href6=http://news.google.com.br/news?hl=pt-BR&amp;ned=pt-BR_br&amp;q=linux+games&amp;btnG=Pesquisar+not%C3%ADcias
+menuTopo.link7=HOWTOs
+menuTopo.desc7=Artigos,Tutoriais e Howtos - descubra os passos de como instalar seu servidor de games, como configurar sua \
+m&aacute;quina para tirar melhor proveito dos jogos
+menuTopo.href7=/games/todos-artigos
+menuTopo.link8=Contato
+menuTopo.desc8=Sobre o site! Alguma d&uacute;vida? Alguma reclama&ccedil;&atilde;o? Pode mandar!
+menuTopo.href8=/games/sugestao
+menuTopo.link9=O que &eacute;?
+menuTopo.desc9=O que &eacute; esse site? O que ele pretende? Qual &eacute; a boa?
+menuTopo.href9=/games/entrevista
+
+# mensagens de erro
+erro.titulo=Bad bad server, no fish for you!
+erro.msgPrincipal=A <font color="#ff0000">LinuxGames</font> est&aacute; em manuten&ccedil;&atilde;o
+erro.msgSecundaria=Logo logo volta...
+erro.detalheDoErro=O que aconteceu ???
+naoAchei.titulo=Cad&ecirc; a p&aacute;gina ????
+naoAchei.msgPrincipal=O endere&ccedil;o que voc&ecirc; tentou acessar n&atilde;o existe!
+naoAchei.msgSecundaria=Tente outro endere&ccedil;o...
+
+# sem chance
+semchance.titulo=Ooooops!
+semchance.msgPrincipal=Voc&ecirc; <font color="#ff0000">n&atilde;o</font> tem permiss&atilde;o de acesso aqui...
+
+####### CABECALHO #######
+cabecalho.title=-=[ LinuxGames.com.br ]=- O maior site de Games para Linux do Brasil -
+cabecalho.warningIE=&lt;strong&gt;&amp;dagger;&lt;/strong&gt; Para sua melhor seguran&ccedil;a,o Internet Explorer deve ser abandonado. &lt;a href=&quot;http://www.mozilla.org.br/&quot; target=&quot;_blank&quot;&gt;Use Firefox&lt;/a&gt;.
+cabecalho.melhorVisualizado=<strong>&dagger;</strong> Esse site &eacute; melhor visualizado com resolu&ccedil;&atilde;o 1024x780 ou superior.
+cabecalho.creditoOverlib=popups feitos com OverLib - http://www.bosrup.com/web/overlib/
+cabecalho.creditoTigra=efeitos com Tigra Software - http://www.softcomplex.com/products/
+
+## LOGIN ##
+login.titulo=&Aacute;rea restrita
+login.usuario=Usu&aacute;rio
+login.senha=Senha
+
+####### Modulo: LINUXGAMES #######
+
+## NOVIDADES ##
+novidadeAgendada.titulo=NOVIDADES AGENDADAS
+novidadeAgendada.lista=LISTA DE NOVIDADES AGENDADAS
+novidade.titulo=NOVIDADES
+novidade.lista=LISTA DE NOVIDADES
+novidade.data=Data
+novidade.link=Link
+novidade.tipo=Tipo
+novidade.texto=Texto
+novidade.usuario=Usu&aacute;rio
+novidade.busca=BUSCA PELO NOME
+novidade.postarNaoLogado=Tem uma not&iacute;cia para postar?
+novidade.postar=Poste uma not&iacute;cia agora para o nosso site!
+novidade.tituloNova=Escreva uma novidade para a gente!
+novidade.ajudaIntro=Precisamos de not&iacute;cias! Manda pra gente uma boa!
+novidade.ajudarSubmit=Envie e ajude o nosso site!
+novidade.postaTwitter=Postar no Twitter
+
+## SITELOG ##
+sitelog.titulo=LOG DO SITE
+sitelog.lista=LISTA DE LOGS
+sitelog.versao=Vers&atilde;o
+sitelog.descricao=Descri&ccedil;&atilde;o
+sitelog.data=Data
+sitelog.busca=BUSCA PELA VERS&Atilde;O
+
+## UPDATELOG ##
+updatelog.titulo=LOGS DE UPDATE
+updatelog.lista=LISTA DE LOGS DE UPDATE
+updatelog.descricao=Descri&ccedil;&atilde;o
+updatelog.data=Data
+updatelog.busca=BUSCA PELA DESCRI&Ccedil;&Atilde;O
+updatelog.top=&Uacute;ltimas atualiza&ccedil;&otilde;es
+
+## INFO DO DIA ##
+infoDoDia.titulo=INFORMA&Ccedil;&Otilde;ES
+infoDoDia.lista=LISTA DE INFORMA&Ccedil;&Otilde;ES
+infoDoDia.data=Data
+infoDoDia.jogo=Jogo
+infoDoDia.emu=Emulador
+
+## DISTRO ##
+distro.titulo=DISTRIBUI&Ccedil;&Atilde;O
+distro.lista=LISTA DE DISTRIBUI&Ccedil;&Otilde;ES
+distro.nome=Nome
+distro.abreviacao=Abrevia&ccedil;&atilde;o
+distro.siteOficial=Site Oficial
+distro.linkLogo=Logo
+distro.fabricante=Fabricante
+distro.descricao=Descri&ccedil;&atilde;o
+distro.busca=BUSCA PELO NOME
+
+## FABRICANTE ##
+fabricante.titulo=FABRICANTE
+fabricante.lista=LISTA DE FABRICANTES
+fabricante.nome=Nome
+fabricante.descricao=Descri&ccedil;&atilde;o
+fabricante.busca=BUSCA PELO NOME
+
+## BANNER ##
+banner.titulo=BANNER
+banner.lista=LISTA DE BANNERS
+banner.imagem=Imagem
+banner.inicio=In&iacute;cio
+banner.fim=Fim
+banner.fabricante=Fabricante
+banner.descricao=Descri&ccedil;&atilde;o
+banner.busca=BUSCA PELO NOME
+banner.ate=at&eacute;
+banner.ainda=ainda em uso
+
+## JOGO ##
+jogo.titulo=JOGO
+jogo.lista=LISTA DE JOGOS
+jogo.nome=Nome
+jogo.pai=Jogo original
+jogo.idioma=Idioma
+jogo.licenca=Licen&ccedil;a
+jogo.tipo=Tipo
+jogo.aberto=Open Source
+jogo.jogaEmRede=Joga em rede?
+jogo.precisa3d=precisa de placa 3d?
+jogo.temSom=tem som?
+jogo.consoleOuX11=console ou X11?
+jogo.siteOficial=Site Oficial
+jogo.siteCompra=Site de Compra
+jogo.descricao=Descri&ccedil;&atilde;o
+jogo.votos=Votos
+jogo.hits=Hits
+jogo.destaque=Em destaque?
+jogo.destaqueDesc=EM DESTAQUE!
+jogo.notaGeral=Nota geral
+jogo.fabricante=Fabricante
+jogo.conf=Configura&ccedil;&atilde;o m&iacute;nima de hardware
+jogo.busca=BUSCA PELO NOME
+jogo.aba.resumo=Jogo
+jogo.aba.review=Reviews
+jogo.aba.inst=Instala&ccedil;&atilde;o
+jogo.aba.dica=Dicas
+jogo.aba.tela=Telas
+jogo.aba.download=Download
+jogo.tipoAcao=A&ccedil;&atilde;o
+jogo.tipoAdventure=Adventure
+jogo.tipoArcade=Arcade
+jogo.tipoEsporte=Esporte
+jogo.tipoFPS=FPS
+jogo.tipoInfantil=Infantil
+jogo.tipoLuta=Luta
+jogo.tipoEstrategia=Estrat&eacute;gia
+jogo.tipoMMORPG=MMORPG
+jogo.tipoQuebraCabeca=Quebra-Cabe&ccedil;a
+jogo.tipoRPG=RPG
+jogo.tipoSimulacao=Simula&ccedil;&atilde;o
+jogo.titulo.tipo=Jogos ordenados pelo Tipo
+jogo.titulo.nome=Jogos ordenados pelo Nome
+jogo.avaliar=Avaliar
+jogo.voltar=voltar
+jogo.dicas=Dicas
+jogo.review.nao=Quer opinar? Fa&ccedil;a o login!
+jogo.review.comentarios=Seus coment&aacute;rios:
+jogo.dicas.nao=Nenhuma dica cadastrada.
+jogo.dicas.contrib=Tem uma dica que gostaria de contribuir? Clique aqui!
+jogo.install.nao=Nenhum roteiro de instala&ccedil;&atilde;o cadastrado.
+jogo.install.contrib=Tem uma instala&ccedil;&atilde;o que gostaria de contribuir? Clique aqui!
+jogo.nota=Nota:
+jogo.top=Games mais visitados
+jogo.libs=Bibliotecas Utilizadas
+jogo.inst=Guias de Instala&ccedil;&atilde;o
+jogo.arquivo=Upload de arquivo de imagem
+jogo.destinoDaImagem=Destino
+jogo.tituloUploadImagem=UPLOAD DE IMAGENS
+jogo.alterarPopup=Achei um erro nessa p&aacute;gina! Tenho uma sugest&atilde;o aqui! Como eu ajudo?
+jogo.alterarPopupTitulo=Help!
+jogo.alterarLink=Achei um erro nessa p&aacute;gina! Tenho uma sugest&atilde;o aqui! Como eu ajudo?
+jogo.jogoTemplateObs=Quer comentar alguma coisa? Escreva aqui!
+jogo.tituloObs=Coment&aacute;rios
+jogo.ajudarSubmit=Enviar e ajudar o nosso site!
+jogo.ajudaIntro=Altere/Corrija as informa&ccedil;&otilde;es abaixo para alterar os dados desse jogo.
+jogo.ajudaFeita1=Obrigado pela sua ajuda!
+jogo.ajudaFeita2=O administrador do site receber&aacute; um aviso de suas altera&ccedil;&otilde;es e poder&aacute; aprovar para atualizar o site \
+ o mais r&aacute;pido poss&iacute;vel.
+jogo.ajudaConcluidaTitulo=Solicita&ccedil;&atilde;o de altera&ccedil;&atilde;o enviada!
+jogo.ajudaConcluidaTexto=Em breve um dos colaboradores analisar&aacute; a sua colabora&ccedil;&atilde;o, e se ela for aceita, o jogo ser&aacute; atualizado na hora!
+jogo.ajudaConcluidaTexto2=Se voc&ecirc; estiver logado no site, o cr&eacute;dito vai para voc&ecirc;!
+jogo.ajudaConcluidaObrigado=Obrigado!
+jogo.ajudaConcluidaSubmit=Valeu mesmo!
+jogo.postarNovoJogo=Cadastrar um novo jogo!
+jogo.adicionarPopup=Novo jogo
+jogo.adicionarPopupTitulo=Cadastre aqui um novo jogo para o site!
+
+
+## EMULADOR ##
+emulador.titulo=EMULADOR
+emulador.lista=LISTA DE EMULADORES
+emulador.nome=Nome
+emulador.tipo=Tipo
+emulador.licenca=Licen&ccedil;a
+emulador.jogaEmRede=emula rede?
+emulador.temSom=emula som?
+emulador.consoleOuX11=console ou X11?
+emulador.siteOficial=Site Oficial
+emulador.descricao=Descri&ccedil;&atilde;o
+emulador.votos=Votos
+emulador.notaGeral=Nota geral
+emulador.fabricante=Fabricante
+emulador.destaque=Em destaque?
+emulador.hits=Hits
+emulador.destaqueDesc=EM DESTAQUE!
+emulador.conf=Configura&ccedil;&atilde;o m&iacute;nima de hardware
+emulador.busca=BUSCA PELO NOME
+emulador.tipoAmiga=Amiga
+emulador.tipoAtari=Atari
+emulador.tipoGameBoy=GameBoy
+emulador.tipoInfinity=Infinity
+emulador.tipoMacintosh=Macintosh
+emulador.tipoMasterSystem=Master System
+emulador.tipoMegaDrive=Mega Drive
+emulador.tipoMSX=MSX
+emulador.tipoN64=N64
+emulador.tipoNeoGeo=Neo-Geo
+emulador.tipoNES=NES
+emulador.tipoPlaystation=PS/PS2
+emulador.tipoSCI=SCI
+emulador.tipoSNES=SNES
+emulador.tipoTK90=TK90 (Spectrum)
+emulador.tipoWindows=Windows/DOS/PC
+emulador.tipoVarios=Outros
+emulador.avaliar=Avaliar
+emulador.dicas=Dicas
+emulador.voltar=voltar
+emulador.aba.resumo=Emulador
+emulador.aba.review=Reviews
+emulador.aba.inst=Instala&ccedil;&atilde;o
+emulador.aba.dica=Dicas
+emulador.aba.tela=Telas
+emulador.aba.download=Download
+emulador.top=Emuladores mais visitados
+emulador.review.nao=Quer opinar? Fa&ccedil;a o login!
+emulador.review.comentarios=Seus coment&aacute;rios:
+emulador.dicas.nao=Nenhuma dica cadastrada.
+emulador.dicas.contrib=Tem uma dica que gostaria de contribuir? Clique aqui!
+emulador.install.nao=Nenhum roteiro de instala&ccedil;&atilde;o cadastrado.
+emulador.install.contrib=Tem uma instala&ccedil;&atilde;o que gostaria de contribuir? Clique aqui!
+emulador.nota=Nota:
+emulador.libs=Bibliotecas Utilizadas
+emulador.inst=Guias de instala&ccedil;&atilde;o
+
+## BIBLIOTECA ##
+biblioteca.titulo=BIBLIOTECA
+biblioteca.lista=LISTA DE BIBLIOTECAS
+biblioteca.nome=Nome
+biblioteca.descricao=Descri&ccedil;&atilde;o
+biblioteca.link=Link
+biblioteca.busca=BUSCA PELO NOME
+
+## BIBLIOTECAxJOGO ##
+bibliotecaXjogo.titulo=BIBLIOTECAxJOGO
+bibliotecaXjogo.lista=LISTA DE BIBLIOTECAS x JOGOS
+bibliotecaXjogo.biblioteca=Biblioteca
+bibliotecaXjogo.jogo=Jogo
+
+## BIBLIOTECAxEMULADOR ##
+bibliotecaXemulador.titulo=BIBLIOTECAxEMULADOR
+bibliotecaXemulador.lista=LISTA DE BIBLIOTECAS x EMULADORES
+bibliotecaXemulador.biblioteca=Biblioteca
+bibliotecaXemulador.emu=Emulador
+
+## ROTEIRO DE INSTALACAO DE BIBLIOTECA ##
+roteiroInstalacaoBiblioteca.titulo=ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE BIBLIOTECA
+roteiroInstalacaoBiblioteca.lista=LISTA DE ROTEIROS
+roteiroInstalacaoBiblioteca.biblioteca=Biblioteca
+roteiroInstalacaoBiblioteca.distro=Distribui&ccedil;&atilde;o
+roteiroInstalacaoBiblioteca.usuario=Usu&aacute;rio
+roteiroInstalacaoBiblioteca.descricao=Descri&ccedil;&atilde;o
+roteiroInstalacaoBiblioteca.aprovado=Status
+
+## ROTEIRO DE INSTALACAO DE JOGO  ##
+roteiroInstalacaoJogo.titulo=ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE JOGO
+roteiroInstalacaoJogo.lista=LISTA DE ROTEIROS
+roteiroInstalacaoJogo.jogo=Jogo
+roteiroInstalacaoJogo.distro=Distribui&ccedil;&atilde;o
+roteiroInstalacaoJogo.usuario=Usu&aacute;rio
+roteiroInstalacaoJogo.descricao=Descri&ccedil;&atilde;o
+roteiroInstalacaoJogo.aprovado=Status
+
+## ROTEIRO DE INSTALACAO DE EMULADOR  ##
+roteiroInstalacaoEmu.titulo=ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE EMULADOR
+roteiroInstalacaoEmu.lista=LISTA DE ROTEIROS
+roteiroInstalacaoEmu.emu=Emulador
+roteiroInstalacaoEmu.distro=Distribui&ccedil;&atilde;o
+roteiroInstalacaoEmu.usuario=Usu&aacute;rio
+roteiroInstalacaoEmu.descricao=Descri&ccedil;&atilde;o
+roteiroInstalacaoEmu.aprovado=Status
+
+## VERSAO DE JOGOS ##
+versaoDeJogo.titulo=VERS&Atilde;O DE JOGO
+versaoDeJogo.lista=LISTA DE VERS&Otilde;ES DE JOGOS
+versaoDeJogo.release=Release
+versaoDeJogo.dataLancamento=Lan&ccedil;amento
+versaoDeJogo.link=Link
+versaoDeJogo.obs=Observa&ccedil;&otilde;es
+versaoDeJogo.tipo=Jogo
+versaoDeJogo.busca=BUSCA PELO NOME
+
+## VERSAO DE DISTROS ##
+versaoDeDistro.titulo=VERS&Atilde;O DE DISTROS
+versaoDeDistro.lista=LISTA DE VERS&Otilde;ES DE DISTROS
+versaoDeDistro.release=Release
+versaoDeDistro.dataLancamento=Lan&ccedil;amento
+versaoDeDistro.link=Link
+versaoDeDistro.obs=Observa&ccedil;&otilde;es
+versaoDeDistro.tipo=Distro
+versaoDeDistro.busca=BUSCA PELO NOME
+
+## VERSAO DE EMULADORES ##
+versaoDeEmulador.titulo=VERS&Atilde;O DE EMULADORES
+versaoDeEmulador.lista=LISTA DE VERS&Otilde;ES DE EMULADORES
+versaoDeEmulador.release=Release
+versaoDeEmulador.dataLancamento=Lan&ccedil;amento
+versaoDeEmulador.link=Link
+versaoDeEmulador.obs=Observa&ccedil;&otilde;es
+versaoDeEmulador.tipo=Emulador
+versaoDeEmulador.busca=BUSCA PELO NOME
+
+## VERSAO DE BIBLIOTECAS ##
+versaoDeBiblioteca.titulo=VERS&Atilde;O DE BIBLIOTECAS
+versaoDeBiblioteca.lista=LISTA DE VERS&Otilde;ES DE BIBLIOTECAS
+versaoDeBiblioteca.release=Release
+versaoDeBiblioteca.dataLancamento=Lan&ccedil;amento
+versaoDeBiblioteca.link=Link
+versaoDeBiblioteca.obs=Observa&ccedil;&otilde;es
+versaoDeBiblioteca.tipo=Biblioteca
+versaoDeBiblioteca.busca=BUSCA PELO NOME
+
+## TELA DE JOGOS ##
+telaDeJogo.titulo=TELAS DE JOGOS
+telaDeJogo.lista=LISTA DE TELAS DE JOGOS
+telaDeJogo.nome=Nome
+telaDeJogo.tipo=Jogo
+telaDeJogo.descricao=Descri&ccedil;&atilde;o
+telaDeJogo.busca=BUSCA PELO NOME
+
+## TELA DE EMULADORES ##
+telaDeEmulador.titulo=TELAS DE EMULADORES
+telaDeEmulador.lista=LISTA DE TELAS DE EMULADORES
+telaDeEmulador.nome=Nome
+telaDeEmulador.tipo=Emulador
+telaDeEmulador.descricao=Descri&ccedil;&atilde;o
+telaDeEmulador.busca=BUSCA PELO NOME
+
+## TEXTO DE JOGOS ##
+textoDeJogo.titulo=TEXTO DE JOGOS
+textoDeJogo.lista=LISTA DE TEXTO DE JOGOS
+textoDeJogo.texto=Texto
+textoDeJogo.data=Data
+textoDeJogo.link=Link
+textoDeJogo.tipo=Jogo
+textoDeJogo.tipo.texto=Tipo
+textoDeJogo.usuario=Usu&aacute;rio
+textoDeJogo.aprovado=Aprovado?
+textoDeJogo.descricao=Descri&ccedil;&atilde;o
+textoDeJogo.busca=BUSCA PELO NOME
+
+# Aprova/Reprova roteiros de instalacao de Jogos
+solicitacaoRoteiroJogo.titulo=ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoRoteiroJogo.lista=LISTA DE ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoRoteiroJogo.nome=Jogo
+solicitacaoRoteiroJogo.usuario=Solicitante
+solicitacaoRoteiroJogo.email=Email
+solicitacaoRoteiroJogo.texto=Texto
+solicitacaoRoteiroJogo.aprova=Aprovar
+solicitacaoRoteiroJogo.reprova=Reprovar
+solicitacaoRoteiroJogo.obs=Observa&ccedil;&atilde;o:
+solicitacaoRoteiroJogo.alterar=aprovar/reprovar
+solicitacaoRoteiroJogo.submit=enviar
+
+# Aprova/Reprova textos de instalacao de Jogos
+solicitacaoTextoJogo.titulo=TEXTOS DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoTextoJogo.lista=LISTA DE TEXTOS DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoTextoJogo.nome=Jogo
+solicitacaoTextoJogo.tipo=Tipo
+solicitacaoTextoJogo.tipo.1 = Dica
+solicitacaoTextoJogo.tipo.2 = Video
+solicitacaoTextoJogo.tipo.3 = Download
+solicitacaoTextoJogo.usuario=Solicitante
+solicitacaoTextoJogo.email=Email
+solicitacaoTextoJogo.texto=Texto
+solicitacaoTextoJogo.link=Link
+solicitacaoTextoJogo.aprova=Aprovar
+solicitacaoTextoJogo.reprova=Reprovar
+solicitacaoTextoJogo.obs=Observa&ccedil;&atilde;o:
+solicitacaoTextoJogo.alterar=aprovar/reprovar
+solicitacaoTextoJogo.submit=enviar
+
+
+# Aprova/Reprova roteiros de instalacao de emuladores
+solicitacaoRoteiroEmulador.titulo=ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE EMULADORES PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoRoteiroEmulador.lista=LISTA DE ROTEIRO DE INSTALA&Ccedil;&Atilde;O DE EMULADORES PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoRoteiroEmulador.nome=Emulador
+solicitacaoRoteiroEmulador.usuario=Solicitante
+solicitacaoRoteiroEmulador.email=Email
+solicitacaoRoteiroEmulador.texto=Texto
+solicitacaoRoteiroEmulador.aprova=Aprovar
+solicitacaoRoteiroEmulador.reprova=Reprovar
+solicitacaoRoteiroEmulador.obs=Observa&ccedil;&atilde;o:
+solicitacaoRoteiroEmulador.alterar=aprovar/reprovar
+solicitacaoRoteiroEmulador.submit=enviar
+
+# Aprova/Reprova textos de instalacao de emuladores
+solicitacaoTextoEmulador.titulo=TEXTOS DE EMULADORES PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoTextoEmulador.lista=LISTA DE TEXTOS DE EMULADORES PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoTextoEmulador.nome=Emulador
+solicitacaoTextoEmulador.tipo=Tipo
+solicitacaoTextoEmulador.tipo.1 = Dica
+solicitacaoTextoEmulador.tipo.2 = Video
+solicitacaoTextoEmulador.tipo.3 = Download
+solicitacaoTextoEmulador.usuario=Solicitante
+solicitacaoTextoEmulador.email=Email
+solicitacaoTextoEmulador.texto=Texto
+solicitacaoTextoEmulador.link=Link
+solicitacaoTextoEmulador.aprova=Aprovar
+solicitacaoTextoEmulador.reprova=Reprovar
+solicitacaoTextoEmulador.obs=Observa&ccedil;&atilde;o:
+solicitacaoTextoEmulador.alterar=aprovar/reprovar
+solicitacaoTextoEmulador.submit=enviar
+
+# Aprova/Reprova roteiros de instalacao de Jogos
+solicitacaoAjudaJogo.titulo=SOLICITA&Ccedil;&Otilde;ES DE AJUDA DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoAjudaJogo.lista=LISTA DE SOLICITA&Ccedil;&Otilde;ES DE AJUDA DE JOGOS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoAjudaJogo.nome=Jogo
+solicitacaoAjudaJogo.usuario=Solicitante
+solicitacaoAjudaJogo.email=Email
+solicitacaoAjudaJogo.texto=Obs
+solicitacaoAjudaJogo.aprova=Aprovar
+solicitacaoAjudaJogo.reprova=Reprovar
+solicitacaoAjudaJogo.obs=Observa&ccedil;&atilde;o:
+solicitacaoAjudaJogo.alterar=aprovar/reprovar
+solicitacaoAjudaJogo.submit=enviar
+solicitacaoAjudaJogo.sugerido=Sugerido:
+solicitacaoAjudaJogo.armazenado=Armazenado:
+
+# Aprova/Reprova roteiros de instalacao de Jogos
+solicitacaoNoticia.titulo=SOLICITA&Ccedil;&Otilde;ES DE NOT&Iacute;CIAS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoNoticia.lista=LISTA DE SOLICITA&Ccedil;&Otilde;ES DE NOT&Iacute;CIAS PENDENTES PARA APROVA&Ccedil;&Atilde;O
+solicitacaoNoticia.link=Link
+solicitacaoNoticia.texto=Texto
+solicitacaoNoticia.aprova=Aprovar
+solicitacaoNoticia.reprova=Reprovar
+solicitacaoNoticia.obs=Observa&ccedil;&atilde;o:
+solicitacaoNoticia.alterar=aprovar/reprovar
+solicitacaoNoticia.submit=enviar
+solicitacaoNoticia.armazenado=Armazenado:
+solicitacaoNoticia.usuario=Usu&aacute;rio
+
+## TEXTO DE EMULADORES ##
+textoDeEmulador.titulo=TEXTO DE EMULADORES
+textoDeEmulador.lista=LISTA DE TEXTO DE EMULADORES
+textoDeEmulador.texto=Texto
+textoDeEmulador.data=Data
+textoDeEmulador.link=Link
+textoDeEmulador.usuario=Usu&aacute;rio
+textoDeEmulador.tipo=Emulador
+textoDeEmulador.tipo.texto=Tipo
+textoDeEmulador.aprovado=Aprovado?
+textoDeEmulador.descricao=Descri&ccedil;&atilde;o
+textoDeEmulador.busca=BUSCA PELO NOME
+
+## COLABORADORES ##
+colaborador.titulo=COLABORADORES
+colaborador.lista=LISTA DE COLABORADORES
+colaborador.nome=Login
+colaborador.status=Status
+colaborador.status.ativo=Ativo
+colaborador.status.inativo=Inativo
+colaborador.admin=Administrador
+colaborador.nome=Nome
+colaborador.email=E-mail
+colaborador.ativos=Colaboradores ativos
+colaborador.admins=Administradores ativos
+
+## USUARIOS ##
+usuario.titulo=USUARIOS
+usuario.lista=LISTA DE USUARIOS
+usuario.nome=Login
+usuario.nome=Nome
+usuario.email=E-mail
+usuario.data=Data de registro
+usuarios.top=Usu&aacute;rios mais ativos
+
+## ARTIGOS ##
+artigo.tituloPrincipal=ARTIGOS
+artigo.lista=LISTA DE ARTIGOS
+artigo.titulo=T&iacute;tulo
+artigo.texto=Texto
+artigo.votos=Votos
+artigo.notaGeral=Nota geral
+artigo.aprovado=Aprovado?
+artigo.data=Data de publica&ccedil;&atilde;o
+artigo.usuario=Usu&aacute;rio
+artigo.busca=BUSCA PELO NOME
+artigo.last=&Uacute;ltimos artigos
+artigo.lista=Lista de artigos
+artigo.avaliar=Avaliar
+artigo.review.comentarios=Coment&aacute;rios
+artigo.review.nao=Nenhuma review encontrada.
+artigo.nota=Nota
+
+## ARTIGOS EXTERNOS ##
+artigoExterno.tituloPrincipal=ARTIGOS EXTERNOS
+artigoExterno.lista=LISTA DE ARTIGOS EXTERNOS
+artigoExterno.titulo=T&iacute;tulo
+artigoExterno.texto=Titulo
+artigoExterno.link=Link
+artigoExterno.fonte=Fonte
+artigoExterno.aprovado=Aprovado?
+artigoExterno.last=&Uacute;ltimos artigos
+artigoExterno.lista=Lista de artigos externos
+
+## ENQUETES ##
+enquete.tituloPrincipal=ENQUETES
+enquete.lista=LISTA DE ENQUETES
+enquete.titulo=ENQUETES
+enquete.opt1=Op&ccedil;&atilde;o 1
+enquete.qt1=Votos 1
+enquete.opt2=Op&ccedil;&atilde;o 2
+enquete.qt2=Votos 2
+enquete.opt3=Op&ccedil;&atilde;o 3
+enquete.qt3=Votos 3
+enquete.opt4=Op&ccedil;&atilde;o 4
+enquete.qt4=Votos 4
+enquete.qt=Total
+enquete.votos=votos
+enquete.ativo=Ativado/Desativado?
+enquete.busca=BUSCA PELO NOME
+enquete.voto.ok=Seu voto foi registrado.
+enquete.voto.javotou=Voc&ecirc; j&aacute; votou.
+enquete.votar=Votar
+enquete.resultados=Resultados
+enquete.votos=votos registrados
+
+## ENQUETES x VOTO ##
+votoXenquete.titulo=ENQUETES x VOTOS
+votoXenquete.lista=LISTA DE ENQUETES X VOTOS
+votoXenquete.IP=endere&ccedil;o IP
+votoXenquete.enquete=Enquete
+votoXenquete.busca=BUSCA PELO NOME
+
+## JOGOS x VOTO ##
+votoXjogo.titulo=ENQUETES x JOGOS
+votoXjogo.lista=LISTA DE JOGOS X VOTOS
+votoXjogo.IP=endere&ccedil;o IP
+votoXjogo.jogo=Jogo
+votoXjogo.usuario=Usu&aacute;rio
+votoXjogo.busca=BUSCA PELO NOME
+
+## EMULADORES x VOTO ##
+votoXemulador.titulo=EMULADORES x VOTOS
+votoXemulador.lista=LISTA DE EMULADORES X VOTOS
+votoXemulador.IP=endere&ccedil;o IP
+votoXemulador.emulador=Emulador
+votoXemulador.busca=BUSCA PELO NOME
+
+## REVIEWS DE JOGOS ##
+reviewDeJogo.titulo=REVIEWS DE JOGOS
+reviewDeJogo.lista=LISTA DE REVIEWS DE JOGOS
+reviewDeJogo.nota=Nota
+reviewDeJogo.comentario=Coment&aacute;rio
+reviewDeJogo.jogo=Jogo
+reviewDeJogo.usuario=Usu&aacute;rio
+
+## REVIEWS DE ARTIGOS ##
+reviewDeArtigo.titulo=REVIEWS DE ARTIGOS
+reviewDeArtigo.lista=LISTA DE REVIEWS DE ARTIGOS
+reviewDeArtigo.nota=Nota
+reviewDeArtigo.comentario=Coment&aacute;rio
+reviewDeArtigo.artigo=Artigo
+reviewDeArtigo.usuario=Usu&aacute;rio
+
+## REVIEWS DE EMULADORES ##
+reviewDeEmulador.titulo=REVIEWS DE EMULADORES
+reviewDeEmulador.lista=LISTA DE REVIEWS DE EMULADORES
+reviewDeEmulador.nota=Nota
+reviewDeEmulador.comentario=Coment&aacute;rio
+reviewDeEmulador.emulador=Emulador
+reviewDeEmulador.usuario=Usu&aacute;rio
+
+## cache
+cache.titulo=Controle de Cache
+cache.hits=Hits:
+cache.tamanhoCacheDeNovidades=Novidades em cache:
+cache.tamanhoCacheDeUpdates=Updates em cache:
+cache.tamanhoCacheDeArtigos=Artigos em cache:
+cache.tamanhoCacheDeArtigosExternos=Artigos Externos em cache:
+cache.tamanhoCacheDeJogos=Jogos em cache:
+cache.tamanhoCacheDeEmuladores=Emuladores em cache:
+cache.ultimoRefreshDoCache=&Uacute;ltimo refresh:
+cache.diffTempo=Tempo em cache:
+cache.refreshDeArtigos=Executar refresh de Artigos
+cache.refreshDeArtigosExternos=Executar refresh de Artigos Externos
+cache.refreshDeNovidades=Executar refresh de Novidades
+cache.refreshDeUpdates=Executar refresh de Updates
+cache.refreshDeJogos=Executar refresh de Jogos
+cache.refreshDeEmuladores=Executar refresh de Emuladores
+
+## sugestoes
+sugestoes.texto1=O site LinuxGames n&atilde;o sabe de tudo, por isso precisa de sua ajuda para \
+ achar as pr&oacute;prias falhas e ficar um lugar melhor para todos n&oacute;s!
+sugestoes.texto2=Se voc&ecirc; deseja mandar alguma sugest&atilde;o, ou deseja entrar em contato \
+por algum motivo, digite o texto no campo abaixo.
+sugestoes.texto3=Seu e-mail (opcional):
+sugestoes.tipo=Selecione a op&ccedil;&atilde;o
+sugestoes.emailEnviado1=E-mail enviado com sucesso.
+sugestoes.emailEnviado2=Obrigado pela sua ajuda!
+sugestoes.semMensagem=Digite a mensagem!
+sugestoes.enviar=Enviar
+sugestoes.warning.required=Este campo &eacute; obrigat&oacute;rio.
+sugestoes.warning.email=Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.
+
+## sobre
+sobre.titulo=Sobre o site
+sobre.site=O site foi criado em cima da arquitetura J2EE utilizando somente solu&ccedil;&otilde;es open source.
+sobre.site2=A arquitetura consite em <a href="http://www.mysql.com">MySQL</a> como banco de dados e <a href="http://apache.tomcat.org">Tomcat 5</a> com servidor de aplica&ccedil;&atilde;o. \
+ O framework usado para a cria&ccedil;&atilde;o do site &eacute; o <a href="http://www.mentaframework.org">Mentawai Web Framework</a>.
+sobre.lg1=A LinuxGames &eacute; uma equipe formada por entusiastas de games para Linux, que desejam trocar \
+informa&ccedil;&otilde;es com toda comunidade. Para enviar uma sugest&atilde;o pra gente, clique <a href="/games/sugestao">aqui</a>!
+
+####### Modulo: TOE #######
+
+## LICENCA ##
+licenca.titulo=LICEN&Ccedil;A
+licenca.lista=LISTA DE LICEN&Ccedil;AS
+licenca.id=C&oacute;digo
+licenca.nome=Nome
+licenca.busca=BUSCA PELO NOME
+
+## GRUPO ##
+grupo.titulo=GRUPO
+grupo.lista=LISTA DE GRUPOS
+grupo.id=C&oacute;digo
+grupo.nome=Nome
+grupo.busca=BUSCA PELO NOME
+
+## SUBGRUPO ##
+subgrupo.titulo=SUBGRUPO
+subgrupo.lista=LISTA DE SUBGRUPOS
+subgrupo.id=C&oacute;digo
+subgrupo.nome=Nome
+subgrupo.grupo=Grupo
+subgrupo.busca=BUSCA PELO NOME
+
+## APLICACAO ##
+aplicacao.titulo.win=APLICA&Ccedil;&Atilde;O WINDOWS
+aplicacao.titulo.lin=APLICA&Ccedil;&Atilde;O LINUX
+aplicacao.titulo.winElin=APLICA&Ccedil;&Atilde;O WINDOWS E LINUX
+aplicacao.lista=LISTA DE APLICA&Ccedil;&Otilde;ES
+aplicacao.id=C&oacute;digo
+aplicacao.nome=Nome
+aplicacao.link=Link
+aplicacao.licenca=Licen&ccedil;a
+aplicacao.subgrupo=Subgrupo
+aplicacao.so=Sistema Operacional
+aplicacao.busca=BUSCA PELO NOME
+
+## NOTA ##
+nota.titulo=NOTA
+nota.lista=LISTA DE NOTAS
+nota.id=C&oacute;digo
+nota.nota=Nota
+nota.aplicacao=Aplica&ccedil;&atilde;o
+subgrupo.busca=BUSCA PELO NOME
+
+#
+# validacoes
+#
+campoObrigatorio=Campo obrigat&oacute;rio!
+caracterInvalido=Voc&ecirc; digitou caracteres inv&aacute;lidos para esse campo!
+usuarioExistente=Usu&aacute;rio j&aacute; cadastrado!
+emailValido=Informe um email v&aacute;lido!
+
+
+# Artigos
+
+artigos.titulo=Artigos da Linux Games
+artigosExternos.titulo=Artigos de outros sites
+
+# HOWTO
+
+howto.titulo=Linux Games Howto!
+howto.ldp=Linux Documentation Project
+howto.desc=O LinuxGames tamb&eacute;m &eacute; cultura! Aqui n&oacute;s reunimos o documento oficial da &lt;a href=&quot;http://www.tldp.org&quot;/&gt;LDP&lt;/a&gt; \
+ que reune todas as informa&ccedil;&otilde;es que uma game man&iacute;aco deve saber para jogar no Linux:
+howto.original=O Linux-Gamers-HOWTO original:
+howto.traduzido=O Linux-Gamers-HOWTO-BR (tradu&ccedil;&atilde;o oficial) n&atilde;o est&aacute; 100% traduzido, mas o trabalho parcial pode ser acessado:
+
+
+# PLANETA DOOM
+
+doom.titulo=Planeta Doom
+doom.desc=Em breve informa&ccedil;&atilde;o sobre o assunto...
+
+# PLANETA QUAKE
+
+quake.titulo=Planeta Quake
+quake.desc=Em breve informa&ccedil;&atilde;o sobre o assunto...
+
+# PLANETA ENEMY TERRITORY
+
+et.titulo=Planeta Enemy Territory
+et.desc=Em breve informa&ccedil;&atilde;o sobre o assunto...
+
+# ENTREVISTA
+
+entrevista.titulo=E com voc&ecirc;s, a LinuxGames!
+entrevista.link=O que &eacute; isso
+entrevista.pergunta1=Quem &eacute; voc&ecirc;?
+entrevista.resposta1=Eu sou o <b>LinuxGames</b>, o maior portal de games para Linux do Brasil!
+entrevista.pergunta2=Como assim o <b>maior</b>? S&oacute; tem esse portal de games que eu saiba! T&aacute; se <b>achando</b> hein?
+entrevista.resposta2=Pois &eacute;, &eacute; pra quem <b>pode</b>!
+entrevista.pergunta3=T&aacute; bom... mas o que esse site oferece? Tem jogos pra baixar aqui?
+entrevista.resposta3=Aqui <b>direto</b> do site n&atilde;o, mas voc&ecirc; encontra os links de onde baixar.
+entrevista.pergunta4=Como eu procuro o meu jogo preferido?
+entrevista.resposta4=Tem <b>duas maneiras</b>. Na p&aacute;gina inicial tem uma <b>busca</b>, basta digitar o nome do jogo \
+  que aparecer&aacute; uma lista com os nomes encontrados.A&iacute; &eacute; s&oacute; clicar em um deles.
+entrevista.resposta4b=A outra maneira &eacute; clicar na op&ccedil;&atilde;o do menu <b>Todos os jogos</b>. A&iacute; &eacute; s&oacute; clicar na \
+ letra do jogo ou no tipo.
+entrevista.pergunta5=Legal! Que informa&ccedil;&otilde;es que eu tenho de cada jogo?
+entrevista.resposta5=As informa&ccedil;&otilde;es est&atilde;o dividas em abas. A aba de <b>Jogo</b> mostra um resumo de informa&ccedil;&otilde;es do \
+jogo. A <b>reviews</b> mostra as opini&otilde;es e notas que as pessoas d&atilde;o para esse jogo.A aba de <b>instala&ccedil;&atilde;o</b> mostra \
+para as principais distribui&ccedil;&otilde;es linux o roteiro de instala&ccedil;&atilde;o desse jogo. A aba de <b>dicas</b> informa alguma dica, \
+v&iacute;deo ou link de algum site que seja interessante. A aba de <b>telas</b> mostra algumas telas do jogo e finalmente \
+a aba de <b>download</b> mostra as vers&otilde;es e os links para fazer o download do jogo.
+entrevista.pergunta6=E sobre emuladores?
+entrevista.resposta6=Temos uma estrutura parecida com a de jogos, com abas bem parecidas. Para conferir \
+&eacute; so clicar na op&ccedil;&atilde;o do menu <b>Todos os emuladores</b>.
+entrevista.pergunta7=O que mais o site oferece?
+entrevista.resposta7=Temos diversos artigos, na op&ccedil;&atilde;o <b>Todos Artigos e tutoriais</b>, que possui links para \
+artigos do nosso site e links para os artigos de outros sites. Temos tamb&eacute;m um <b>f&oacute;rum</b> sobre diversas \
+discuss&otilde;es de games.D&aacute; pra gastar um bom tempo por aqui =)
+entrevista.pergunta8=T&aacute;... mas eu posso ajudar o site de alguma maneira?
+entrevista.resposta8=Voc&ecirc; n&atilde;o pode, voc&ecirc; <b>deve</b>! Esse site sem a ajuda da comunidade n&atilde;o vai para lugar \
+nenhum! Tem v&aacute;rias maneiras de contribuir: <b> fazendo uma review, contribuindo com uma dica nova, informando \
+um novo guia de instala&ccedil;&atilde;o</b>.
+entrevista.pergunta9=E tudo isso como eu fa&ccedil;o? Passo um email?
+entrevista.resposta9=N&atilde;o n&atilde;o, tudo direto pelo site... voc&ecirc; consegue fazer:
+entrevista.resposta9b=uma review, que logo aparece no site;
+entrevista.resposta9c=enviar uma dica;
+entrevista.resposta9d=e enviar um guia de instala&ccedil;&atilde;o,que depois de aprovada por um dos colaboradores, vai \
+ aparecer no site <b>automagicamente</b>!
+entrevista.pergunta9e=Se eu achar uma not&iacute;cia legal ou descobrir um jogo novo, como eu fa&ccedil;o?
+entrevista.resposta9e=Toda vez que voc&ecirc; ver um &nbsp;<img src="/img/smiley_help.gif"/>&nbsp; significa que voc&ecirc; pode ajudar no site ou <b>cadastrando um jogo</b> \
+ ou <b>enviando uma not&iacute;cia</b>.
+entrevista.pergunta10=E se por exemplo eu achei algum erro, ou quero ajudar de outra forma?
+entrevista.resposta10=A&iacute; n&oacute;s temos a op&ccedil;&atilde;o <b>Fale conosco!</b> do site que &eacute; poss&iacute;vel nos enviar uma mensagem \
+da sua sugest&atilde;o!
+entrevista.pergunta11=Ent&atilde;o quer dizer que o site tem <b>s&oacute;</b> isso?
+entrevista.resposta11=Como s&oacute; isso seu <b>%$#@%*</b> ! Voc&ecirc; acha que foi <b>f&aacute;cil</b> montar essa estrutura?
+entrevista.pergunta12=Ficou <b>nervosa</b>, santa? Eu quero saber se voc&ecirc; pretende fazer <b>mais</b> alguma coisa.
+entrevista.resposta12=H&aacute;... bom, conforme for crescendo eu vou recolher e perguntar para a comunidade \
+o que ela pretende fazer por aqui.. <b>afinal essa &aacute;rea aqui &eacute; nossa</b>. Algumas id&eacute;ias est&atilde;o: <b>divulgar os \
+games nacionais atrav&eacute;s de campeonatos, criar mais tutoriais e buscar parcerias que beneficiem todos n&oacute;s</b>.
+entrevista.pergunta13=Ok, ent&atilde;o acho que por hoje &eacute; s&oacute;. Alguma declara&ccedil;&atilde;o final?
+entrevista.resposta13=Claro... na pr&oacute;xima v&ecirc; se entrevista <b>outro</b>, ok?
+entrevista.pergunta14=O que a gente n&atilde;o faz por uma entrevista...
+entrevista.resposta14=...
+
+
+## JOGOS FAVORITOS ##
+jogosFavoritos.titulo=JOGOS FAVORITOS
+jogosFavoritos.lista=LISTA DE JOGOS FAVORITOS
+jogosFavoritos.usuario=Usu&aacute;rio
+jogosFavoritos.jogo=Jogo
+jogosFavoritos.nova=adicionar aos favoritos
+jogosFavoritos.combo=T&aacute; no meus favoritos?
+jogosFavoritos.listar=exibir favoritos
+jogosFavoritos.remove=remover dos favoritos
+jogosFavoritos.link=Meus Favoritos
+jogosFavoritos.title=Jogos Favoritos
+
+## EMULADORES FAVORITOS ##
+emuladoresFavoritos.titulo=EMULADORES FAVORITOS
+emuladoresFavoritos.lista=LISTA DE EMULADORES FAVORITOS
+emuladoresFavoritos.usuario=Usu&aacute;rio
+emuladoresFavoritos.emulador=Emulador
+emuladoresFavoritos.nova=adicionar aos favoritos
+emuladoresFavoritos.combo=T&aacute; no meus favoritos?
+emuladoresFavoritos.listar=exibir favoritos
+emuladoresFavoritos.remove=remover dos favoritos
+emuladoresFavoritos.link=Meus Favoritos
+emuladoresFavoritos.title=Emuladores Favoritos
+
+## IMAGENS  ##
+imagem.titulo=Imagem
+imagem.lista=LISTA DE IMAGENS
+imagem.fileName=Nome do arquivo
+imagem.fileContent=Arquivo
+imagem.fileMimeType=Mime type
+imagem.jogo=Jogo
+imagem.emu=Emulador
+imagem.busca=BUSCA PELO NOME
+
+# Warnings do JavaScript
+warnings.selectOptFirst=Selecione uma op\u00e7\u00e3o primeiro!
+warnings.noGame=Nenhum jogo encontrado!
+warnings.selectOneGame=Selecione um jogo:
+warnings.problem=Problema:
+warnings.writeComment=Escreva um coment\u00e1rio primeiro!
+warnings.selectGrade=Selecione uma nota primeiro!
+warnings.selectDistro=Escolha uma distribui\u00e7\u00e3o!
+warnings.writeInstallInfo=Informe o roteiro da instala\u00e7\u00e3o!
+warnings.thanksForText=Obrigado por contribuir, o seu roteiro n\u00e3o aparecer\u00e1 imediatamente no site, ele ser\u00e1 antes disso aprovado pelo webmaster.
+warnings.selectType=Escolha um tipo!
+warnings.writeTip=Informe o texto da dica!
+warnings.thanksForTip=Obrigado por contribuir, a sua dica n\u00e3o aparecer\u00e1 imediatamente no site, ela ser\u00e1 antes disso aprovada pelo webmaster.
+warnings.writeNovTxt=Informe o texto da not\u00edcia!
+warnings.writeNovLink=Informe o link da not\u00edcia!
+warnings.notValidLink=Informe um link v\u00e1lido!
+warnings.thanksForNov=Obrigado por contribuir, a sua not\u00edcia n\u00e3o aparecer\u00e1 imediatamente no site, ela ser\u00e1 antes disso aprovada pelos colaboradores.
+
+# painel
+painel.link=Painel de controle
+painel.nome=Nome
+painel.email=Email
+painel.dataDoCadastro=Registro
+painel.distro=Distribui&ccedil;&atilde;o
+painel.receberNewsletter=Recebe newsletter?
+painel.minhaMaquina=Dados da m&aacute;quina
+painel.nrJogosContribuidos=Jogos contribuidos
+painel.nrNoticiasContribuidas=Not&iacute;cias contribuidas
+painel.nrEmuladoresContribuidos=Emuladores contribuidos
+painel.totalContribuicoes=Total de contribui&ccedil;&otilde;es
+painel.rank=Posi&ccedil;&atilde;o atual
+painel.update=alterar
+

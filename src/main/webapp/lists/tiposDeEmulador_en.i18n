@@ -1,0 +1,21 @@
+#######################################
+# File: /lists/tiposDeEmulador_en.i18n #
+#######################################
+
+1 = Amiga
+2 = Atari
+3 = GameBoy
+4 = Infinity
+5 = Macintosh
+6 = Master System
+7 = Mega Drive (Genesis)
+8 = MSX
+9 = N64
+10= Neo-Geo
+11= NES (Nintendo 8 bits)
+12= Playstation/Playstation 2
+13= SCI
+14= SNES
+15= TK90 (Spectrum)
+16= Windows/DOS/PC
+17= Others emulator

@@ -1,0 +1,85 @@
+/* ----------------------------------------------- */
+/*  Estilos do SCOM - Criado por Fernando Boaglio  */
+/* ----------------------------------------------- */
+/*  (c) 2005/2006 Nextel Telecomunicacoes          */
+/* ----------------------------------------------- */
+
+/*  [ globais ]  */
+
+BODY {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	background:#f0f0f0 url(bg_fundo.gif) 450px 10px repeat-y fixed;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	FONT: 80% verdana, arial, sans-serif; PADDING-TOP: 0px
+}
+
+h3 {color:#630; font-family:Arial, Helvetica, sans-serif; margin-bottom:20px;}
+
+/*  [ menu ]  */
+
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#menu {
+	Z-INDEX: 100; LEFT: 20px; WIDTH: 100%; POSITION: absolute; TOP: 30px
+}
+#menu DL {
+	FLOAT: left; MARGIN: 0px 1px; WIDTH: 12em
+}
+#menu DT {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FONT-WEIGHT: bold; BACKGROUND: #ccc; BORDER-LEFT: gray 1px solid; CURSOR: pointer; BORDER-BOTTOM: gray 1px solid; TEXT-ALIGN: center
+}
+#menu DD {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-BOTTOM: gray 1px solid
+}
+#menu LI {
+	BACKGROUND: #fff; TEXT-ALIGN: center
+}
+#menu LI A {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; DISPLAY: block; BORDER-LEFT: 0px; COLOR: #000; BORDER-BOTTOM: 0px; HEIGHT: 100%; TEXT-DECORATION: none
+}
+#menu DT A {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; DISPLAY: block; BORDER-LEFT: 0px; COLOR: #000; BORDER-BOTTOM: 0px; HEIGHT: 100%; TEXT-DECORATION: none
+}
+#menu LI A:hover {
+	BACKGROUND: #eee
+}
+#menu DT A:hover {
+	BACKGROUND: #eee
+}
+#site {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: gray 1px solid; PADDING-LEFT: 5px; Z-INDEX: 1; LEFT: 10px; PADDING-BOTTOM: 5px; BORDER-LEFT: gray 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: gray 1px solid; POSITION: absolute; TOP: 70px; BACKGROUND-COLOR: #ddd
+}
+A  {
+	COLOR: #222; TEXT-DECORATION: none
+}
+
+
+A:hover   {
+ background         : transparent;
+ color              : #ff0000;
+ text-decoration    : underline;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+}
+
+/*  [ outros ]  */
+
+.log {
+ font-size          : 9px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ white-space        : nowrap;
+}
