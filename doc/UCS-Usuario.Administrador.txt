@@ -1,0 +1,16 @@
+
+@startuml img/usecase_img04.png
+
+
+:Usuário colaborador: as colab
+:Usuário Administrador: as admin
+
+colab <|-- admin
+
+admin --> (Aprova dicas, instalação e reviews de jogo)
+admin --> (administra cache)
+admin --> (cadastra novos jogos/emuladores)
+admin --> (agenda notícias)
+admin --> (administra as pesquisas do site)
+
+@enduml

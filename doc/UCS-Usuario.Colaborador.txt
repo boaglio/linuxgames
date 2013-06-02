@@ -1,0 +1,18 @@
+
+@startuml img/usecase_img04.png
+
+
+:Usuário logado: as logado
+:Usuário colaborador: as colab
+
+logado <|-- colab
+
+
+(Posta e aprova notícias ) as (news)
+(Escreve artigos) as (artgame)
+
+
+logado --> (news)
+logado --> (artgame)
+
+@enduml

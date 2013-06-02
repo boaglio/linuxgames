@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head><title>solicita&ccedil;&atilde;o</title></head>
+ <body>
+  <p>${greeting},</p>
+
+#if ($categoria == 1)
+  <p>Sua solicita&ccedil;&atilde;o de altera&ccedil;&atilde;o/cadastro do jogo <b>${nome}</b> foi aprovada! </p>
+#elseif ($categoria== 3)
+  <p>Sua solicita&ccedil;&atilde;o de not&iacute;cia foi aprovada! </p>
+#else
+  <p>Sua solicita&ccedil;&atilde;o de altera&ccedil;&atilde;o/cadastro do emulador <b>${nome}</b> foi aprovada! </p>
+#end
+
+#if ($motivo)
+  <table summary="">
+  	<tr><th>Observa&ccedil;&atilde;o dos colaboradores do site:</th></tr>
+  	<tr><td>&nbsp;</td></tr>
+  	<tr><td><pre><font color=red><b>${motivo}</b></font></pre></td></tr>
+  </table>
+#end
+
+  <br>
+  Atenciosamente,
+  <br>
+  <b><a href="http://www.linuxgames.com.br">LinuxGames.com.br</a></b> <br>
+  <i>O maior portal de Jogos do Brasil!</i>
+ </body>
+</html>

@@ -1,0 +1,42 @@
+
+
+update no server:
+
+git push heroku master
+
+info de uso e tamanho da base:
+
+ heroku pg:info HEROKU_POSTGRESQL_AQUA
+
+info de conexao da base:
+
+heroku pg:credentials HEROKU_POSTGRESQL_AQUA
+
+acesso ao banco de dados:
+
+heroku pg:psql HEROKU_POSTGRESQL_AQUA
+
+
+export:
+pg_dump -Fc --no-acl --no-owner lg > data.dump
+
+
+lista processos:
+
+
+heroku ps
+
+shutdown:
+
+heroku ps:stop web.1
+
+
+
+restart:
+
+
+heroku restart web.1
+
+logs:
+
+heroku logs -t

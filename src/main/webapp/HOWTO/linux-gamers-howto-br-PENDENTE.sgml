@@ -1,0 +1,1670 @@
+		<sect2><title>Busca no Google Group</title>
+
+			<para>Cada post feita na Usenet é arquivado pelo banco de dados do Google em <ulink
+			url="http://groups.google.com"></ulink>.  Isso era feito pelo  <ulink
+			url="http://www.deja.com"></ulink>, mas ele foi comprado pelo Google.  Muitos pessoas ainda conhecem o
+			serviço como "deja".</para>
+
+			<para>É quase certo que qualquer problema que você tenha com Linux, relacionado a jogos ou não,
+			já tenha sido perguntado e respondido na Usenet.  Não uma vez, não duas vezes, mas muitas vezes.
+			Se você não enteder a primeira resposta, você verá (ou mesmo se não funcionar), então tente verificar
+			mais outra resposta.  Se a página não for de um idioma que você entenda, existem muitos tradutores online
+			que traduzirão o texto para o idioma que quiser, incluindo
+			<ulink url="http://www.freetranslation.com"></ulink> e <ulink
+			url="http://translation.lycos.com"></ulink>.  Meu web browser preferido, Opera (disponível em
+			<ulink url="http://www.opera.com"></ulink>) permite que você use o botão direito do mouse button para selecionar
+			uma parte do texto e o botão esquerdo  a seleção é traduzida para outro idioma.  Isso é bem útil
+			quando a Google group procurar campos numa página em alemão e minha esposa (que lê alemão fluente)
+			não estiver por perto.</para>
+
+			<para>A busca no Google group tem a parte básica e avançada.  Não se preocupe com a busca simples.
+			A busca avançada está em <ulink
+			url="http://groups.google.com/advanced_group_search"></ulink>.</para>
+
+			<para>É bem fácil de usar.  Por exemplo, se meu problema for que o Quake III aborta toda vez que Lucy
+			pula, eu vou colocar  "linux quake3 crash lucy jumps" no campo texto  "Find messages with all de the
+			words".</para>
+
+			<para>There são fields for que newsgroup você want para narrow seu procurar to.  Take the time
+			to read e understand o que cada field means.  eu promise you.  You won't be disappointed with
+			this service.  Use it, e you'll be a much happier person.   Do note que they don't archive
+			private newsgroups, like Loki Software's news server.  Entretanto, so Muitos pessoas use Usenet, it
+			almost doesn't matter.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Debugging: call traces e core files</title>
+
+			<para>Isso is geralmente Não something you'll do for commercial jogos.  For abra source jogos,
+			you pode help the author by giving a corefile ou stack trace.  Very quickly, a core arquivo (aka
+			core dump) is a arquivo que holds the "state" de the program at the moment it crashes.  It holds
+			valuable clues for the programmer para the nature de the crash -- o que caused it e o que the
+			program was doing Quando it happened.  Se você want para learn more Sobre core files, eu have a
+			great gdb tutorial at <ulink url="http://www.dirac.org/linux"></ulink>.</para>
+
+			<para>At the *very* least, the author será interested in the call stack Quando the game
+			crashed.  Here is how você pode get the call stack at barf-time:</para>
+
+			<para>Somevezes distros configurar their OS so que core arquivos (which são mainly useful to
+			programmers) aren't generated.  The first step is para make seu sistema allow unlimited
+			coresizes:</para>
+
+			<screen>
+    ulimit -c unlimited
+			</screen>
+
+			<para>You will now have para recompile the program e pass the -g opção para gcc (explaining
+			this is beyond the scope de this document).  Now, run the game e do whatever você did to
+			crash the program e dump a core again.  Run the debugger com the core arquivo as the 2nd
+			argument:</para>
+
+			<screen>
+    $ gdb CoolGameExecutable core
+			</screen>
+
+			<para>And at the (gdb) prompt, type "backtrace".  You'll see something like:</para>
+
+			<screen>
+    #0 printf (format=0x80484a4 "z is %d.\n") at printf.c:30
+    #1 0x8048431 in display (z=5) at try1.c:11
+    #2 0x8048406 in main () at try1.c:6
+			</screen>
+
+			<para>It may be quite long, mas use seu mouse para cut e paste this information into a file.
+			Email the author e tell him:</para>
+
+			<orderedlist numeration="arabic">
+
+			<listitem><para>The game's name</para></listitem>
+
+			<listitem><para>Qualquer error message que appears on the screen Quando the game
+			crashes.</para></listitem>
+
+			<listitem><para>What causes the crash e whether it's a repeatable crash or
+			not.</para></listitem>
+
+			<listitem><para>The call stack</para></listitem>
+
+			</orderedlist>
+
+			<para>Se você have good bandwidth, ask the author if he would like the core arquivo que his
+			program dumped.  Se he says yes, then send it.  Remember para ask first, because core arquivos can
+			get very, very big.</para>
+
+		</sect2>
+
+
+
+		<sect2 id="savedjogos"><title>Saved Games</title>
+
+			<para>Se seu game permite for saved jogos, then enviando the author a copy de the saved game is
+			useful because it helps the tech reproduce whatever is going wrong.  For commercial jogos,
+			this opção is more fruitful than enviando a core arquivo ou call stack since commercial jogos
+			can't be recompiled para include debugging information.  You should definitely ask before
+			sending a save game arquivo because they tend para be long, mas gaming companies usually have lots
+			of bandwidth.  Mike Phillips (formerly de Loki Software) mentioned que enviando in saved jogos
+			to Loki is definitely a good thing.</para>
+
+			<para>Needless para say, this only applies if seu game crashes reproducably at a certain point.
+			Se the game segfaults every time você run it, ou is incredibly slow, a saved game arquivo won't be
+			of much help.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>What para do Quando a arquivo ou biblioteca isn't being found (better living through
+		strace)</title>
+
+			<para>Somevezes você verá error messages que indicate a arquivo wasn't found.  The arquivo could
+			be a library:</para>
+
+			<screen>
+ % ./exult
+ ./exult: error enquanto loading shared library: libSDL-1.2.so.0: não pode load shared object
+ file: No such arquivo ou diretório
+			</screen>
+
+			<para>or it could be some kind de data file, like a <filename class="extension">wad</filename>
+			or <filename class="extension">map</filename> file:</para>
+
+			<screen>
+ % qf-client-sdl
+ IP endereço 192.168.0.2:27001 UDP Initialize Error: W_LoadWadFile: couldn't load gfx.wad
+			</screen>
+
+			<para>Suppose <filename>gfx.wad</filename> is already on my system, mas couldn't be found
+			because it isn't in the right diretório.  Then where IS the right diretório?  Wouldn't it be
+			helpful para know where these programs looked for the missing files?</para>
+
+			<para>Isso is where strace shines.  strace tells você o que sistema calls são being made, with
+			what arguments, e o que their return values are.  In my `Kernel Module Programming Guide'
+			(due para be released para LDP soon), eu outline everything você may want para know Sobre strace.  But
+			here's a brief outline usando the canonical exemplo de o que strace looks like.  Give the
+			command:</para>
+
+			<screen>
+    strace -o ./LS_LOG /bin/ls
+			</screen>
+
+			<para>The -o opção sends strace's output para a file; here, LS_LOG.  The last argument to
+			strace is the program we're inspecting, here, "ls".  Look at the contents de LS_LOG.  Pretty
+			impressive, eh?  Here is a typical line:</para>
+
+			<screen>
+    open(".", O_RDONLY|O_NONBLOCK|0x18000)  = 4
+			</screen>
+
+			<para>We used the <function>open()</function> sistema call para abra "." com various arguments,
+			and the return value de the call is <returnvalue>4</returnvalue>.   What does this have para do
+			with arquivos Não being found?</para>
+
+			<para>Suppose eu want para watch the StateOfMind demo because eu can't ever seem para get enough of
+			it.  One day eu try para run it e something bad happens:</para>
+
+			<screen>
+    % ./mind.i86_linux.glibc2.1
+    Loading & massaging...
+    Error:Can't abra data arquivo 'mind.dat'.
+			</screen>
+
+			<para>Let's use strace para encontrar out where the program was looking for the data file.</para>
+
+			<screen>
+    strace ./mind.i86_linux.glibc2.1 2> ./StateOfMind_LOG
+			</screen>
+
+			<para>Pulling out vim e searching for all occurrences de <filename>mind.dat</filename>, I
+			find the following lines:</para>
+
+			<screen>
+    open("/usr/share/mind.dat",O_RDONLY) = -1 ENOENT (No such file)
+    write(2, "Error:", 6Error:)   = 6
+    write(2, "Can\'t abra data arquivo \'mind.dat\'."..., ) = 33
+			</screen>
+
+			<para>It was looking for <filename>mind.dat</filename> in only one diretório.  Clearly,
+			<filename>mind.dat</filename> isn't in <filename class="diretório">/usr/share</filename>.
+			Now nós pode try para locate <filename>mind.dat</filename> e move it into
+			<filename>/usr/share</filename>, ou better, create a symbolic link.</para>
+
+			<para>Isso method works for bibliotecas too.  Suppose the biblioteca <filename
+			class="libraryfile">libmp3.so.2</filename> is in <filename
+			class="diretório">/usr/local/include</filename> mas seu new game "Kill-Metallica" can't find
+			it.  You pode use strace para determine where Kill-Metallica was looking for the biblioteca e make
+			a symlink from <filename class="symlink">/usr/local/include/libmp3.so.2</filename> para wherever
+			Kill-Metallica was looking for the biblioteca file.</para>
+
+			<para>strace is a very powerful utility.  Quando diagnosing why coisas aren't being found, it's
+			your best ally, e is even faster than looking at código fonte.  As a last note, você can't
+			look up information in código fonte de commercial jogos from Lokisoft ou Tribsoft.  mas você can
+			still use strace com them!</para>
+
+		</sect2>
+
+
+		<sect2 id="hosedconsoles"><title>Hosed consoles</title>
+
+			<para>Somevezes a game will exit abnormally e seu console will get `hosed'.  There são a
+			few definitions de a hosed console.  The text characters could parece gibberish.  Your
+			normally nice black screen could parece a quasi-graphics screen.  Quando você press
+			<keycap>ENTER</keycap>, a newline doesn't get echo'ed para the screen.  Somevezes, certain keys
+			of the keyboard won't respond.  Logging out e back in don't always work, mas there são a
+			few coisas que might:</para>
+
+			<itemizedlist>
+
+			<listitem><para>Se você don't see qualquer character on the screen as você type in, seu terminal
+			settings may be wrong.  Try "stty echo".  Isso should let input characters echo
+			again.</para></listitem>
+
+			<listitem><para>At the prompt, type "reset".  Isso should clear up Muitos problemas, including
+			consoles hosed by an SVGAlib ou ncurses based game.</para></listitem>
+
+			<listitem><para>Try running the game again e normally.  uma vez eu had para kill Quake III in a
+			hurry, so eu performed a <keysym>Ctl-Alt-Backspace</keysym>.  The console was hosed com a
+			quasi-graphics screen.  Running Quake III e quitting normally fixed the
+			problema.</para></listitem>
+
+			<listitem><para>The commands deallocvt e openvt will work for most de the other problemas
+			you'll have.  <command>deallocvt N</command> kills terminal <literal>N</literal> entirely, so
+			that <literal>Alt-FN</literal> doesn't even work anymore.  <command>openvt -c N</command>
+			starts it back up.</para></listitem>
+
+			<listitem><para>Se certain keys on seu keyboard don't work, be creative.  Se você want to
+			reboot mas the `o' key doesn't work, try usando halt.  One method I've come up com is typing a
+			command at the prompt e usando characters on the screen com mouse cut/paste.  Por exemplo,
+			you pode type "ps ax", e você está sure para have an `h', `a', `l' e a `t' somewhere on the
+			screen.  You pode use the mouse para cut e paste the word "halt".</para></listitem>
+		  <!-- if você type ps ax, você already have an 'a' ;) -->
+
+			<listitem><para>The most regrettable opção is a reboot.  Se você can, an orderly shutdown is
+			preferable; use "halt" ou "shutdown".  Se você can't, ssh in from a another machine.  That
+			algumas vezes works Quando seu console is very badly hosed.  In the worst case scenario, hit the
+			reset ou power switch.</para></listitem>
+
+			</itemizedlist>
+
+			<para>Note que if você use a journalling filesystem like ext3, reiserfs ou xfs, hitting the
+			power switch isn't all que bad.  You're ainda supposed para shutdown in an orderly manner, but
+			the filesystem integrity será maintained.  You won't normally see an fsck for the
+			partitions que use the journalling filesystem.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Locked System</title>
+
+			<para>Quando a computer "locks", também called "hung", the keyboard e mouse become completely
+			unresponsive.  Isso is a direct consequence de a bug in the Linux kernel.  While Linux is
+			known for stability, these coisas do happen, especiallly for gaming que entails highly
+			synchronized hardware events que occur very fast, even para a computer.  Quando a computer
+			locks, it pode be a "hard lock", meaning the kernel has completely stopped functioning.  This
+			often indicates misbehaving ou faulty hardware.  There's no recovery from this kind de lock
+			other than pressing the reset ou power button.  The lock pode também be a "soft lock", meaning
+			that the kernel is ainda functioning in some capacity.  It's possible para recover from this
+			gracefully.</para>
+
+			<itemizedlist>
+
+			<listitem><para>The first thing você should try is para hit
+			<literal>control-alt-backspace</literal> que kills X.  Se você gain control de seu system,
+			the kernel wasn't really locked in the first place.  Se this didn't work after a few seconds,
+			you'll definitely want para reboot the sistema usando the following
+			instructions.</para></listitem>
+
+			<listitem><para>Use <literal>control-alt-delete</literal> para reboot the system.  You'll know
+			this worked if você hear the computer beep after a few seconds (this is BIOS saying "I'm OK"
+			during a power on cycle).</para></listitem>
+
+			<listitem><para>Log into another sistema e ssh into the hung system.  Se você pode ssh in,
+			reboot ou halt the system.</para></listitem>
+
+			<listitem><para>Se você can't ssh into the system, you'll need para use the "magic SysRq key"
+			which is documented in <filename>/usr/src/linux/Documentation/sysrq.txt</filename>.  Here's a
+			summary for the x86 architecture (see the documentation for other architectures).  Note if
+			your keyboard doesn't have a <keycap>SysRq</keycap> key, use the <keycap>PrintScreen</keycap>
+			key:
+
+				<orderedlist>
+
+				<listitem><para>Hit <literal>alt-SysRq-s</literal>.  Isso will attempt para sync seu mounted
+				filesystems so que changes para arquivos get flushed para disk.  You may hear disk activity.  If
+				você está looking at a console, the sistema should print the devices que were
+				flushed.</para></listitem>
+
+				<listitem><para>A few seconds later, hit <literal>alt-SysRq-u</literal>.  Isso will attempt
+				to remount all seu mounted filesystems as read-only).  You should hear disk activity.  If
+				você está looking at a console, the sistema will print the devices que were
+				remounted.</para></listitem>
+
+				<listitem><para>A few seconds later, use <literal>alt-SysRq-b</literal> para reboot the
+				system.</para></listitem>
+
+				<listitem><para>You pode hit <literal>alt-SysRq-h</literal> for a very terse help
+				screen.</para></listitem>
+
+				</orderedlist></para></listitem>
+
+				</itemizedlist>
+
+				<para>Para use the magic SysRq key, seu kernel needs para have been compiled com magic SysRq
+				support.  You'll encontrar this opção under "<literal>Kernel Hacking | Kernel Debugging | Magic
+				SysRq key</literal>" in whatever kernel config menu você like para use.  Se the magic SysRq key
+				sequence doesn't shut seu sistema down gracefully, seu kernel has crashed hard e you'll
+				need para use the reset ou power button para recover.</para>
+
+
+		</sect2>
+
+</sect1>
+
+
+
+<sect1><title>Video Cards</title>
+
+
+		<sect2><title>History</title>
+
+			<para>Once upon a time, a compQualquer in San Jose, California named 3dfx Interactive was king of
+			the gaming video card market.  In October 1996 they released the Voodoo I, que was a
+			phenomenal success.  It was the first hardware accelerated card, mas only rendered 3D; it had
+			to be piggybacked com a 2D video card.  The idea was que 2D rendering was handled by a high
+			quality 2D video card (Matrox was immensely popular at the time) mas 3D information (see
+			Glide2, <xref linkend="glide2">) would be passed para the Voodoo eu e rendered, usando the
+			Voodoo's fast hardware para perform the necessary graphics calculations.  They released the
+			Voodoo Rush in April 1996.  It should've been a more powerful card, com a 50MHz GPU e 8MB
+			of RAM.  Even better, it was their first combined 2D/3D card, meaning que it freed up a
+			valuable PCI slot (most PC's only had a couple de PCI slots back then) mas the Rush wasn't as
+			popular.  3dfx removed the multi-texturing unit from the Rush, e it was outperformed by the
+			Voodoo I.  At the time, ATI had their Rage series e nVidia had their Riva 128, mas the
+			Voodoo eu blew them all away.</para>
+
+			<para>Isso was a good time for Linux.  id Software's abra sourced the Doom codebase e ported
+			Quake eu para Linux (December 1996).  We were getting our first tastes de real commercial gaming.
+			Life was simple: você purchased a Voodoo.  And it felt good, because 3dfx abra sourced their
+			drivers.  The king de video cards worked com Linux developers.  Não only did nós have the best
+			video cards, mas the drivers were all abra source.</para>
+
+			<para>In March 1998, 3dfx released their Voodoo II, com its 3.6GB/sec memória bandwith, 12MB
+			of video memória e 90MHz core.  It supported resolutions up para 1024x768.  Isso was 3dfx in
+			its heyday.  Like the Voodoo I, the Voodoo II was a 3D only card, e piggy backed com a 2D
+			video card.  The Voodoo Banshee was released in September 1998 as a combined 2D/3D card, like
+			the Rush.  Despite the faster 100MHz core, the Banshee was outperformed by the Voodoo II
+			because its multi-texturing unit was removed, like com the Rush.  And again like the Rush, it
+			wasn't popular.  mas 3dfx reigned supreme, e nobody could touch them.</para>
+
+			<para>In April 1999, the Voodoo III was released.  There were a number de Voodoo III's,
+			ranging from a 143MHz core speed para 183MHz.  There were TV-out versions.  There were PCI and
+			AGP versions (it was the first AGP video card).  It was another success, mas 3dfx began to
+			lose ground para nVidia, que released their TNT 2.  The TNT 2 outperformed the Voodoo II, and
+			accelerated 3D graphics at full 32 bit color, enquanto the Voodoo's were stuck at 16 bit color.
+			But life was ainda good for Linux.  We had a card que was almost neck-to-neck com nVidia,
+			our drivers were abra source, e in December 1999, id Software gave us a huge gift: they open
+			sourced the Quake eu codebase.</para>
+
+			<para>Then nVidia released the GeForce 256 in October 1999.  3dfx's Voodoo IV, its direct
+			competitor, was Sobre a year late que is very bad Quando você está competing for a bleeding edge
+			market.  While nVidia was putting real R&amp;D into their cards, 3dfx was simply adding more
+			and faster RAM.  The Voodoo IV e V rendered in full 32bpp color, had great AA support (<xref
+			linkend="aa">), featured a 2nd GPU, more memory, e was arguably the king de of video cards.
+			Entretanto, 3dfx's late release de the Voodoo IV e V coupled com the fact que the GeForce
+			could be had for half the price meant que 3dfx was sinking fast.  For Linux, the newest
+			Voodoo's could only accelerate at 16 e 24 bit color.  Worse still, the Voodoo V's 2nd GPU
+			was unused by the Linux driver (and para this day, the Voodoo V is functionally equivalent to
+			the single GPU Voodoo IV no Linux).  Most Windows users were switching para nVidia, e despite
+			the fact que the nVidia drivers were proprietary, even Linux users began para jump onto the
+			nVidia bandwagon.  VA Linux, the largest Linux server vendor, put nVidia into their
+			machines.</para>
+
+			<para>Then in April 2000, 3dfx was attacked on a different front: ATI started releasing their
+			first generation Radeons.  Until this point, ATI had always been an innovative (they developed
+			their own 3D acceleration chips in 1996, Sobre the same time as 3dfx), mas sleepy graphics
+			chipset manufacturer.  The Radeons were their first 3D accelerated card que gamers took any
+			real serious interest in.  Their Radeons trounced both nVidia e 3dfx.  They worked with
+			Linux developers, abra sourced all their drivers e were hailed as the great hope for Linux
+			gaming.  nVidia came back com fists swinging, e this was all too much for 3dfx.  Between
+			losing the benchmark wars para the GeForce e Radeon, their lateness com new cards e high
+			prices, 3dfx lost its market share e didn't have the funds para stay into business.  On April
+			18 2001, they sold most de their assets e technology para nVidia, e in October 2002, they
+			finally declared bankruptcy.</para>
+
+			<para>The demise de 3dfx was quite sudden e a slap in the face para the abra source community.
+			I ainda remember my friend Gabe Rosa emailing me com just "<literal>Look at /.</literal>" and
+			seeing the news.  It was the 2nd worst day for Linux gaming (the 1st being the demise of
+			Loki).  And it was também a shame.  3dfx was getting ready para release a new Voodoo V featuring 4
+			GPU's que would've trounced the ATI e  nVidia offerings, as well as a new card código named
+			"Rampage" que reportedly would've put them firmly back as the king de the hill.  There are
+			reports que the Rampage's technology (which was sold para nVidia) went into the GeForce 5900.
+			Não too shabby for 3 year old technology!</para>
+
+			<para>At first, coisas were ainda simple.  Linux gamers would either keep their abra source
+			Voodoos, get an abra source Radeon ou a closed source GeForce.  Entretanto, com bigger and
+			better jogos on the horizon, it was only a matter de time before the Voodoos would no longer
+			be a viable graphics card for modern gaming.  pessoas were ainda usando Voodoo's, mas they were
+			essentially out de the game at this point.</para>
+
+			<para>ATI started para release a tremendous number de versions de cada video card, e keeping
+			up com them e their terminology started para become very difficult.  ATI, together with
+			nVidia, played king de hill.  Their products have been neck para neck ever since, com GeForce
+			taking the lead a bit more vezes than the Radeon.  mas the Radeon's drivers were abra source,
+			so Muitos Linux users stuck by them.  Then coisas got even more complicated.</para>
+
+			<para>ATI started becoming more e more reluctant para abra source drivers for their new
+			releases, e suddenly, it wasn't clear who the "good guy" was anymore.  nVidia's party line
+			was they license some de their GL código from another company, e is thus non-releasable.
+			Presumably, ATI doesn't want para release drivers para keep their trade secrets, well, a secret.
+			And it gets worse.  The ATI Linux drivers have been plagued by extremely poor performance.
+			Even Quando an ATI offering is better than the corrente GeForce offering for Windows, the card is
+			always trounced by GeForce no Linux.  Because de the ATI Linux driver woes, Linux users cannot
+			use MS Windows based benchmarks ou card stats.  They simply don't apply para us.  And that's
+			pretty much where nós são right now.</para>
+
+			<para>As a last note, the only systematic Linux video card benchmarking effort I'm aware of
+			was done, unfortunately, in March 2001, between a Radeon 32 DDR e a GeForce 2.  You pode read
+			it para vocêrself at <ulink
+			url="http://www.linuxhardware.org/features/01/03/19/0357219.shtml"></ulink>, mas conclusion is
+			that the GeForce 2 firmly e soundly trounced the Radeon 32 DDR.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Current Status (1 March 2004)</title>
+
+			<para>nVidia's latest offering is the GeForce 5900, based on the NV35 chipset.  It's well
+			supported by Linux com high quality mas proprietary drivers.  nVidia uses a convenient
+			combined driver architecture; their driver will support the TNT 2 all the way up para the
+			GeForce 5900.  Although their drivers são closed source, as a company, nVidia has been
+			supportive e good para Linux users.</para>
+
+			<para>ATI's has worked com Linux developers for their Radeons up para e incluindo the Radeon
+			9200, que have 2D e 3D support in XFree86.  I'm Não entirely sure de the quality de these
+			open source drivers, however, Soldier de Fortune eu e Heavy Metal ainda have opaque texture
+			problemas under first generation Radeons.  Beyond the 9200, você need para use ATI's binary only
+			proprietary drivers, available in rpm format from ATI's website.  It's claimed que these
+			drivers são piss poor; a friend de mine claims his GeForce 4400 outperforms his Radeon 9700
+			pro.  That's shameful.</para>
+
+			<para>On paper, e in the Windows benchmarks, the Radeon 9800 trounces the ill-conceived
+			GeForce 5800 e slightly edges out the GeForce 5900.  On paper, it's simply the more
+			impressive card.  mas again, the driver issue makes this information unusable for us.  Se you
+			have seu heart set para buy the best card for Linux, you'll want para go com the GeForce
+			5900.</para>
+
+				<sect3><title>SVGAlib Support</title>
+
+					<para>As de June 2002, SVGAlib support Radeon cards is shaky.  Developers have reported
+					that SVGAlib works on the Radeon 7500, Radeon QD (64MB DDR model) mas has problemas on the
+					Radeon VE.</para>
+
+					<para>I have no information Sobre SVGAlib e the GeForce cards.</para>
+
+				</sect3>
+
+		</sect2>
+
+
+
+		<sect2><title>Which Video Card Should eu Buy?  (1 March 2004)</title>
+
+			<para>The answer was very difficult last year, mas here's my take on it these days:</para>
+
+			<orderedlist numeration="arabic">
+
+			<listitem><para>All GeForce cards require a proprietary driver que will "taint" seu kernel.
+			Entretanto, all ATI cards beyond the Radeon 9200 também require a proprietary driver que will
+			"taint" seu kernel as well.</para></listitem>
+
+			<listitem><para>nVidia has proven que they care enough Sobre Linux para write e maintain
+			current e very high quality drivers for Linux.  Even Quando ATI abra sourced its video card
+			driver, they played the "we'll make Linux developers write our drivers for us" game.  Their
+			current proprietary drivers são below par.</para></listitem>
+
+			<listitem><para>The corrente Radeon 9800 barely beats out the GeForce 5900 in benchmarks and
+			card specs, mas Linux users won't benefit from this because de driver issues..</para></listitem>
+
+			<listitem><para>ATI has a very long history de dropping support for hardware as fast as they
+			can get away com it.</para></listitem>
+
+			<listitem><para>On MS Windows, Quando the GeForce beat out its main competing Radeon, the review
+			claimed que the Radeon geralmente had better visuals.  eu have no idea how this translates to
+			Linux.</para></listitem>
+
+			</orderedlist>
+
+			<para>Don't get the GeForce 5800.  Card reviews claim que it has some serious <ulink
+			url="http://www.hardocp.com/article.html?art=NDIx">heat, noise, e dust</ulink> issues.  It's
+			informally called the "dust buster" because de noise its fan makes.</para>
+
+			<para>Se você absolutamente only want abra source drivers on seu system, the Radeon 9200 is the
+			best card você pode buy.</para>
+
+			<para>Se você have a Linux/Windows dual boot, consider either the Radeon 9800 ou the GeForce
+			5900.  The Radeon será slightly stronger on Windows.  The GeForce será stronger on
+			Linux.</para>
+
+			<para>Se você have a Linux only system, the GeForce 5900 is seu best bet.  As de today, the
+			256MB version comes in at a whopping $350, however, the 128MB version is more
+			reasonable.</para>
+
+		</sect2>
+
+        <sect2>
+
+        <title>Definições: Placa de Video e Terminologia 3D</title>
+
+		<para> Nós vamos cobrir a terminologia das placas de video 3D. Isso não é crucial para ter
+		um jogo rodando, mas pode ajudar na decisão de qual hardware e software é o melhor
+		opção para você. </para>
+
+
+	<sect3><title>Texturas</title>
+
+		<para> Uma cena renderizada é basicamente composta por polígonos e linhas. Uma textura é
+		uma imagem 2D (normalmente bitmap) cobrindo os polígonos num mundo 3D. Pense nisso como
+		uma lona sobre vários polígonos. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>T&amp;L: Transformação e Iluminação</title>
+
+		<para> O processo T&amp;L é o processo de tradução de toda a informação do
+		mundo 3D (posição,distancia e iluminação) na imagem 2D image que é
+		exibida na tela. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>AA: Anti Aliasing</title>
+
+		<para> O Anti aliasing (AA) é a suavização das bordas pontudas numa curva renderizada ou
+		num polígono. Os pixels são objetos quadrados, então desenhar uma linha inclinada ou
+		uma curva com eles resulta em `degraus de escada', também chamados de jaggies. Isso
+		é quando os pixels fazem o que deveria ser uma curva ou linha pontuda. O AA usa a CPU
+		bastante para filtrar e suavizar essas bordas pontudas. Isso melhora o visual dos jogos,
+		mas também reduz muito a performance. </para>
+
+		<para> O AA é usado em diversas situações. Por exemplo, quando você dá um zoom numa figura,
+		você irá notar linhas que estavam suavizadas estão pontudas agora (tente isso usando o
+		The Gimp). A renderização de fonte é outra grande aplicação para AA. </para>
+
+		<para> O AA pode ser usado também pela própria aplicação (como o The Gimp ou o sistema
+		de fontes do XFree86) ou via hardware, se sua placa de video suportar isso. Como o AA
+		usa bastante CPU, é desejável que seja usado o hardware,mas se nós estamos falando de
+		aplicações quase-estáticas como o The Gimp, isso realmente não é um problemaa. Para
+		situações dinâmicas, como em jogos, fazer AA no hardware pode ser crucial. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>FSAA: Full Screen Anti-Aliasing (AA de Tela Cheia)</title>
+
+		<para> FSAA normalmente envolve desenhar uma versão ampliada de toda a
+		tela num framebuffer separado, fazendo um AA em toda a imagem e rescalando
+		de volta na resolução normal. Como você deve imaginar, isso exibe bastante
+		da CPU. Você nunca verá um FSAA sem aceleração via hardware. </para>
+
+	</sect3>
+
+
+<!-- here -->
+
+	<sect3><title>Mapeamento Mip</title>
+
+		<para> Mapeamento Mip é a técnica onde diversas cópias escalares da mesma textura
+		são armazenadas na memória para diferentes distâncias. Quando a textura está
+		distante a versão menor (mip map) é utilizada.  Quando a textura está perto, uma
+		maior é usada. O Mapeamento Mip pode ser usando independente do uso de métodos
+		de filtro (veja mais abaixo). O Mapeamento Mip reduz o tráfego de memória necessário
+		desde que as imagens estejam no hardware, mas também oferece melhor qualidade
+		na imagem renderizada. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Filtro de Textura</title>
+
+		<para> Filtro de Textura é uma característica fundamental necessária  para gerar bons
+		gráficos 3D. É utilizado para várias coisas, como fazer texturas adjacentes juntar
+                gradativamente e fazendo com que as texturas sejam vistas de um ângulo parecer bem realistas.
+                 (imagine olhando numa superfície plana de um ângulo extremo). Existem diversas técnicas de
+                filtragem de textura incluindo point-sampling,bilinear, trilinear e o filtro anisotropic. </para>
+
+		<para> Uma coisa para se ter em mente é quando se fala sobre `hits de performance', pois isso
+		depende de qual resolução você está rodando. Por exemplo, numa resolução baixa
+		você poderá ter um hit baixo usando o filtro trilinear ao invés do bilinear. Mas em alta
+		resolução, os hits de  performance poderão ser enormes. Além disso, eu não tenho conhecimento
+		de alguma placa de rede que utilize o filtro de textura anisotropic. Os drivers TNT afirmam
+		que usam, mas eu ouvi falar que esses drivers usam o filtro trilinear quando estão renderizando
+		uma imagem na tela. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Filtro de Textura de Ponto por Amostra ou Point Sampling</title>
+
+		<para> Atualmente o point sampling é raro, mas se você rodar um jogo com 'renderização de software'
+		(você irá precisar para rodar um jogo que exija placa 3D sem a placa)
+		provavelmente você estará usando. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Filtro de Textura Bilinear</title>
+
+		<para> Filtro bilinear é computacionalmente barato mas a qualidade da textura é baixa. Se
+		aproxima das lacunas entre a amostragem de cor dos quatro próximos pixels ( acima, abaixo, esquerda
+		e direita). Todas as placas novas 3D podem fazer filtro de textura bilinear em  hardware
+		sem problemaas de performance. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Filtro de Textura Trilinear</title>
+
+		<para> A filtragem trilinearé uma bilinear de alta qualidade que usa os quatro pixels próximos
+		primeiro e depois calcula o calor mais suave de transição entre os valores. O filtro trilinear
+		faz a amostragem de oito pixels e os interpola antes de renderizar, duas vezes mais do que a
+		bilinear faz. O filtro trilinear sempre faz isso. O filtro trilinear elimina o efeito de faixas
+		que aparece em partes da imagem. Muitas placas aceleradoras 3D modernas podem fazer filtro de
+		textura trilinear em  hardware sem problemaas de performance. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Filtro de Textura Anisotropic</title>
+
+	 <para> O filtro Anisotropic é o melhor porém o de uso de CPU mais intensivo dos três métodos
+	 mais comuns de filtro de textura. O filtro trilinear é capaz de produzir visuais excelentes,
+	 mas somente as regiões quadradas que em alguns casos não é o ideal. O anisotropic (que significa
+	 `de qualquer direção') faz a amostragem em mais que 8 pixels. O número de pixels sampleados e
+	 quais são usados dependem do ângulo da superfície relativa à tela. Ele brilha quando visualizado
+	 caracteres alfanuméricos em um ângulo. </para>
+
+	</sect3>
+
+
+
+	<sect3><title>Bufferização Z</title>
+
+		<para> Um buffer Z é uma porção de RAM que representa a distância entre o observador (você)
+		e cada pixel de um objeto.  Muitas placas 3D tem o buffer Z em sua video RAM, o que acelera
+		as coisas consideravelmente, mas a bufferização Z pode também pela engine de renderização
+		da aplicação. </para>
+
+		<para> Cada objeto tem uma ordem na pilha. como uma pilha de cartas. Quando os objetos são
+		renderizados em um frame buffer 2D, a engine de renderização remove as superfícies ocultas
+		usando o Z buffer.
+		Existem dois detalhes aqui.  As engines burras desenham objetos longe primeiro e objetos
+		perto por último, escondendo os objetos abaixo deles no Z buffer. As engines mais espertas
+		calculam as porções dos objetos que ficarão ocultas e simplesmente não renderizam aquela
+		porção que não será vista mesmo.Para texturas complicadas isso é uma enorme economia de
+		processamento.
+		</para>
+
+	</sect3>
+
+ </sect2>
+
+
+
+</sect1>
+
+
+
+
+
+<sect1><title>Sound</title>
+
+		<sect2><title>Which placa de som is best?</title>
+
+			<para>By the word "best" eu mean best for gaming.  Gamers want high quality sound for our jogos
+			with the least amount de tinkering.  On the other hand, a musician would have a very different
+			concept de o que "best placa de som" would mean.  Se você está a musician, você might want para check
+			out the <ulink url="http://www.linuxdj.com/audio/quality/">Linux Audio Quality
+			HOWTO</ulink>.</para>
+
+			<para>Now que Linux is beginning para mature, this question isn't as important as it used to
+			be.  uma vez upon a time, soundcards without onboard MIDI chips (most PCI placas de som) didn't do
+			MIDI.  Isso was mostly a problema for coisas like xdoom ou lxdoom usando musserv.  These days we
+			have MIDI emulators like Timidity e bibliotecas like SDL que don't require hardware MIDI
+			support.  Frankly, I've had Muitos cards e eu can't tell the difference between qualquer de them for
+			gaming.  Se você want para do coisas like convert a record LP para digital format, then seu choice
+			of a soundcard com a professional grade A/D converter is absolutamente crucial.  For this HOWTO,
+			we'll assume que você está more de a gamer than a studio recording engineer.</para>
+
+			<para>Your decision should be based on o que será the easiest para configure.  Se você already
+			have a card e it works well, that's good enough.  Se você está in the market para buy a sound
+			card, get something que will take você a second para configure.  PCI cards são much easier to
+			deal com than ISA since você don't need para tell their drivers Sobre que sistema resources
+			(IRQ, DMA, I/O addresses) para use.  Some ISA cards ARE plug-n-play, like the Creative AWE-64,
+			and the Linux kernel has come a long way in auto configuring them.</para>
+
+			<para>My personal recommendation is qualquer card que has the es1370 ou es1371 chip, que uses
+			the es1370 e es1371 sound drivers no Linux.  These cards include the older Ensoniq es1370
+			and newer Creative PCI-128.  These cards são extremely cheap e trivial para get working under
+			Linux.</para>
+
+			<para>I used para be a fan de the Creative Soundblaster AWE 32, AWE 64 e AWE 64 gold
+			soundcards.  These ISA PnP cards são well supported by both OSS e Alsa.  They all use the
+			same E-mu 8000 synthesis chip que enables them para play 32 voices simultaneously (they have
+			32 "channels").  A few notes: First, the Soundblaster AWE HOWTO is very out de date.  Second,
+			the AWE 64 e AWE 64 gold pode play 64 voices simultaneously, mas this is done in software.
+			Creative never released a Linux driver for these cards (and they never released programming
+			information para Linux developers), so Linux users não pode use the extra 32 channels on the AWE
+			64 e AWE 64 gold.  As far Linux users são concerned, all three cards são completely
+			identical (although the AWE 64 gold has gold plated connectors, que são better for sound
+			quality than the more comum steel connectors).</para>
+
+			<para>The Creative Soundblaster Live! is an extremely popular PCI placa de som these days.  I've
+			never owned one, so eu não pode comment here.  Entretanto, there have been numerous reports Sobre
+			serious problemas com the Live! e AMD motherboards que use the 686b southbridge.  A google
+			search should turn up alot de information on this problema.</para>
+
+			<para>A more relevent issue is speakers, mas even here the difference isn't huge.  I've had
+			expensive Altec Lansing speakers perform only slightly better than el-cheapo speakers.  You
+			get o que você pay for com speakers, mas don't expect a huge difference.  You'll want para get
+			something com a separate sub-woofer; this does make a difference at a cost de extra power and
+			connector wires.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Why isn't my sound working?</title>
+
+			<para>First de all, it's probably Não the game, it's probably seu setup.  AFAIK, there são 3
+			options para getting a placa de som configured under Linux: the free OSS sound drivers que come
+			with the Linux kernel, the Alsa drivers e the commercial OSS sound drivers.  Personally, I
+			prefer the free OSS drivers, mas Muitos pessoas swear by Alsa.  The commercial OSS drivers are
+			good Quando você está having trouble getting seu placa de som para work by free methods.  Don't
+			discount them; they're very cheap (like 10 ou 20 bucks), support bleeding edge placas de som and
+			take a lot de guesswork out de the configuring process.</para>
+
+			<para>There são 5 coisas que pode go wrong com seu sound system:</para>
+
+			<orderedlist numeration="arabic">
+			<listitem><para>Shared interrupt</para></listitem>
+			<listitem><para>Misconfigured driver</para></listitem>
+			<listitem><para>Something's already accessing the placa de som</para></listitem>
+			<listitem><para>You're usando the wrong driver</para></listitem>
+			<listitem><para>A permissions problema</para></listitem>
+			</orderedlist>
+
+
+
+				<sect3><title>Shared interrupt</title>
+
+					<para>The first thing para do is para figure out if você have an IRQ conflict.  ISA cards can't
+					share interrupts.  PCI cards pode share interrupts, mas certain tipos de high bandwidth
+					cards simply don't like para share, incluindo network e placas de som.  Para encontrar out whether
+					you have a conflict, do a <userinput>cat /proc/interrupts</userinput>.  Output on my
+					system is:</para>
+
+					<screen>
+    $ cat /proc/interrupts
+               CPU0       CPU1
+      0:   24185341          0          XT-PIC  timer
+      1:     224714          0          XT-PIC  keyboard
+      2:          0          0          XT-PIC  cascade
+      5:    2478476          0          XT-PIC  soundblaster
+      5:     325924          0          XT-PIC  eth0
+     11:     131326          0          XT-PIC  aic7xxx
+     12:    2457456          0          XT-PIC  PS/2 Mouse
+     14:     556955          0          XT-PIC  ide0
+    NMI:          0          0
+    LOC:   24186046   24186026
+    ERR:       1353
+					</screen>
+
+					<para>The second column is there because eu have 2 CPU's in this machine; if você have one
+					CPU (called UP, ou uniprocessor), you'll have only 1 CPU column.  The numbers on the left
+					are the assigned IRQ's e the strings para the right indicate o que device was assigned that
+					IRQ.  You pode see eu have an IRQ conflict between the soundcard (soundblaster) e the
+					network card (eth0).  They both share IRQ 5.  Actually, eu cooked this exemplo up because I
+					wanted para show você o que an IRQ conflict looks like.  mas if eu did have this conflict,
+					neither my network nor my sound would work well (or at all!).</para>
+
+					<para>Se my placa de som is PCI, the preferred way de fixing this would be para simply move
+					one de the cards para a different slot e hope the BIOS sorts coisas out.  A more advanced
+					way de fixing this would be para go into BIOS e assign IRQ's para specific slots.  Modern
+					BIOS'es pode do this.</para>
+
+				</sect3>
+
+
+
+				<sect3><title>Misconfigured driver</title>
+
+					<para>Somevezes, a card is hardwired para use a certain IRQ.  You'll see this on ISA cards
+					only.  Alternatively, some ISA cards pode be set para use a specific IRQ usando jumpers on the
+					card itself.  com these tipos de cards, você need para pass the correct IRQ e memory
+					access, "I/O port", para the driver.</para>
+
+					<para>Isso is a placa de som specific issue, e beyond the scope de this HOWTO.</para>
+					<!-- FIXME: eu should write Sobre como pass info para the driver. -->
+
+				</sect3>
+
+
+
+				<sect3><title>Something is already accessing seu placa de som</title>
+
+					<para>Perhaps an application is already accessing seu soundcard.  Por exemplo, maybe you
+					have an MP3 player that's paused?  Se something is already accessing seu card, other
+					applications won't be able to.  Even though it foi escrito para share the card between
+					applications, I've found que esd (the enlightenment sound daemon) algumas vezes doesn't work
+					correctly.  The best tool para use here is lsof, que mostra que processes são accessing a
+					file.  Your placa de som is represented by <filename class="devicefile">/dev/dsp</filename>.
+					Right now, I'm listening para an MP3 (Não a Metallica MP3, de course...) with
+					mp3blaster.</para>
+
+					<screen>
+    # lsof /dev/dsp
+    COMMAND    PID USER   FD   TYPE DEVICE SIZE   NODE NAME
+    mp3blaste 1108    p    6w   CHR   14,3      662302 /dev/dsp
+					</screen>
+
+					<para><command>fuser</command> is similar; mas it lets você send a signal para qualquer process accessing the device
+					file.</para>
+
+					<screen>
+    # fuser -vk /dev/dsp
+
+                         USER        PID ACCESS COMMAND
+    /dev/dsp             root       1225 f....  mp3blaster
+                         root       1282 f....  mp3blaster
+					</screen>
+
+					<para>After issuing this command, mp3blaster was killed com SIGKILL.  Veja the man pages
+					for lsof e fuser; they're very useful.  Oh, you'll want para run them as root since you'll
+					be asking for information from processes que may be owned by root.</para>
+
+				</sect3>
+
+
+
+				<sect3><title>You're usando the wrong driver (or no driver)</title>
+
+					<para>There são only two ways para configure seu card:</para>
+
+					<orderedlist numeration="arabic">
+
+					<listitem><para>Support deve be compiled directly into the kernel</para></listitem>
+
+					<listitem><para>You deve have the correct driver loaded into memory</para></listitem>
+
+					</orderedlist>
+
+					<para>You pode encontrar out que driver seu placa de som is usando by doing "lsmod" ou looking
+					at the output de "dmesg".  Since sound is crucial for me, eu always compilar sound into my
+					kernels.  Se você don't have a driver loaded, você need para figure out what's been compiled
+					into seu kernel.  That's Não so straight forward.  Your best bet is para compilar your
+					kernel.  BTW, let me say que compiling seu own kernel is the first step towards
+					proficiency com Linux.  It's painful the first time você do it, mas uma vez você do it
+					correctly, it becomes very easy down the right, especially if você keep all seu old
+					.config arquivos e make use de coisas like "make oldconfig".  Veja the Kernel HOWTO for
+					details.</para>
+
+					<para>Se você haven't compiled the kernel yourself, there is an overwhelmingly good chance
+					that seu sistema is configurar para load sound drivers as modules.  That's the way distros do
+					things.  Have everything under the sun compiled as a module e try para load them all.  So
+					if você don't see seu placa de som's driver com lsmod, seu card probably isn't configured
+					yet.</para>
+
+				</sect3>
+
+
+
+				<sect3><title>Permissions Problem</title>
+
+					<para>Se the placa de som works Quando você está root mas Não qualquer other user, você probably have a
+					permissions problema.  Se this is the case, as root, look at the group owner de the sound
+					card usando <userinput>ls -l /dev/dsp</userinput>; it'll probably be
+					<literal>audio</literal>.  Então, as root, add seu non-root user para the audio group in
+					<filename>/etc/group</filename>.  Por exemplo, eu added the users p e wellspring para group
+					audio on my system:</para>
+
+					<screen>
+    audio:x:29:p,wellspring
+					</screen>
+
+					<para>Don't forget para use <command>grpconv</command> if você use shadow passwords
+(which should be the case on most recent distributions) in order para maintain a consistent group
+configuration. Then log out e log back in as the non-root user. Your placa de som should work.
+Thanks para James Barton for reminding me para add this para the howto.</para>
+
+				</sect3>
+
+		</sect2>
+
+</sect1>
+
+
+<sect1><title>Problemas Variados</title>
+
+	<sect2><title>Problemas de Aceleração de Hardware</title>
+
+				<para>XFree86 4.x provides a more centralized e self-contained approach para video.  Much of
+			the funkyness like kernel modules for non-root access de video boards is, thankfully,
+			gone.</para>
+
+				<sect3><title>Hardware acceleration isn't working at all</title>
+
+					<para>Se você está getting like 1 fps, then seu sistema isn't usando hardware 3D acceleration.
+					There's one de two coisas que pode be going on.</para>
+
+					<orderedlist numeration="arabic">
+			    <listitem><para>Your 3D sistema is misconfigured (more likely)</para></listitem>
+			    <listitem><para>Game X is misconfigured (less likely)</para></listitem>
+					</orderedlist>
+
+					<para>The first step is para figure out que one is happening.</para>
+
+					<orderedlist numeration="arabic">
+
+					<listitem><para>Se você have X 4.0 (X 3.* users procede para step 2), look at the output of
+					<userinput>X -probeonly</userinput>.  You'll see:</para>
+
+						<screen>(II) XXXXXX: direct rendering enabled</screen>
+
+						<para>or</para>
+
+						<screen>(II) XXXXXX: direct rendering disabled</screen>
+
+						<para>where XXXXXXX depends on que video card você have.  Se direct rendering is
+						disabled, then seu X configuration is definitely faulty.  Your game is Não at fault.
+						You need para figure out why DRI is disabled.  The most important tool for você para use at
+						this point is the `DRI Users Guide'.  It is an excellently written document que gives
+						you step by step information on como get DRI configurar correctly on seu machine.  A copy
+						is kept at <ulink url="http://www.xfree86.org/4.0/DRI.html"></ulink>.</para>
+
+						<para>Note que if você pass this test, seu sistema is CAPABLE de direct rendering.  Your
+						bibliotecas pode ainda be wrong.  Então procede para step 2.</para></listitem>
+
+					<listitem><para>There is a program called glxgears que comes com the "mesademos"
+					package.  You pode get mesademos com Debian (<command> apt-get install
+					mesademos</command>) ou você pode hunt for the rpm on <ulink
+					url="http://www.rpmfind.net"></ulink>.  You pode também download e compilar the source
+					yourself from the mesa homepage.</para>
+
+						<para>Running glxgears mostrará some gears turning. The xterm from que você run
+						glxgears will display "X frames in Y seconds = X/Y FPS".  You pode compare seu sistema to
+						the lista de benchmarks below.</para>
+
+						<screen>
+    CPU TYPE     VIDEO CARD     X VERSION    AVERAGE FPS
+						</screen>
+
+						<para>Compiling Mesa e DRI modules yourself pode increase seu FPS by 15 FPS; quite a
+						performance boost!  Então if seu number is, say, Sobre 20 FPS slower than a comparable
+						machine, chances são que glxgears is falling back on software rendering.  In other
+						words, seu graphics card isn't 3D accelerating graphics.</para>
+
+						<para>More important than FPS is having a constant FPS for small e large windows.  If
+						hardware acceleration is working, the FPS for glxgears should be nearly independent of
+						window size.  Se it's not, then você está Não getting hardware
+						acceleration.</para></listitem>
+
+					</orderedlist>
+
+				</sect3>
+
+		</sect2>
+
+
+
+		<sect2><title>Hardware acceleration works only for the root user</title>
+
+				<sect3><title>XFree86 4.x</title>
+
+					<para>Se the following lines aren't present in seu XF86Config-4 file, put them in:</para>
+
+					<screen>
+    Section "DRI"
+        Mode 0666
+    EndSection
+					</screen>
+
+					<para>Isso permite all non-root users para use DRI.  For the paranoid, it's possible to
+					restrict DRI para only a few non-root users.  Veja the DRI User Guide.</para>
+
+				</sect3>
+
+
+
+				<sect3><title>XFree86 3.x</title>
+
+						<sect4><title>Voodoo cards</title>
+
+								<para>Voodoo card hardware acceleration only takes place ONLY at 16bpp color and
+								fails silently Quando starting X in another color depth.</para>
+
+								<para>Além disso, Voodoo cards need the <filename>3dfx.o</filename> kernel module e a
+								<filename class="devicefile">/dev/3dfx</filename> device arquivo (major 107, minor 0)
+								for non-root hardware acceleration.  Neither the module nor the device arquivo são used
+								no ambiente XFree86 4.x.</para>
+
+						</sect4>
+
+				</sect3>
+
+		</sect2>
+
+</sect1>
+
+
+
+<sect1><title>Emulation e Virtual Machines</title>
+
+	<para>Linux gets ragged on a lot because nós don't have the wealth de jogos que other platforms
+	have.  Frankly, there's enough jogos for me, although it would be really nice para have some de the
+	bleeding edge jogos e classics like Half-life e Carmageddon.  Fortunately, nós have more
+	emulators than você pode shake a stick at.  Although jogando an emulated game is algumas vezes Não quite
+	as fun as jogando it on the native machine, e getting some de the emulators para work well pode be
+	a difficult task, they're here, e there's alot de them!</para>
+
+
+		<sect2><title>What is a virtual machine?</title>
+
+			<para><anchor id="vm">A "real computer" provides an operating sistema Muitos coisas, incluindo a
+			CPU, I/O channels, memory, a BIOS para provide low level access para motherboard e I/O
+			resources, etc. Quando an operating sistema wants para write para a hard drive, it communicates
+			through a device driver que interfaces directly com the hardware device memory.</para>
+
+			<para>Entretanto, it's possible para give a program all the hardware resources it needs.  Quando it
+			wants para access a hard drive, give it some memória para write to.  Quando it wants para set an IRQ,
+			give it some bogus instruções que lets it think it set an IRQ.  Se você do this correctly,
+			then in principle, there's no way for the poor application para know whether it's really
+			accessing hardware ou tricked by being given resources que simulate hardware.  A virtual
+			machine is the environment que tricks applications into believing they're running on a real
+			computer.  It provides all the services que a real computer would provide.</para>
+
+			<para>VM's were used initially in the 1960's para emulate time shared operating systems, but
+			these days nós use them para run software que foi escrito for foreign operating systems, or
+			more commonly, an entire operating system.  Because de the nature de the VM, the foreign OS
+			can't tell the difference between operating in a VM ou in a "real" machine.</para>
+
+		</sect2>
+
+
+		<sect2><title>Apple 8-bit</title>
+
+			<para>All the 8-bit Apple ][ emulators require a copy de the original ROM, for whichever
+			system você want para emulate, in a file.  Se você procurar hard enough, você pode encontrar arquivo copies of
+			the ROMs for the Apple ][, ][+, ][e, ][c e //gs.   They são ainda copyrighted by Apple, and
+			you pode only use them legally if você actually own one de these computers.</para>
+
+				<sect3><title>KEGS</title>
+
+					<para>KEGS is an Apple II emulator written by Kent Dickey <email>kentd(at)cup(dot)hp(dot)com</email>
+					which was originally written for HP-UX, mas improved e customized for Linux.  It runs
+					no ambiente X at qualquer color depth, e supports changeable memória sizes, joysticks, e sound.
+					KEGS boots all Apple II variants, e supports all de the Apple ]['s graphics modes.  I
+					can't encontrar a working homepage for this application.</para>
+
+				</sect3>
+
+
+
+			<sect3><title>apple2 e xapple2</title>
+
+				<para>The SVGAlib based <filename>apple2</filename> e X based <filename>xapple2</filename>
+				can emulate qualquer Apple ][ variant except for the //gs.  The interface is a bit funky, but
+				usable.  Configuration is também a bit funky; this emulator would benefit from an SVGA ou X
+				based configuration tool.  It supports the undocumented portion de the 6502 instruction set
+				which some jogos rely on.  <filename>apple2</filename> is atualmente being maintained by
+				Michael Deutschmann <email>michael(at)talamasca(dot)ocis(dot)net</email> e seems para be
+				developed at a slow mas constant pace.  eu don't think this application has a
+				homepage.</para>
+
+			</sect3>
+
+		</sect2>
+
+
+
+		<sect2><title>DOS</title>
+
+			<sect3 id="dosemu"><title><application>dosemu</application></title>
+
+				<para>dosemu &lt;<ulink url="http://www.dosemu.org"></ulink>&gt; is the canonical DOS
+				emulator no Linux.  Quando você think de DOS, don't think de coisas like PROCOM PLUS ou OTHER
+				PROGRA~1 WHICH HAVE SHORT NAMES AND ARE IN ALL CAPS.  There são some real classics que were
+				written for DOS like Carmageddon, Redneck Rampage e Tomb Raider.  dosemu pode run these.
+				Unfortunately, it pode take alot de effort para get dosemu para work, e de Jan 2002, the sound
+				code is somewhat broken.  Não a big deal Quando você está trying para run Wordperfect ou an old
+				database application.  It's an absolute show stopper for gaming.  Getting dosemu para work
+				well is Não easy, mas unfortunately, for DOS jogos it's the best avenue.  Good luck.  Se you
+				have success usando dosemu, eu would like para hear from you.  </para>
+
+			</sect3>
+
+		</sect2>
+
+
+
+		<sect2><title>Win16</title>
+
+				<sect3><title>Wabi</title>
+
+					<para><application>Wabi</application> is a commercial Win16 emulator.  That is, it'll run
+					Windows 16-bit applications from a Windows 3.1, Windows 3.11 ou Windows for Workgroups
+					3.11 environment.  <application>Wabi</application> was originally created by SCO Unix a
+					long time ago e then was purchased by Caldera sometime in mid year 2001.</para>
+
+					<para>Wabi is fast e does a good job for o que it does, although I've heard it said that
+					wabi for Solaris is more stable than Linux.  It might be useful for jogando older Win16
+					jogos, mas there são three problemas:</para>
+
+					<itemizedlist>
+
+					<listitem><para>You deve have a licensed copy de Windows 3.1/3.11 ou WfW
+					3.11.</para></listitem>
+
+					<listitem><para>Wabi is awfully expensive for o que it does.</para></listitem>
+
+					<listitem><para>Wabi doesn't work under 32bpp ou 24bpp color.</para></listitem>
+
+					</itemizedlist>
+
+					 <para>Wabi does Não do DOS itself, mas it looks like it pode use a DOS emulator as a
+					 backend for running DOS programs.  There was talk Sobre Wabi 3.0 que would've done
+					 Win32 emulation, mas AFAIK, this project was shelved indefinitely.  eu think Wabi will run
+					 under Linux on all architectures (can someone verify this?)</para>
+
+				</sect3>
+
+		</sect2>
+
+
+
+		<sect2 id="win32"><title>Win32</title>
+
+				<sect3 id="wine"><title><application>wine</application></title>
+
+					<para>Wine &lt;<ulink url="http://www.winehq.com"></ulink>&gt;, que bears the GNUish
+					acronym "Wine Is Não An Emulator" is a non-commercial implementation de the Win32 API.
+					The motivo why it's Não an emulator is subtle e Não de much interest para most non
+					computer scientists, so we'll call it an emulator here (it really does run-time
+					translation de calls para the Win32 API para POSIX/X11 calls).  Wine has come a long way, and
+					is capable de emulating Muitos important programs, que is great news for Linux users who
+					want this sort de stuff.</para>
+
+					<para>Wine does <literal remap="bf">not</literal> provide the DOS API, so você can't use it
+					to run DOS applications.  For that, você should look at dosemu (<xref linkend="dosemu">).
+					Wine has never been too good at implementing DirectX, although a number de jogos são known
+					to work under wine.  For gaming você might want para look at winex (<xref
+					linkend="winex">).</para>
+
+					<para>In addition para run-time translation de the Win32 API para POSIX/X11 (it runs Windows
+					applications no Linux), wine também does compile-time tranlation de the Win32 API to
+					POSIX/X11 (it compiles Windows application código fonte no Linux).  In this sense, wine is
+					a Windows-to-Linux porting utility.  The x86 architecture isn't required, mas is
+					recommended since it permite actual x86 binary execution as well as direct DLL
+					usage).</para>
+
+					<para>You pode use wine `with Windows', que means que wine uses bibliotecas que actually
+					come com Microsoft Windows itself.  Isso is legal only if você own a copy de Windows which
+					isn't atualmente being used on a computer.  It's said que wine has the best success when
+					run com Windows.   You pode também run wine without Windows.  The pessoas at <ulink
+					url="http://www.winehq.com">winehq</ulink> são writing their own set de bibliotecas called
+					<literal>libwine</literal> que implements the Win32 API com no Microsoft código at
+					all.</para>
+
+					<para><anchor id="winelicense">Wine was originally licenced under the MIT/X11 license, so
+					it could be used for both commercial e non-commercial purposes.  In mid 2002, parts of
+					wine were re-licensed under the LGPL so que it could only be used for non-commercial
+					puposes.  Isso presents a problema for companies like Transgaming (<xref linkend="winex">)
+					and prompted a fork de wine called ReWind (<xref linkend="rewind">).</para>
+
+				</sect3>
+
+
+
+				<sect3 id="rewind"><title><application>rewind</application></title>
+
+					<para>Rewind &lt;<ulink url="http://rewind.sourceforge.net/"></ulink>&gt; was started by
+					Eric Pouech (a wine developer) e Ove Kåven (a winex developer) in response para <link
+					linkend="winelicense">wine's license change</link>). It started out life as a snapshot of
+					the last version de wine que was completely licensed under the MIT/X11 license.  The aim
+					is para keep rewind MIT/X11 based so que companies like Transgaming pode offer wine based
+					products.</para>
+
+				</sect3>
+
+
+
+				<sect3 id="winex"><title><application>winex</application></title>
+
+					<para>Winex is released by a compQualquer called Transgaming &lt;<ulink
+					url="http://www.transgaming.com"></ulink>&gt;.  The developers take wine (see <xref
+					linkend="wine">) e add DirectX / DirectDraw support.  Although winex is commercial, they
+					have an interesting business model.</para>
+
+					<para>The end user (you) pode download the código fonte for free.  Entretanto, for 5 US dollars
+					per month, você pode become a subscriber de Transgaming.  Being a subscriber de Transgaming
+					gives three major benefits:</para>
+
+					<itemizedlist>
+
+					<listitem><para>Subscribers pode download convenient packaged versions de winex in deb, rpm
+					or tar.gz format whenever they want, incluindo atualizars. They have também more functionality
+					than the publicly available tarball: the latter is an older version que lacks some of
+					the newest features, like support for copy protected programs.</para></listitem>
+
+					<listitem><para>There são monthly polls where subscribed users pode take votes on o que they
+					want winex developers para work on.  Por exemplo, they pode vote for coisas like "Improve
+					support for copy protected programs", "Better Installshield support" ou "Improve DirectX
+					8.0 support".  As far as eu pode see, the developers really do listen para the subscriber
+					polls.</para></listitem>
+
+					<listitem><para>The Transgaming website has a few user support forums.  On one hand, they
+					use the most godawful, horrible, confusing, wasteful, moronic format I've ever seen e I
+					hope para god eu never see a forum com a format as bad as Transgaming's.  On the other hand,
+					you pode ask for help e the developers são VERY good Sobre getting around para seu answer;
+					their vigilance is quite impressive.  Non-subscribers pode browse the forums, mas only
+					subscribers pode post (and therefore, ask for support).</para></listitem>
+
+					</itemizedlist>
+
+					<para>The developers de winex were going para release their Installshield, DirectX and
+					DirectDraw enhancements para wine "every so often".  In return, as wine maturation improved,
+					the winex developers were going para take the new versions de wine e use them for winex.
+					Entretanto, since the birth de Transgaming, parts de wine have been re-licensed under the
+					more restrictive GNU LGPL license (<xref linkend="wine">).  Isso basically means that
+					versions de wine que são released past the date de the re-licensing pode no longer be used
+					by winex.  Therefore, winex will now be based on rewind (<xref linkend="rewind">).</para>
+
+				</sect3>
+
+
+
+				<sect3 id="win4lin"><title>Win4Lin</title>
+
+					<para>Win4Lin &lt;<ulink url="http://www.netraverse.com"></ulink>&gt; is a commercial
+					product by Netraverse.  Like vmware (<xref linkend="vmware">) it uses the virtual machine
+					approach para running Windows applications, so you'll get a big window from que você can
+					boot Windows e run all kinds de Windows applications.  Unlike vmware, Win4Lin only does
+					Windows 95/98/ME, mas this turns out para be better for gamers.  Because Win4Lin
+					concentrates on these operating systems, reports say que it's faster e does a better
+					job at running jogos under these operating sistema than vmware.  It's também much cheaper
+					than vmware.  The most recent version de Win4Lin as de June 2003 is 5.0.  It suffers
+					nevertheless from some limitations:</para>
+
+					<itemizedlist>
+
+					<listitem><para>It does Não support DirectX ou DirectDraw, enquanto vmware has "limited"
+					support for DirectX.</para></listitem>
+
+					<listitem><para>It only supports serial e parallel devices.  Isso is important for
+					pessoas who use USB joysticks.  Note que vmware supports up para 2 USB devices.</para>
+					</listitem>
+
+					<listitem><para>As de June 2003, expect para pay $89.99 without printed docs e $99.99 with
+					printed docs.  In addition, there isn't an evaluation copy available, although você get a
+					30 day money back guarantee.  Entretanto, since it's commercial você do get tech support.
+					vmware is considerably more expensive.</para></listitem>
+
+					<listitem><para>Like vmware, você está required para have a licensed copy de Win95 ou Win98.
+					Win4Lin não pode use an existing Windows installation the way wine can.</para></listitem>
+
+					<listitem><para>It only runs on x86 architectures.</para></listitem>
+
+					</itemizedlist>
+
+				</sect3>
+
+
+
+				<sect3 id="vmware"><title>VMWare</title>
+
+					<para><ulink url="http://www.vmware.com"><application>VMWare</application></ulink> is a
+					virtual machine que runs multiple operating systems simultaneously on a standard PC:
+					supported OSes include Microsoft ones, Linux, Novell Netware e FreeBSD. You pode among
+					others use it para run a MS Windows OS e launch seu favorito game there. You pode even
+					run another Linux under Linux; useful is você want para test another distribuição for instance.
+					Amazing! Now for the bad sides. You should definitely have a good configuration in order
+					to run it; they claim the minimum is a 500MHz x86 CPU com 128MB RAM, mas a faster
+					processor e at least 256MB RAM seem para be the bare minimum if você want reasonable
+					performance. Não all Linux distributions são supported: newest RedHat's, Mandrake's and
+					Suse's are, mas você está out de luck if você have an other version and/or distribution (like
+					Debian). Moreover, <application>vmware</application> has only limited support for DirectX,
+					and você might Não be able para play recent jogos.</para>
+
+					<para>Veja <ulink url="http://www.vmware.com"></ulink> for mais informações. It's Não very
+					cheap (Sobre 300$ for the Workstation version), mas você pode get a 30 day evaluation
+					copy.</para>
+
+				</sect3>
+
+
+
+				<sect3><title>What should eu choose?</title>
+
+					<para>First de all, você should try an emulator. Although some jogos may work com <link
+					linkend="wine">wine</link>, you'll probably get the most success com <link
+					linkend="winex">winex</link>: its DirectX support is constantly improving. As de version
+					3.1, the DirectX 8 support is nearly complete, mas this may Não be the case com older
+					DirectX versions (are consequently older jogos).</para>
+
+					<para>You might também try a virtual machine like <link linkend="win4lin">Win4Lin</link> or
+					<link linkend="vmware">VMWare</link> instead de an emulator. Se seu goal is para run
+					Win95/98/ME applications no Linux, without USB e on the x86 architecture, Win4Lin's cost
+					and focus on Win95 type OS's make it a better choice than vmware. Entretanto, if você must
+					have USB support ou run Linux on a platform other than x86, vmware is seu only
+					option.</para>
+
+					<para>Now if seu goal is para run Win95 type OS jogos under Linux, Win4Lin almost seems
+					better than vmware.  The show-stopper is the fact que vmware has limited DirectX support
+					while Win4Lin has none.  Isso fact alone makes both Win4Lin e vmware unsuitable for most
+					hardcore gaming purposes.  mas if você está going para give it a try, você está more likely to
+					have success com vmware.</para>
+
+				</sect3>
+
+		</sect2>
+
+</sect1>
+
+
+
+
+		<sect2><title>SCUMM Engine (LucasArts)</title>
+
+			<para>Lucasarts wrote an engine for point e click adventures named SCUMM (Script Creation
+			Utility for Maniac Mansion).  They wrote Muitos graphical adventures usando SCUMM, like their
+			famous Monkey Island series (all three).  Ludvig Strigeus
+			<email>strigeus(at)users(dot)sourceforge(dot)net</email> was able para reverse engineer the
+			SCUMM format
+			and write an interpreter for SCUMM based jogos que compiles under Linux e Win32 named
+			scummvm &lt;<ulink url="http://scummvm.sourceforge.net/"></ulink>&gt;.  Their website is very
+			good, e chock full de qualquer kind de information Sobre SCUMM e jogando these jogos under
+			scummvm.</para>
+
+			<para>A compatibility página is maintained at the scummvm website.  FWIW, I've been able to
+			finish Muitos de the jogos que são listed as 90% done com no problemas.  scummvm is rock solid,
+			and permite você para purchase SCUMM based Lucas Arts jogos, copy the data arquivos para seu hard
+			drive e play them under Linux.   As de February 2002, I've been following their cvs, and
+			this project is undergoing constant development.  Kudos para the scummvm team.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>AGI: Adventure Gaming Interface (Sierra)</title>
+
+			<para>The older Sierra DOS graphical adventure jogos used a scripting language named AGI
+			(Adventure Gaming Interface).  Some exemplos de jogos written in AGI would be Leisure Suit
+			Larry eu (EGA), Space Quest eu e II, King's Quest II, Mixed-Up Mother Goose e others.  These
+			jogos pode be played usando <application>sarien</application>on> &lt;<ulink
+			url="http://sarien.sourceforge.net"></ulink>&gt;, an abra source interpreter for AGI
+			jogos.</para>
+
+			<para>Sarien foi escrito in SDL, so it should run on qualquer platform que pode compilar SDL
+			programs.  In addition, there são versions for DOS, Strong-Arm based pda's, QNS (holy cow!
+			embedded gaming!), MIPS based systems e SH3/4 based Pocket PC's.  The developers são clearly
+			out de their minds (in a good way!).   Sarien também has numerous enhancements Não found in the
+			original jogos, like a Quake style pull-down console, picture e dictionary viewer, enhanced
+			sound e support for AGDS, a Russian AGI clone.  Sarien is under development e the
+			developers have been very good Sobre documenting the Sarien internals if anyone wants para get
+			involved in hacking it.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>SCI: SCript Interpreter ou Sierra Creative Interpreter (Sierra)</title>
+
+			<para>The newer Sierra graphical adventure jogos (we're talking Sobre the late 80's here) used
+			an interpreter named SCI.  There were Muitos versions de SCI since Sierra was constantly
+			improving its engine.  The original SCI jogos were DOS based, mas Sierra eventually started
+			releasing Win32 SCI based jogos.  Some exemplos de jogos written com SCI são Leisure Suit
+			Larry 1 (VGA),  Leisure Suit Larry 2-7, Space Quest 3-6, King's Quest 4-6, Quest For Glory 1-4
+			and Muitos others.  Compared com AGI jogos, SCI adventures have better music support, a more
+			complex engine e loads de bells e whistles.</para>
+
+			<para>Muitos SCI based jogos (jogos written in SCI0) pode be played using
+			<application>freesci</application>, available at <ulink
+			url="http://freesci.linuxjogos.com"></ulink>.   Like Sarien, FreeSCI has Muitos graphics targets
+			including SDL, xlib e GGI, so this program pode compilar e run under an incredible number
+			of platforms.  The developers have done a fantastic job de documenting e FAQing their
+			application.</para>
+
+		</sect2>
+
+
+
+		<sect2 id="infocom"><title>Infocom Adventures (Infocom, Activision)</title>
+
+			<para>The Z-machine is a well documented &lt;<ulink
+			url="http://www.gnelson.demon.co.uk/zspec/index.html"></ulink>&gt; virtual machine designed by
+			Infocom para run their interactive fiction jogos.  Isso allowed them para write game data arquivos in
+			a cross platform manner, since only the engine itself, the Z-machine, would be platform
+			dependent.  Z-machine went through a number de revisions during the lifetime de Infocom, and
+			two further revisions (V7 e V8 created by Graham Nelson) after the Infocom's demise.  The
+			later versions even supported limited sound e graphics!</para>
+
+			<para>One de the most popular Z-machine interpreters is Frotz &lt;<ulink
+			url="http://www.cs.csubak.edu/~dgriffi/proj/frotz/"></ulink>&gt;.  Isso excellently done page
+			has Muitos nice links for interactive fiction fans.  Frotz is GPL, runs all versions of
+			Z-machine e will compilar on most versions de Unix.  Frotz has spawned Muitos forks, like a
+			version for PalmOS e Linux based PDA's.</para>
+
+			<para>jzip &lt;<ulink url="http://jzip.sourceforge.net/"></ulink>&gt; is another very popular
+			Z-machine interpreter que will run V1-V5 e V8 Z-machine data files.  jzip is very portable;
+			it compiles on all Unices, OS/2, Atari ST e DOS.</para>
+
+			<para>There são actually Muitos other Z-machine interpreters like nitfol e rezrov (written in
+			Perl!).  Each interpreter has its own set de strengths, e você pode encontrar links para them on the
+			home pages for Frotz e jzip.</para>
+
+		</sect2>
+
+
+
+		<sect2 id="scottadams"><title>Scott Adams Adventures (Adventure International)</title>
+
+			<para>Scott Adams is, arguably, the father de interactive fiction.  Although he himself was
+			inspired by the first piece de interactive fiction, Adventure, Scott brought adventuring to
+			the masses.  His jogos were available for Atari, Apple 2, Commodore, Sorcerer, TI, e CPM.
+			His company, Adventure International, released a number de much loved jogos between 1978 and
+			1984 before folding.   He recently released a new game (a Linux version is Não available) but
+			since the decline de adventuring, he has pretty much kept out de the gaming industry.</para>
+
+			<para>Alan Cox wrote scottfree, a Scott Adams adventure game arquivo interpreter for Unix.  Using
+			scottfree e qualquer de the Scott Adams data arquivos que pode be downloaded from Scott's website
+			&lt;<ulink url="http://www.msadams.com/"></ulink>&gt; você pode enjoy these classics.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Ultima Underworld: The Stygian Abyss (Origin, Blue Sky Productions)</title>
+
+			<para>The Underworld Adventures project &lt;<ulink
+			url="http://uwadv.sourceforge.net/"></ulink>&gt; is an effort para port the 1992 classic, Ultima
+			Underworld: The Stygian Abyss, para modern operating systems like Linux, MacOS X, e Windows.
+			It uses OpenGL for 3D graphics, SDL for platform specific tasks e is released under the GNU
+			GPL.  Underworld Adventures provides an impressive graphics sistema que uses the original
+			game files, so you'll need the original game disk para play.</para>
+
+			<para>Underworld Adventures também provides a bunch de tools for você para display the level maps,
+			tools for examining uw1 conversation scripts e more.</para>
+
+		</sect2>
+
+
+
+		<sect2 id="exult"><title>Ultima 7 (Origin, Electronic Arts)</title>
+
+			<para>Ultima 7 is actually 2 jogos: part eu (The Black Gate) e part II (Serpent Island) which
+			uses a slightly enhanced version de The Black Gate's engine.  In addition, an addon disk was
+			released para both part eu (The Forge Of Virtue) e part II (The Silver Seed).</para>
+
+			<para>A team de pessoas developed <application>Exult</application> &lt;<ulink
+			url="http://exult.sourceforge.net/"></ulink>&gt; que is an abra source interpreter que will
+			run both parts de Ultima 7 e their addon disks.  Exult is written in C++ usando SDL, so it
+			will compilar on qualquer platform que pode compilar SDL programs.  It também features some
+			enhancements over the original versions de the Ultima VII engine.  You'll need para purchase a
+			copy de Ultima 7 para play.  The developers have no plans on extending Exult para interpret the
+			other Ultimas since the engines changed so radically between releases.</para>
+
+			<para>The Exult team has também been hard at work creating a map editor, Exult Studio, e a
+			script compiler que will let users create their own RPG in the Ultima style.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>System Shock (Electronic Arts, Origin)</title>
+
+			<para>System Shock is a classic first person shooter/adventure from 1994, que puts it as a
+			contemporary de Doom.  Entretanto, its engine is much more feature rich than the original Doom:
+			por exemplo, System Shock had 3D sprites, free look e a facility para have objects on top of
+			each other, giving the illusion de a full 3D map, like Quake.  Game reviewers agree que this
+			game has the features de Quake com a story-line more compelling than Half-life.  The System
+			Shock engine was optimized for sophistication, enquanto Doom's engine was optimized for throwing
+			lots de monsters at you; a completely different appoach.  Quite impressive for such an old
+			game!</para>
+
+			<para>The System Shock Hack Project &lt;<ulink
+			url="http://madeira.physiol.ucl.ac.uk/tsshp/sshock.html"></ulink>&gt; is an attempt para atualizar
+			the game for modern operating systems.  The project uses SDL e is released under the
+			modified BSD license.  While você need the original game arquivos para play SSHP, it should work
+			with the System Shock demo, que is freely available.</para>
+
+		</sect2>
+
+</sect1>
+
+
+
+
+<sect1><title>Websites And Resources</title>
+
+		<sect2><title>Meta gaming websites</title>
+
+			<para>These são some resources for Linux gamers no matter o que kind de game você enjoy to
+			play.</para>
+
+			<variablelist>
+
+			<varlistentry><term>The Linux Game Tome: <ulink
+			url="http://www.happypenguin.org"></ulink></term> <listitem><para> Sobre the jogos
+			themselves.</para></listitem></varlistentry>
+
+			<varlistentry><term><ulink url="http://www.linuxjogos.com">Linuxjogos</ulink></term>
+			<listitem><para> Linux gaming news</para></listitem></varlistentry>
+
+			<varlistentry><term><ulink url="http://www.holarse.net"></ulink></term> <listitem><para>Linux
+			meta gaming site for German speaking folk.</para></listitem></varlistentry>
+
+			<varlistentry><term><ulink url="http://www.mobyjogos.com">Mobyjogos</ulink></term>
+			<listitem><para>A banco de dados de all known computer jogos.  It's very complete e is one de my
+			favorite sites.</para></listitem></varlistentry>
+
+			</variablelist>
+
+		</sect2>
+
+
+
+		<sect2><title>Commercial Linux Game Resources</title>
+
+				<sect3><title>Where para buy commercial jogos</title>
+
+					<para>ebjogos &lt;<ulink url="http://www.ebjogos.com"></ulink>&gt; no longer officially
+					sells Linux software.  They stopped selling Linux jogos e distributions at around the
+					same time Loki Software declared bankruptcy, que is a shame because they had the lowest
+					prices no Linux jogos I've ever seen.  Entretanto, occasionally, they'll have coisas like
+					Code Warrior ou Redhat Linux on sale.</para>
+
+					<variablelist>
+
+					<varlistentry><term>Tux Games: <ulink
+					url="http://www.tuxjogos.com"></ulink></term><listitem><para> Your one stop shop for
+					buying qualquer commercial Linux game (software vendors like Tribsoft e Loki have online
+					shops at their websites too).</para></listitem></varlistentry>
+
+					</variablelist>
+
+				</sect3>
+
+
+
+				<sect3><title>Who Used Para Release Games For Linux</title>
+
+					<para>These são companies que used para release jogos for Linux mas for whatever reasons
+					aren't actively involved in Linux jogos anymore.</para>
+
+					<variablelist>
+
+					<varlistentry><term>Loki Software: <ulink url="http://www.lokijogos.com"></ulink></term>
+					<listitem><para>As the compQualquer que brought CTP e Quake3 para Linux, Loki was the father
+					of Linux gaming.  They were one de the first e had, by far, the most titles (I own ALL
+					of them).  Loki ported jogos para Linux, mostly usando the SDL library.  Loki's death in
+					January 2002 was the maior setback Linux has ever had in its attempt para capture the
+					general desktop market.  Linuxjogos.com has a nice Loki timeline at <ulink
+					url="http://www.linuxjogos.com/articles/lokitimeline"></ulink></para></listitem></varlistentry>
+
+					<varlistentry><term>Tribsoft: <ulink url="http://www.tribsoft.com"></ulink></term>
+					<listitem><para>Tribsoft released Jagged Alliance 2, an excellent rpg/strat que claimed
+					2+ weeks de my life.  There were slated para release Europai Universalis, Majesty and
+					Unfinished Business.  Entretanto, as de 3Jan01, Mathieu Pinard de Tribsoft said que he was
+					taking a break e Tribsoft would no longer release jogos for awhile.  He'll ainda support
+					JA2 mas don't expect patches ou atualizars.</para></listitem></varlistentry>
+
+					<varlistentry><term>MP Entertainment: <ulink
+					url="http://www.hopkinsfbi.com"></ulink></term> <listitem><para>MP Entertainment released
+					Hopkins FBI, my favorite game ever released for Linux.  More violent than Quake.  More
+					nudity than Hustler.  More camp than <ulink
+					url="http://www.flatwaremedia.com/liberace/gallery.cfm">Liberace</ulink>.  It's a comic
+					book on seu monitor.  They were slated para release Hopkins FBI II e a few other titles,
+					but it's been a few years since the announcements com no sign que the jogos são coming.
+					They've ignored all my attempts at finding out mais informações, so eu have para conclude
+					that MP Entertainment is in the same status as Tribsoft.  You pode ainda purchase or
+					download a demo de Hopkins FBI from their website.  Se anyone has mais informações on this
+					compQualquer ou the author de Hopkins FBI, please contact me.</para></listitem></varlistentry>
+
+					<varlistentry><term>Phantom EFX: <ulink url="http://www.phantomefx.com"></ulink></term>
+					<listitem><para>They offer Reel Deal Slots, que is very nicely done!  I'm Não much for
+					card/gambling jogos, mas this game is impressive!  Because their Linux guy quit the
+					company, Reel Deal Slots is their first, e so far, last release for
+					Linux.</para></listitem></varlistentry>
+
+					</variablelist>
+
+				</sect3>
+
+		</sect2>
+
+
+
+		<sect2><title>Other Resources</title>
+
+			<para>Isso section has URL's que should be mentioned mas didn't have a separate section
+			within the howto, so eu lista them here as a kind de appendix.</para>
+
+			<variablelist>
+
+				<varlistentry><term>Linux Game Publishing: <ulink
+				url="http://www.linuxgamepublishing.com"></ulink></term> <listitem><para>Linux Publishing
+				doesn't sell directly para the public, mas provides professional game publishing para authors of
+				publishing.  eu think this means disk copying, packaging e selling to
+				retailers.</para></listitem></varlistentry>
+
+				<varlistentry><term>XFree86 Homesite: <ulink url="http://www.xfree86.org"></ulink></term>
+				<listitem><para>XFree86 home page</para></listitem></varlistentry>
+
+				<varlistentry><term>Linux Game Development Center: <ulink
+				url="http://lgdc.sunsite.dk/index.html"></ulink></term> <listitem><para>Isso is the
+				canonical website for pessoas who want para program jogos under Linux.  It's a clearing house
+				of information que contém well written articles on all aspects de game programming (not
+				necessarily Linux specific), links para important game programming resources, interviews,
+				reviews, polls e lots de other stuff.  It's hard para imagine a better website on the
+				subject.</para></listitem></varlistentry>
+
+				<varlistentry><term>Linux Gamers' FAQ: <ulink
+				url="http://www.icculus.org/lgfaq/"></ulink></term> <listitem><para>Despite the astounding
+				fact que the Linux Gamers' FAQ doesn't mention the Linux Gamers' HOWTO as a resource
+				anywhere in their text, eu regard the FAQ as a good companion para this HOWTO.  I've tried to
+				keep game specific information in this HOWTO at a minimum.  The FAQ takes the opposite
+				approach; they mainly focus on the jogos themselves, incluindo game specific problemas and
+				where para get Linux jogos in the first place.  The FAQ e HOWTO são complementary in this
+				regard, e I've tried para Não reproduce their content.  Despite the authors being a bit
+				surly, their effort com the FAQ is very good.  Se você want a general source de information
+				on game specific questions, the FAQ is a fantastic place para start with.  In addition, the
+				FAQ keeps a fairly large banco de dados de Linux Games.</para></listitem></varlistentry>
+
+				<varlistentry><term>Linux Audio Quality HOWTO: <ulink
+				url="http://www.linuxdj.com/audio/quality/"></ulink></term> <listitem><para>Isso HOWTO is
+				mainly de interest para musicians who want professional ou semi professional placas de som for
+				the recording e making de music on a computer.  The information is very detailed, and
+				perhaps overkill for gamers.</para></listitem></varlistentry>
+
+				</variablelist>
+
+		</sect2>
+
+</sect1>
+
+</article>
+
+
+<!--
+vim:textwidth=100:
+-->

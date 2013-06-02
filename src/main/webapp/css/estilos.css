@@ -1,0 +1,1362 @@
+/*----------------------------------------------------*/
+/*--------- ESTILOS DA LinuxGames.com.br -------------*/
+/*----------------------------------------------------*/
+/*--------- sim, nos usamos o padrao W3C ! -----------*/
+/*----------------------------------------------------*/
+
+/* GERAL */
+
+/* foco no campo digitado */
+input[type=text]:focus, textarea:focus {
+ background-color   : #EAE9F3;
+}
+
+/* textarea */
+textarea {
+ border             : 3px double #999999;
+ background-image   :url('lg-bkg.gif');
+ color: #000000;
+ font-weight: bold;
+ font-size: 12pt;
+}
+
+/* botao submit */
+input[type=submit]
+{
+ border             : 3px double #999999;
+ border-top-color   : #CCCCCC;
+ border-left-color  : #CCCCCC;
+ padding            : 0.25em;
+ background-color   : #F0F0F0;
+ color              : #333333;
+ font-size          : 75%;
+ font-weight        : bold;
+ font-family        : Verdana, Helvetica, Arial, sans-serif;
+}
+
+input[type=submit]:active
+{
+ border             : 3px double #CCCCCC;
+ border-top-color   : #999999;
+ border-left-color  : #999999;
+}
+
+/* botao button */
+input[type=button]
+{
+ border             : 3px double #999999;
+ border-top-color   : #CCCCCC;
+ border-left-color  : #CCCCCC;
+ padding            : 0.25em;
+ background-color   : #F0F0F0;
+ color              : #333333;
+ font-size          : 75%;
+ font-weight        : bold;
+ font-family        : Verdana, Helvetica, Arial, sans-serif;
+}
+
+input[type=button]:active
+{
+ border             : 3px double #CCCCCC;
+ border-top-color   : #999999;
+ border-left-color  : #999999;
+}
+/* desabilita aviso de upgrade FF */
+html>body #ffx {
+   display : none;
+}
+
+body  {
+ margin             : 0px 0px 0px 0px;
+ padding            : 0 0 0 0;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ color              : #ccc;
+ background-color   : #02101B;
+ font-size          : 10pt;
+}
+
+.cadastro  {
+ margin             : 0px 0px 0px 0px;
+ padding            : 0 0 0 0;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ color              : #ccc;
+ background-color   : #FFFFFF;
+ font-size          : 10pt;
+}
+
+img {
+ border             : 0;
+ padding            : 0 0 0 0;
+ margin             : 0;
+}
+
+h1 {
+ font-size          : 14px;
+ padding-top        : 10px;
+}
+
+h2 {
+ font               : 240%/240% "Impact","Arial Narrow",Arial,Helvetica, sans-serif;
+ text-transform     : uppercase;
+ color              : #000;
+ margin             : 0;
+ padding            : 0;
+ text-align         : center;
+}
+
+/* emula BR */
+.br {
+display             : block;
+}
+
+/* faz um help nas palavras */
+abbr, acronym, .help {
+  border-bottom     : 1px dotted #333;
+  cursor            : help;
+}
+
+/* centralizar texto */
+.c {
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 7pt;
+ text-align         : center;
+}
+
+/* alinhar para a esquerda */
+.l {
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 7pt;
+ text-align         : left;
+ width              : 300px;
+}
+
+/* alinhar para a direita */
+.r {
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 7pt;
+ text-align         : right;
+ width              : 100%;
+}
+
+div#overDiv {
+ position           : absolute;
+ visibility         : hidden;
+ z-index            : 1000;
+}
+
+/* LAYOUT DAS DIVS */
+#leftcontent {
+ position           : absolute;
+ left               : 0px;
+ top                : 150px;
+ width              : 150px;
+ background         : #02101B;
+ border             : 1px solid #02101B;
+ clear              : both;
+}
+
+#centercontent {
+ color              : #f00;
+ background         : #ccc;
+ border             : 1px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 21px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 60px;
+ width              : 80%;
+ text-align         : center;
+}
+
+#centercontentW {
+ color              : #f00;
+ background         : #FFFFFF;
+ border             : 1px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 21px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 60px;
+ text-align         : center;
+}
+
+#artigo {
+ color              : #000;
+ background         : #f0f0f0;
+ border             : 1px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 211px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 30px;
+ padding            : 10px 10px 10px 10px;
+}
+
+#sugestao {
+ color              : #000;
+ background         : #ffffff;
+ border             : 1px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 21px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 30px;
+ padding            : 10px 10px 10px 10px;
+}
+
+#entrevista {
+ color              : #000;
+ background         : #ffffff;
+ border             : 1px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 211px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 30px;
+ padding            : 10px 10px 10px 10px;
+ text-align         : left;
+}
+
+#sugestao a:hover {
+ text-decoration    : underline;
+ border-bottom      : 1px solid #EAc000;
+ font-weight        : bold;
+ color              : #EAc000;
+}
+
+#sugestao a {
+ text-decoration    : none;
+ border-bottom      : 1px solid #EAc000;
+ font-weight        : bold;
+ color              : #ff0000;
+}
+
+html>body #centercontent {
+margin-left         : 171px;
+margin-right        : 211px;
+}
+
+#rightcontent {
+position            : absolute;
+right               : 0px;
+top                 : 150px;
+width               : 200px;
+background          : #fff;
+border              : 1px solid #02101B;
+}
+
+#Content {
+ margin             :0px 50px 50px 280px;
+ padding            :10px;
+}
+
+#Header {
+ margin             : 10px 0px 10px 0px;
+ padding            : 17px 10px 10px 20px;
+ font-size          : 15pt;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-weight        : bold;
+ color              : #0f0f0f;
+ display            : list-item;
+ list-style-type    : none;
+ border-style       : solid;
+ border-color       : black;
+ border-width       : 1px 0px;
+ line-height        : 11px;
+ background-color   : #eee;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ height             : 43px;
+}
+
+#Header a:hover {
+ text-decoration    : underline;
+ border-bottom      : 1px solid #EAc000;
+ color              : #f00;
+}
+
+body>#Header {
+ height             : 43px;
+}
+
+#Menu {
+ position           : absolute;
+ top                : 100px;
+ left               : 20px;
+ padding            : 10px;
+ background-color   : #eee;
+ border             : 1px dashed #999;
+ line-height        : 17px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ width              : 220px;
+}
+
+#Menu  a, a:link, a:visited, a:active, a:hover {
+ color              : #000000;
+ text-decoration    : none;
+ font-family        : Tahoma, Verdana;
+ font-size          : 12px;
+ padding            : 0 0 0 0;
+ margin             : 0 0 0 0;
+}
+
+#banner {
+background          : #02101B;
+height              : 100px;
+border-top          : 1px solid #02101B;
+border-right        : 1px solid #02101B;
+border-left         : 1px solid #02101B;
+display             : block;
+voice-family        : "\"}\"";
+voice-family        : inherit;
+height              : 80px;
+}
+
+#banner ul li {
+ display            : inline;
+ text-align         : center;
+ width              : 100%;
+}
+
+img#imglogo {
+ width              : 500px;
+ height             : 104px;
+}
+
+img#imgban {
+ width              : 321px;
+ height             : 60px;
+}
+
+div#banner span.logo {
+ float              : left;
+ width              : 140px;
+ text-align         : right;
+}
+
+div#banner span.banner {
+  margin-top        : 20px;
+  margin-right      : 10px;
+  float             : right;
+  text-align        : left;
+ }
+
+
+div.row {
+  clear             : both;
+  padding-top       : 10px;
+}
+
+div.rowTitle {
+  clear             : both;
+  padding-top       : 10px;
+  font-weight       : bold;
+  font-size         : large;
+  white-space       : nowrap;
+}
+
+div.row span.left {
+  float             : left;
+  text-align        : left;
+  font-weight       : bold;
+  color             : #fff;
+  width             : 79%;
+  white-space       : nowrap;
+  }
+
+div.row span.right {
+  float             : right;
+  text-align        : right;
+  font-weight       : bold;
+  color             : #fff;
+  width             : 49%;
+}
+
+html>body #banner {
+height              : 80px;
+}
+
+#rightcontent p {
+font-size           : 10px
+}
+
+/* formularios de login*/
+
+div#account {
+ width              : 90%;
+ background-color   : #666;
+ border             : 1px solid #333;
+ padding            : 5px;
+ margin             : 0px;
+ height             : 30px;
+ white-space        : nowrap;
+}
+
+div#account span.esq {
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  font-size         : 7pt;
+  float             : left;
+  text-align        : left;
+  font-weight       : bold;
+  color             : #fff;
+  width             : 35%;
+  }
+
+div#account  span.dir {
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  font-size         : 7pt;
+  float             : right;
+  text-align        : right;
+  font-weight       : bold;
+  color             : #f0f0f0;
+  width             : 25%;
+}
+
+div#account span.linha {
+  clear             : both;
+  width             : 100%;
+  text-align        : center;
+  display           : block;
+}
+
+div#login {
+ width              : 80%;
+ color              : #0000f0;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 16pt;
+ padding            : 5px;
+ margin             : 10px auto;
+ text-align         : center;
+}
+
+div#login span.labelForm {
+  float             : left;
+  width             : 60px;
+  color             : red;
+  text-align        : right;
+  }
+
+div#login span.campoForm {
+  float             : right;
+  width             : 89px;
+  text-align        : left;
+}
+
+/* ARTIGOS */
+
+div#artigos {
+ width              : 150px;
+ background-color   : #6666CC;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ color              : #FFFF50;
+ padding            : 5px;
+ margin             : 10px auto;
+}
+
+/* ENQUETE */
+
+div#enquete {
+ width              : 150px;
+ background-color   : #6666CC;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ color              : #FFFF50;
+ padding            : 5px;
+ margin             : 10px auto;
+}
+
+div#enquete span.linha {
+  text-align        : center;
+  clear             : both;
+  display           : block;
+}
+
+/* top users */
+div#usuariosTop {
+ width              : 150px;
+ background-color   : #6666CC;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ color              : #FFFF50;
+ padding            : 5px;
+ margin             : 10px auto;
+}
+
+/* noticias */
+
+div#noticias {
+ width              : 180px;
+ background-color   : #6666CC;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ color              : #FFFF50;
+ padding            : 5px;
+ margin             : 10px auto;
+}
+
+div.titulo {
+  clear             : both;
+  color             : #f0f0f0;
+  display           : block;
+  background-color  : #3f47fF;
+  padding-top       : 10px;
+  text-align        : center;
+  width             : 100%;
+  font-size         : 12px;
+  font-weight       : bold;
+}
+
+a.loginLink {
+ text-decoration    : none;
+ font-weight        : bold;
+ color              : #FFFF50;
+}
+
+a.loginLink:hover {
+ text-decoration    : none;
+ border-bottom      : 1px solid #EAc000;
+ font-weight        : bold;
+ color              : #EAc000;
+}
+
+.textField {
+ font-size          : 11px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ border-bottom      : black 1pt groove;
+ border-left        : black 1pt groove;
+ border-right       : black 1pt groove;
+ border-top         : black 1pt groove;
+}
+
+.accountBox {
+ font-size          : 11px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ border-bottom      : black 1pt groove;
+ border-left        : black 1pt groove;
+ border-right       : black 1pt groove;
+ border-top         : black 1pt groove;
+ width              : 50px;
+}
+
+div#busca {
+  margin            : 10px auto;
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  font-size         : 7pt;
+  text-align        : center;
+  background-color  : #000060;
+  font-weight       : bold;
+  color             : #fff0f0;
+  padding           : 3px;
+}
+
+.totalGames {
+ font-size          : 12px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ padding            : 3px;
+  color             : #fff0f0;
+}
+
+.totalGamesNumber {
+ font-size          : 16px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ color              : red;
+}
+
+.buscaDesc{
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  font-size         : 7pt;
+  background-color  : #000060;
+  font-weight       : bold;
+  color             : #fff0f0;
+  padding           : 3px;
+  width             : 100%;
+  text-align        : center;
+}
+
+div#buscaCampo {
+  font-weight       : bold;
+  color             : #fff;
+  font-size         : 7pt;
+  background-color  : #000060;
+  text-align        : center;
+  font-weight       : bold;
+  color             : #fff0f0;
+  padding           : 3px;
+  width             : 100%;
+}
+
+.searchBox {
+ font-size          : 11px;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ border-bottom      : black 1pt groove;
+ border-left        : black 1pt groove;
+ border-right       : black 1pt groove;
+ border-top         : black 1pt groove;
+ width              : 220px;
+}
+
+.searchList {
+ color              :#fff;
+ background-color   :#33b;
+}
+
+select.searchList option:hover {
+    background-color: #F00;
+    color: white;
+}
+
+
+div.row span.left {
+  float             : left;
+  text-align        : left;
+  font-weight       : bold;
+  color             : #fff;
+  width             : 49%;
+  white-space       : nowrap;
+  }
+
+div.row span.right {
+  float             : right;
+  text-align        : right;
+  font-weight       : bold;
+  color             : #fff;
+  width             : 49%;
+}
+
+div#lastUpdates     {
+ width              : 90%;
+ background-color   : #ffffff;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 10pt;
+ padding            : 5px;
+ margin             : 10px auto;
+ text-align         : left;
+ color              : black;
+}
+
+div#LM {
+ width              : 90%;
+ background-color   : #ffffff;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 10pt;
+ padding            : 5px;
+ margin             : 10px auto;
+ color              : black;
+}
+
+div#LM span.linhaLM {
+ clear              : both;
+ display            : block;
+ padding-top        : 10px;
+ padding-left       : 10px;
+}
+
+div#LM span.esq {
+  float             : left;
+  width             : 224px;
+  text-align        : right;
+  }
+
+div#LM span.dir {
+  float             : right;
+  width             : 220px;
+  text-align        : left;
+}
+
+div.linhaC {
+  clear             : both;
+  padding-top       : 10px;
+  text-align        : center;
+}
+
+div.linhaD {
+  clear             : both;
+  padding-top       : 10px;
+  text-align        : right;
+}
+
+div.linhaE {
+  clear             : both;
+  padding-top       : 10px;
+  text-align        : left;
+}
+
+div#jogoDoDia {
+ width              : 90%;
+ background-color   : #ffffff;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 12pt;
+ padding            : 5px;
+ margin             : 10px auto;
+ color              : black;
+}
+
+div.jogoDoDia span.esq {
+  float             : left;
+  width             : 150px;
+  text-align        : right;
+  }
+
+div.jogoDoDia span.dir {
+  float             : right;
+  width             : 220px;
+  text-align        : left;
+}
+
+a.tituloLink {
+ text-decoration    : none;
+ font-weight        : bold;
+ color              : #00f;
+}
+
+a.tituloLink:hover {
+ text-decoration    : none;
+ border-bottom      : 1px solid #EAc000;
+ font-weight        : bold;
+ color              : #C4BBFF;
+}
+
+h3 {
+ font-size          : 8pt;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-weight        : bold;
+ background-color   : #5b76a5;
+ text-align         : center;
+ color              : #fff;
+ width              : 100%;
+ padding            : 2px;
+ display            : block;
+ list-style-type    : none;
+}
+
+div#emuDoDia {
+ width              : 90%;
+ background-color   : #ffffff;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 12pt;
+ padding            : 5px;
+ margin             : 10px auto;
+ color              : black;
+}
+
+div.emuDoDia span.esq {
+  float             : left;
+  width             : 150px;
+  text-align        : right;
+  }
+
+div.emuDoDia span.dir {
+  float             : right;
+  width             : 220px;
+  text-align        : left;
+}
+
+
+/* formularios de cadastro */
+
+h1.cadastro {
+ font-size          : 16px;
+ width              : 552px;
+ text-align         : center;
+ background-color   : #000;
+ color              : #FFF;
+ margin             : 5px auto;
+}
+
+div.row {
+  clear              : both;
+  padding-top        : 10px;
+  }
+
+div.row span.label {
+  float             : left;
+  width             : 150px;
+  text-align        : right;
+  }
+
+div.row span.form {
+  float             : right;
+  width             : 535px;
+  text-align        : left;
+  white-space       : nowrap;
+  }
+
+div.row  span.botoes
+{
+ display            : inline;
+ text-align         : center;
+ width              : 100%;
+}
+
+div.row span.label2 {
+  float             : left;
+  width             : 250px;
+  text-align        : right;
+  font-weight       : bold;
+  white-space       : nowrap;
+  }
+
+div.row span.form2 {
+  float             : right;
+  width             : 535px;
+  text-align        : left;
+  white-space       : nowrap;
+  }
+
+
+.formCadastro {
+ color              : black;
+ width              : 750px;
+ background-color   : #ccc;
+ border             : 1px dotted #333;
+ padding            : 5px;
+ margin             : 0px auto;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 12pt;
+}
+
+.errorMessage {
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ text-align         : center;
+ font-size          : 10pt;
+ color              : #F00;
+ font-weight        : bold;
+ text-align         : center;
+}
+
+
+#resultlist li a {
+text-decoration: none;
+}
+
+#resultlist li a:hover {
+ text-decoration    : underline;
+ border-bottom      : 1px solid #EAc000;
+ color              : #f00;
+}
+
+#resultlist
+{
+padding-left: 0;
+margin-left: 0;
+border-bottom: 1px solid gray;
+width: 745px;
+}
+
+#resultlist li
+{
+list-style: none;
+margin: 0;
+padding: 0.25em;
+border-top: 1px solid gray;
+}
+
+div#cadastroForm {
+ width              : 80%;
+ color              : #0000f0;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 16pt;
+ padding            : 5px;
+ margin             : auto;
+ text-align         : center;
+}
+
+.formTitulo{
+ width              : 80%;
+ background-color   : #6666CC;
+ border             : 1px dotted #333;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 18pt;
+ color              : #FFFF50;
+ padding            : 5px;
+ margin             : 10px auto;
+ text-align         : center;
+}
+
+div.linhaForm {
+  clear             : both;
+  padding-top       : 10px;
+  background-color  : #f0f0f0;
+}
+
+div.linhaForm span.labelForm {
+  float             : left;
+  width             : 100px;
+  text-align        : right;
+  }
+
+div.linhaForm span.campoForm {
+  float             : right;
+  width             : 335px;
+  text-align        : left;
+}
+
+div.linhaForm span.titulo {
+  text-align        : center;
+  font-size         : 14px;
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  font-weight       : bold;
+  color             : #000;
+  width             : 100%;
+  padding           : 10px;
+}
+
+.count {
+  text-align        : center;
+  font-size         : 14px;
+  font-family       : Verdana, Arial, Helvetica, sans-serif;
+  color             : #000;
+}
+
+div.spacer {
+  clear             : both;
+}
+
+a.cadastro {
+ text-decoration    : none;
+ font-weight        : bold;
+ color              : #000cF5;
+}
+
+a.cadastro:hover {
+ text-decoration    : none;
+ border-bottom      : 1px solid #EAc000;
+ font-weight        : bold;
+ color              : #f00;
+}
+
+/* MENU TOPO */
+#menu ul {
+ padding            : 0px;
+ margin             : 0px;
+ float              : left;
+ width              : 100%;
+ background-color   : #EDEDED;
+ list-style         : none;
+ font               : 80% Tahoma;
+}
+
+#menu ul li {
+ display            : inline;
+}
+
+#menu ul li a {
+ background-color   : #EDEDED;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ color              : #333;
+ text-decoration    : none;
+ border-bottom      : 3px solid #EDEDED;
+ padding            : 2px 10px;
+ float              : left;
+}
+
+#menu ul li a:hover {
+ background-color   : #D6D6D6;
+ color              : #6D6D6D;
+ border-bottom      : 3px solid #EA0000;
+}
+
+/* MENU ESQUERDO */
+
+.menuEsq {
+ width              : 150px;
+}
+
+.opcoes a {
+ color              : #eee;
+ border             : 1px solid;
+ background-color   : #036;
+ padding            : 2px;
+ padding-left       : 3px;
+ font               : 11px Verdana, sans-serif;
+ font-weight        : bold;
+ text-decoration    : none;
+ border-color       : #f0f0f0 #000 #000 #f0f0f0;
+ display            : block;
+ margin             : 0px;
+ width              : 100%;
+ text-align         : left;
+}
+
+.menuTitulo {
+ color              : #eee;
+ padding            : 2px;
+ padding-left       : 3px;
+ font               : 14px Verdana, sans-serif;
+ text-decoration    : none;
+ display            : block;
+ margin             : 0px;
+ width              : 100%;
+ text-align         : left;
+}
+
+.opcoes a:hover {
+ border             : 1px solid;
+ padding-left       : 4px;
+ padding-top        : 3px;
+ padding-bottom     : 1px;
+ padding-right      : 1px;
+ background-color   : #369;
+ border-color       : #000 #f0f0f0 #f0f0f0 #000;
+ color              : #EEE;
+ text-decoration    : none;
+}
+
+/* warning IE */
+#warning
+{
+margin              : 0px 0px 0px 0px;
+background          : #ffffe1;
+border-bottom       : 1px solid #02101B;
+}
+
+#warning a
+{
+margin              : 0px 0px 0px 0px;
+color               : #33f;
+}
+
+#warning a:hover
+{
+margin              : 0px 0px 0px 0px;
+text-decoration     : underline;
+}
+
+#warning p
+{
+margin              : 0px 0px 0px 0px;
+color               : #02101B;
+font                : 11px/21px Tahoma, sans-serif;
+margin              : 0;
+padding             : 0 0 0 5px;
+}
+
+#warning strong
+{
+margin              : 0px 0px 0px 0px;
+color               : #f33;
+}
+
+/* rodape */
+
+div#powered {
+ background         : url(powered.gif) no-repeat center;
+ margin-top         : 20px;
+ padding            : 0;
+ border             : 0;
+ height             : 25px;
+ top                : 10px;
+ width              : 100%;
+ text-align         : center;
+}
+
+div#rodape {
+ margin             : 0 0 0 0;
+ padding            : 0;
+ border             : 0;
+ text-align         : center;
+ width              : 100%;
+}
+
+div#barra {
+ background-image   : url(bg_footer.gif);
+ background-repeat  : repeat-x;
+ height             : 34px;
+ width              : 100%;
+ color              : #02101B;
+ }
+
+div#barraL  {
+ text-align         : left;
+ display            : inline;
+}
+
+div#barraR {
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 10pt;
+ text-align         : right;
+ width              : 100%;
+ background-image   : url(bg_footer.gif);
+ background-repeat  : repeat-x;
+}
+
+.btnHome {
+ width              : 50px;
+ height             : 17px;
+}
+
+.btnContato {
+ width              : 61px;
+ height             : 17px;
+}
+
+/* estilos dos botoes de submit*/
+a.buttonC  {
+ background-color: transparent;
+ background-image: url(buttonBackground.gif);
+ background-repeat: no-repeat;
+ width: 132px;
+ height: 28px;
+ padding: 2px;
+ text-align: center;
+ font-size: 100%;
+ font-weight: bold;
+ text-decoration: none;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+
+a.button, a.buttonDis {
+ background-color: transparent;
+ background-image: url(buttonBackground.gif);
+ background-repeat: no-repeat;
+ width: 132px;
+ height: 28px;
+ padding: 5px;
+ text-align: center;
+ font-size: 100%;
+ font-weight: bold;
+ text-decoration: none;
+ font-family: Arial, Helvetica, sans-serif;
+}
+a.button:link, a.button:visited {
+ color: #002577;
+}
+a.button:hover, a.button:active {
+ background-position: 0 -36px;
+ color: #FF7200;
+}
+a.button:hover .icon, a.button:active .icon {
+ background-position: 0 -28px;
+}
+a.buttonDis:link, a.buttonDis:visited, a.buttonDis:hover, a.buttonDis:active {
+ background-position: 0 -72px;
+ color: #5F5F5F;
+ cursor: default;
+}
+.icon {
+ background-repeat: no-repeat;
+ padding: 0 0 5px 18px;
+}
+
+a.buttonDis:link .icon, a.buttonDis:visited .icon, a.buttonDis:hover .icon, a.buttonDis:active .icon {
+ background-position: 0 -56px;
+}
+/* list of button icons */
+#buttonOK .icon {
+ background-image: url(ok.gif);
+}
+#buttonCancel .icon {
+ background-image: url(cancel.gif);
+}
+#buttonImport .icon {
+ background-image: url(import.gif);
+}
+
+div#abaJogo {
+/*  width: 570px; */
+  width: 90%;
+  height: auto;
+  margin: 0px 0px 10px 30px;
+  padding: 5px;
+  font-weight: bold;
+  border: 1px solid #666666;
+  background-color: #ffffe1;
+  color: #666666;
+  font-size: 88%;
+}
+
+div#abaJogo  a:hover {
+ text-decoration    : underline;
+ border-bottom      : 1px solid red;
+ font-weight        : bold;
+ color              : red;
+}
+
+div#abaJogo label {
+clear:left;
+display:block;
+float:left;
+width:150px;
+text-align:right;
+padding-right:10px;
+color:#000000;
+margin-bottom:0.5em;
+}
+
+div#lista {
+  width: 90%;
+  height: auto;
+  margin-left: 30px;
+  margin-top : 10px;
+  padding: 5px;
+  font-weight: bold;
+  border: 1px solid #666666;
+  background-color: #ffffe1;
+  color: #666666;
+  font-size: 88%;
+  text-align:left;
+}
+
+div#lista  a:hover {
+ text-decoration    : underline;
+ font-weight        : bold;
+ color              : red;
+}
+
+.tituloLista {
+ display: inline;
+ height: 100px;
+}
+
+ul  {
+list-style: square inside url(star.gif);
+}
+
+ul.download li  {
+list-style: square inside url(ico-tux.png);
+text-align: left;
+padding: 15px;
+}
+
+div#centercontent  a:hover {
+ text-decoration    : underline;
+ font-weight        : bold;
+ color              : red;
+}
+
+ div#A,div#B,div#C,div#D,div#E,div#F,div#G,div#H,div#I,div#J,div#K,
+ div#L,div#M,div#N,div#O,div#P,div#Q,div#R,div#S,div#T,div#U,div#V,
+ div#W,div#X,div#Y,div#Z,
+ div#tipoAcao,div#tipoAdventure,div#tipoArcade,div#tipoEsporte,div#tipoEstrategia,div#tipoFPS,
+ div#tipoInfantil,div#tipoLuta,div#tipoMMORPG,div#tipoQuebraCabeca,div#tipoRPG,div#tipoSimulacao,
+ div#tipoAmiga, div#tipoAtari, div#tipoGameBoy, div#tipoInfinity, div#tipoMacintosh, div#tipoMasterSystem,
+ div#tipoMegaDrive, div#tipoMSX, div#tipoN64, div#tipoNeoGeo, div#tipoNES, div#tipoPlaystation, div#tipoSCI,
+ div#tipoSNES, div#tipoTK90, div#tipoWindows, div#tipoVarios
+{
+ display: none;
+}
+
+div#campoLogin  a:hover {
+ text-decoration    : none;
+ font-weight        : bold;
+ color              : red;
+}
+
+div#campoLogin  a {
+ text-decoration    : none;
+ font-weight        : bold;
+ color              : white;
+}
+
+div#campoLogin  {
+  color        : white;
+  padding      : 10px;
+  white-space  : normal;
+}
+
+.jb {
+ color        : black;
+}
+
+/* scrool de noticias */
+#jump_base {
+  overflow-y:hidden;
+  width: 160px;
+  height: 200px;
+  border: 2px dotted #000099;
+  margin: 10px auto;
+  padding: 0 10px 10px 10px;
+  font-size: .9em;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+#jump_base a {
+  color: #000099;
+  background-color: inherit;
+}
+
+#jump_base a:hover {
+ text-decoration    : none;
+ color              : red;
+}
+
+.news {
+  background-color: #DDDDDD;
+  color: inherit;
+}
+
+div#listaFavoritos {
+  margin       : 10px auto;
+  color        : white;
+  padding      : 0;
+}
+
+a.bandeiras:hover
+{
+ background-position: -100px 0;
+}
+
+
+a.bandeiras:hover {
+	 border  : 1px dotted #FF0000;
+}
+
+div.jd_news_scroll {
+	position: relative;
+	overflow: hidden;
+	width: 90%;
+	height: 80px;
+	border: 1px solid #505050;
+	background : #f0f0f0;
+	text-align: left;
+	margin: 10px auto;
+}
+div.jd_news_scroll ul {
+	position: relative;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+div.jd_news_scroll ul li {
+	height: 16px;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 2px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-bottom: 1px solid #888;
+	font-family: Tahoma, sans-serif;
+	font-size: 10px;
+	white-space: nowrap;
+	color: #AAA;
+}
+div.jd_news_scroll ul li.hover {
+	background-color: #E4E4EF;
+	background-color: pink;
+	color: #888;
+	cursor: default;
+}
+div.jd_news_scroll li a {
+	font-weight: normal;
+	color: #336699;
+}
+
+label { width: 20em; float: left; }
+
+label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+p { clear: both; }

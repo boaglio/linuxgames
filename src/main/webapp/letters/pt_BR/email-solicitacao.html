@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head><title>solicita&ccedil;&atilde;o</title></head>
+ <body>
+  <p>${greeting},</p>
+
+#if (($categoria== 1) && ($tipo == 5) )
+ <p>Uma solicita&ccedil;&atilde;o de novo jogo <b>${nome}</b> foi enviada.</p>
+#elseif ($categoria == 1)
+ <p>Uma solicita&ccedil;&atilde;o de altera&ccedil;&atilde;o das informa&ccedil;&otilde;es do jogo <b>${nome}</b> foi enviada.</p>
+#elseif ($categoria== 3)
+  <p>Sua solicita&ccedil;&atilde;o de not&iacute;cia foi enviada. </p>
+#else
+ <p>Uma solicita&ccedil;&atilde;o de altera&ccedil;&atilde;o das informa&ccedil;&otilde;es do emulador <b>${nome}</b> foi enviada.</p>
+#end
+
+  <table summary="">
+  	<tr><td>Aos administradores do site, por favor atualizem a informa&ccedil;&atilde;o clicando no link abaixo:</td></tr>
+  	<tr><td>&nbsp;</td></tr>
+
+#if (($categoria== 1) && ($tipo == 4) )
+  <tr><td><a href="http://www.linuxgames.com.br/admin.solicitacaoRoteiroJogoDetalhe.action?id=${id}">clique aqui</a></td></tr>
+#elseif (($categoria== 1) && ($tipo != 4) )
+ <tr><td><a href="http://www.linuxgames.com.br/admin.solicitacaoTextoJogoDetalhe.action?id=${id}">clique aqui</a></td></tr>
+#elseif (($categoria== 2) && ($tipo == 4) )
+  <tr><td><a href="http://www.linuxgames.com.br/admin.solicitacaoRoteiroEmuladorDetalhe.action?id=${id}">clique aqui</a></td></tr>
+#elseif (($categoria== 2) && ($tipo != 4) )
+  <tr><td><a href="http://www.linuxgames.com.br/admin.solicitacaoTextoEmuladorDetalhe.action?id=${id}">clique aqui</a></td></tr>
+#elseif (($categoria== 1) && ($tipo == 5) )
+  <tr><td><a href="http://www.linuxgames.com.br/admin.solicitacaoNovoJogo.action?id=${id}">clique aqui</a></td></tr>
+#end
+  </table>
+  <br>
+  Atenciosamente,
+  <br>
+  <a href="http://www.linuxgames.com.br">LinuxGames.com.br</a><br>
+  O maior portal de Jogos do Brasil!
+ </body>
+</html>

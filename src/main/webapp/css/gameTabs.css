@@ -1,0 +1,172 @@
+
+#jogo {
+ background         : #e8eef7;
+ border             : 3px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 11px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 40px;
+ padding            : 10px 10px 10px 10px;
+}
+
+#emulador {
+ background         : #e8eef7;
+ border             : 3px solid #02101B;
+ margin-left        : 171px;
+ margin-right       : 11px;
+ voice-family       : "\"}\"";
+ voice-family       : inherit;
+ margin-top         : 40px;
+ padding            : 10px 10px 10px 10px;
+}
+
+#headerJogo {
+  float:left;
+  width:96%;
+  background:#e8eef7;
+  font-size:85%;
+  line-height:normal;
+  margin-left:30px;
+  margin-bottom:0px;
+  }
+#headerJogo ul {
+  margin:0;
+  padding:10px 10px 0;
+  list-style:none;
+  }
+#headerJogo li {
+  float:left;
+  background:url("right.gif") no-repeat right top;
+  margin:0;
+  padding:0 5px 0 0;
+  }
+#headerJogo a {
+  float:left;
+  display:block;
+  background:url("left.gif") no-repeat left top;
+  padding:5px 7px 4px 20px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#9cf;
+  }
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#headerJogo a {float:none;}
+/* End IE5-Mac hack */
+#headerJogo a:hover {
+  color:#fff;
+  }
+#headerJogo #atual {
+  background-image:url("right_on.gif");
+  }
+#headerJogo #atual a {
+  background-image:url("left_on.gif");
+  color:#333;
+  padding-bottom:5px;
+  }
+
+votoJogo.row span.left {
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+  width: 40%;
+}
+
+.nomeJogo {
+ text-align         : right;
+ font-weight        : bold;
+ color              : black;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ margin-left        : 30px;
+ letter-spacing     : 2px;
+}
+
+votoJogo.row span.right {
+  float: right;
+  text-align: right;
+  font-weight: bold;
+  color: black;
+  width: 40%;
+}
+
+img.star {
+  width:15px;
+  height:15px;
+  border:0;
+  padding:0;
+  margin:0;
+  letter-spacing     : 0;
+}
+
+#reviews {
+ text-align         : center;
+ font-weight        : bold;
+ color              : black;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ margin             : 10px;
+}
+
+#postReview {
+ text-align         : center;
+ font-weight        : bold;
+ color              : black;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-size          : 8pt;
+ margin             : 10px;
+ padding            : 20px 20px 20px 20px; 
+ background         : #e8eef7; 
+}
+
+div.tcomm_author {position:relative;font-size:0.9em;line-height:14px;height:30px;margin-top:20px;padding:3px 0 0 53px}
+div.tcomm_quote {padding:3px 0 0 22px}
+div.tcomm_author div.avatar {position:absolute;width:34px;height:24px;left:10px;top:2px}
+div.tcomm_author div.avatar img {border:1px solid #bed2e8}
+div.tcomm_author div.burried {float:right;padding:3px 5px 0 5px;font-size:15px;font-weight:bold;color:#b5cde5}
+div.tcomm_author div.comm_rating {float:right;width:187px;height:26px;padding:5px 0 0 4px;font-size:15px;font-weight:bold;color:#b5cde5}
+div.tcomm_author a{color:#698eb8}
+div.tcomm_author a:hover {color:#406ea1}div.tcomm_author div.comm_rating img{margin:0 5px 0 0;vertical-align:top;border:0}
+div.tcomment {background:url(comm_bg.gif) repeat-x left top}
+div.tcomment .tcomm_top{background:url(comm_tl.gif) no-repeat left top;height:20px}
+div.tcomment .tcomm_top .tcomm_topright{background:url(comm_tr.gif) no-repeat right top;height:20px}
+div.tcomment .tcomm_bottom{background:url(comm_bl.gif) no-repeat left top;height:10px}
+div.tcomment .tcomm_bottom .tcomm_bottomright{background:url(comm_br.gif) no-repeat right top;height:10px}
+div.tcommentodd {background:url(comm_alt_bg.gif) repeat-x left top}
+div.tcommentodd .tcomm_top{background:url(comm_alt_tl.gif) no-repeat left top;height:20px}
+div.tcommentodd .tcomm_top .tcomm_topright{background:url(comm_alt_tr.gif) no-repeat right top;height:20px}
+div.tcommentodd .tcomm_bottom{background:url(comm_alt_bl.gif) no-repeat left top;height:10px}
+div.tcommentodd .tcomm_bottom .tcomm_bottomright{background:url(comm_alt_br.gif) no-repeat right top;height:10px}
+
+.tcomm_text {text-align: left;border-left:1px solid #bed2e8;border-right:1px solid #bed2e8;padding:0 10px 0 10px;overflow:hidden}
+.tcomm_text .options{margin:0}.tcomm_text .options p{margin:6px 0 10px 0}.tcomm_text .options a img{border:0;vertical-align:middle}
+.tcomm_text div.tcomment,.tcomm_text div.tcommentodd{margin-left:20px}
+.tcomm_text div.tcomm_author{margin-left:20px}.comment{margin:0 30px 0 30px}
+
+img.screenshot {
+  border: 3px solid #02101B;
+  padding:0;
+  margin:20px;
+}
+
+#libsTitle {
+ background         : #e8eef7;
+ border             : 3px solid #02101B;
+ margin-top         : 40px;
+ padding            : 10px 10px 10px 10px;
+ display            : inline;
+}
+
+.libs {
+ padding            : 5px;
+ margin             : 10px;
+}
+
+#novaInst {
+  border: 3px solid #02101B;
+  padding:0;
+  margin:20px;
+  background         : #e8eef7;
+}

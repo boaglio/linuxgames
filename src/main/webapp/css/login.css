@@ -1,0 +1,61 @@
+/*
+ * SimpleModal Basic Modal Dialog
+ * http://www.ericmmartin.com/projects/simplemodal/
+ * http://code.google.com/p/simplemodal/
+ *
+ * Copyright (c) 2008 Eric Martin - http://ericmmartin.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Revision: $Id: basic.css 162 2008-12-01 23:36:58Z emartin24 $
+ *
+ */
+
+/* Overlay */
+#simplemodal-overlay {background-color:#aaaaaa; cursor:wait;}
+
+/* Container */
+
+#simplemodal-container {height:280px; width:350px;
+ background-color:#fff; border:1px solid #000000; -moz-border-radius: 5px;
+ text-align: center; }
+
+#simplemodal-container a.modalCloseImg {background:url('/css/x.png') no-repeat;
+  width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px;
+  left:-18px; cursor:pointer;}
+
+#simplemodal-container #basicModalContent {padding:8px;}
+
+/* Label */
+label { color: #000;  width: 80px; padding-left: 20px; margin: 5px; float: left; text-align: left; }
+
+.textbox { border: 1px solid #999999;  border-top-color: #CCCCCC;
+  border-left-color: #CCCCCC; color: #333333;  font: 90% Verdana, Helvetica, Arial, sans-serif;
+  font-size: 11px; }
+
+/* 'Login' Button */
+#submit { margin: 5px; padding: 0px; float: center; width: 150px; background-color: white; }
+
+#notification_error { color: red; height: auto; padding: 4px; text-align: center; }
+
+#login_response { overflow: auto; }
+
+#ajax_loading { display: none; font-size: 12px; font-family: Tahoma; }
+
+#logged_in { padding: 5px; margin: 23px 0 100px 43px; padding: 5px; text-align: center; width: 300px; }
+
+#status { margin-top: 20px; width: 310px; }
+
+#loginTitle {
+ font-size          : 8pt;
+ font-family        : Verdana, Arial, Helvetica, sans-serif;
+ font-weight        : bold;
+ background-color   : #5b76a5;
+ text-align         : center;
+ color              : #fff;
+ width              : 300px;
+ padding            : 2px;
+ display            : block;
+ list-style-type    : none;
+}

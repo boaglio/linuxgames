@@ -1,0 +1,8 @@
+###################################
+# File: /lists/mimeTypes_en.i18n #
+###################################
+
+image/jpg  = image/jpg 
+image/gif  = image/gif 
+image/png  = image/png 
+image/tiff = image/tiff 

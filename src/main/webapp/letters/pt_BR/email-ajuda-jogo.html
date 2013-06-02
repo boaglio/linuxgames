@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head><title>solicita&ccedil;&atilde;o</title></head>
+ <body>
+  <p>${greeting},</p>
+#if ($insert == 1)
+ <p>O usu&aacute;rio <b>${nomeDoUsuario}</b> mandou uma solicita&ccedil;&atilde;o (em ${localeDoUsuario}) de cadastro do jogo <b>${nomeDoJogo}</b> ! </p>
+#else
+ <p>O usu&aacute;rio <b>${nomeDoUsuario}</b> mandou uma solicita&ccedil;&atilde;o (em ${localeDoUsuario}) de altera&ccedil;&atilde;o das informa&ccedil;&otilde;es do jogo <b>${nomeDoJogo}</b>.</p>
+#end
+
+  <table summary="">
+  	<tr><td>Aos administradores do site, por favor atualizem a informa&ccedil;&atilde;o clicando no link abaixo:</td></tr>
+  	<tr><td>&nbsp;</td></tr>
+
+  <tr>
+   <td>
+#if ($insert == 1)
+     <a href="http://www.linuxgames.com.br/admin.solicitacaoAlteracaoJogo.action?id=${idDoTemplate}">clique aqui</a>
+#else
+     <a href="http://www.linuxgames.com.br/admin.solicitacaoNovoJogo.action?id=${idDoTemplate}">clique aqui</a>
+#end
+
+    </td>
+   </tr>
+  </table>
+  <br>
+  Atenciosamente,
+  <br>
+  <a href="http://www.linuxgames.com.br">LinuxGames.com.br</a><br>
+  O maior portal de Jogos do Brasil!
+ </body>
+</html>

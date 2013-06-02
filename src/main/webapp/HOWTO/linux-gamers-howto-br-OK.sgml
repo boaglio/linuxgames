@@ -1,0 +1,1343 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+
+<!-- Conventions:
+    2 spaces per indent level
+		4 spaces from left edge for <screen> environment
+
+		5 newlines between level 1 sections.
+		3 newlines between level 2 sections.
+
+		Capitalization: nVidia, Win4Lin
+
+		100 characters per line
+
+		Problems:
+		&ldquo; and &rdquo; aren't yielding `` and ''.
+-->
+
+
+<!-- TODO
+	1. Panzer leader port: http://lgames.sourceforge.net/index.php
+	2. LBA port: http://www.yaz0r.net/
+	3. Add "blitting" and "blit" in video card terminology
+	4. Try to make it more clear that I want people to send info and interact with me.
+	5. Ultima: http://www.peroxide.dk/ultima/
+	6. Add X Strike Force to "XFree86 and You".  (is this dead?)
+-->
+
+
+<article>
+
+<artheader>
+
+	<title>The Linux Gamers' HOWTO BR</title>
+	<titleabbrev>LG-HOWTO-BR</titleabbrev>
+
+	<author>
+		<firstname>Peter</firstname>
+		<othername role='middle'>Jay</othername>
+		<surname>Salzman</surname>
+		<affiliation>
+			<address>
+				<email>p(at)dirac(dot)org</email>
+			</address>
+		</affiliation>
+	       <othercredit role='translator'>
+               <firstname>Fernando</firstname>
+               <surname>Boaglio</surname>
+               <contrib>Tradução para a Língua Portuguesa</contrib>
+               </othercredit>
+	</author>
+	<!-- year-month-day -->
+	<pubdate>2004-11-14 v.1.0.7</pubdate>
+
+	<copyright>
+ 		<year>2001</year>
+ 		<year>2002</year>
+		<holder>Peter Jay Salzman</holder>
+	</copyright>
+
+	<copyright>
+		<year>2003</year>
+		<year>2004</year>
+		<holder>Peter Jay Salzman</holder>
+		<holder>Fr&eacute;d&eacute;ric Delanoy</holder>
+	</copyright>
+
+	<legalnotice>
+		<para>
+			<email>p(at)dirac(dot)org</email> / 
+			<ulink url="http://www.dirac.org/p"></ulink>.
+		</para>
+		<para>
+		Distribuído segundo Open Software License, versão 1.1.
+		</para>
+	</legalnotice>
+
+
+	<abstract> <title>Sumário</title>
+
+		<para> As mesmas questões tem sido feitas diversas vezes em listas de discussões
+		de Linux e newsgroups. Muitas delas surgem porque as pessoas tem o conhecimento 
+		necessário para saber como as coisas funcionam no Linux, e, pelo menos, como
+		os jogos rodam. Jogar no Linux pode ser uma dura conquista, pois requer
+		conhecimento de uma vasta gama de tópicos, desde compiladores até bibliotecas, de
+		administrador de sistemas de rede até administração do XFree86... você verá.
+		Toda parte do seu computador tem um papelo no jogo. É um tópico sob demanda, mas é
+		voltado para o principal objetivo de jogar: se divertir e detonar. </para>
+
+		<para> Esse documento visa solucionar os problemas mais comuns e dar às pessoas
+		conhecimento suficiente para saber manipular os jogos. Assim como qualquer coisa
+		no Linux, você precisa conhecer mais a fundo o que está acontecendo nos bastidores
+		do seu sistema para ser capaz de deixar os seus jogos rodando bem ou arruma-los se
+		eles não estiverem. </para>
+
+	</abstract>
+
+
+</artheader>
+
+
+<sect1 id="administrata"><title>Administrador</title>
+
+	<para> Se você tiver algumas idéias, correções ou dúvidas relacionadas a esse HOWTO, por favor me mande
+	um email. Recebendo um retorno desse howto (mesmo que eu não tenha tempo de responder), você me fará 
+	sentir que estou fazendo algo útil. De certa maneira, me motiva a escrever mais e mais para esse
+	documento. Você entra em contanto com esse endereço: <email>p(at)dirac(dot)org</email>.  Minha home page pessoal é <ulink
+	url="www.dirac.org/p</ulink> e minha home page sobre linux é <ulink
+	url="www.dirac.org/linux</ulink>. Por favor me mande comentários e sugestões para esse howto. 
+	Mesmo que eu não aceite suas sugestões, sua opinião é muito bem recebida. </para>
+
+	<para> I assumo um certo conhecimento em Linux, portanto eu usei em alguns tópicos como runlevels e módulos sem
+	defini-los. Se existirem questôes suficientes (ou até mesmo protestos! ) eu adicionarei informações mais
+	básicas neste documento. </para>
+
+
+
+		<sect2 id="authorship"><title>Autoria e Direitos Autorais</title>
+
+			<para>Este documento tem direitos autorais de Peter Jay Salzman, <email>p(at)dirac(dot)org</email>.
+			Você tem permissão de copiar, distribuir e/ou modificar esse documento sobre os termos da
+			GNU Free Documentation License, Versão 1.1, com exceção da condição listada no próximo
+			parágrafo. Eu odeio HOWTO's que incluem licença, isto é desperdício de papel. Você póde
+			acessar o OSL em <ulink
+			url="http://opensource.org/licenses/osl-1.1.txt"></ulink>.
+			</para>
+
+			<para> Se você deseja criar um trabalho baseado nesse documento ou publicá-lo por razões
+			comerciais, entre em contato comigo antes. Com isto eu terei a chance de te dar o
+			documento mais recente. Eu gostaria de ter uma cópia de qualquer coisa que você
+			estiver fazendo, ou uma pizza de espinafre, alho, cogumelos, queijo e palmito. </para>
+
+		</sect2>
+
+
+
+		<sect2 id="acknowledgements"><title>Agradecimentos</title>
+
+			<para>Agradecimentos vão para essas pessoas por seus comentários , diffs e pelo esforço 
+			fenomenal de manter o documento:</para>
+
+			<para>Fr&eacute;d&eacute;ric Delanoy, Moritz Muehlenhoff
+			<email>jmm(at)Informatik(dot)uni-bremen(dot)de</email>, Mike Phillips, Ioan Rogers
+			<email>buck(at)aiur(dot)co(dot)uk</email></para>
+
+			<para>Eu gostaria de agradecer às seguintes pessoas por me mandarem comentários e correções.
+			Sem a ajuda deles, haveriam muito mais erros:</para>
+			
+			<para>Michael McDonnell</para>
+			
+    	</sect2>
+
+		<sect2 id="version"><title>Versão mais recente e traduções</title>
+
+			<para>A versão mais nova pode ser encontrada em 
+			 <ulink url="http://lgh.cvs.sourceforge.net/lgh/LG-HOWTO/linux-gamers-howto.sgml</ulink>, mas essa é minha
+			cópia pessoal que funciona. Você poderá pegar a versão mais polida (seja lá o que
+			isso queira dizer!) de  <ulink url="www.tldp.org</ulink>. </para>
+
+				<sect3><title>Russo</title>
+
+					<para> Dmitry Samoyloff, <email>dsamoyloff@mail.ru</email>, é o mantenedor da tradução desse 
+					HOWTO para o russo. A versão mais recente desse documento pode ser encontrada em  <ulink
+					url="linuxgames.hut.ru/data/docs/HOWTO/LG-HOWTO-ru.html</ulink>.  </para>
+
+				</sect3>
+
+
+				<sect3><title>Húngaro</title>
+
+					<para>László Daczi <email>dacas(at)fsf(dot)hu</email>, é o coordenador da equipe LDP húngara,
+					anunciado que a tradução foi feita por Szilard Ivan
+					<email>Ivan.Szilard(at)stud(dot)u-szeged(dot)hu</email>, e está disponível em  <ulink
+					url="http://tldp.fsf.hu/HOWTO/Linux-Gamers-HOWTO-hu"
+					>http://tldp.fsf.hu/HOWTO/Linux-Gamers-HOWTO-hu</ulink>.  Por favor contate  László para qualquer
+					perguntas ou comentários sobre a tradução húngara.</para>
+
+				</sect3>
+				
+
+		</sect2>
+
+</sect1>
+
+
+
+
+
+<sect1 id="definitions"><title>Defições: Tipos de Jogos</title>
+
+	<para>Nem todo mundo sabe os diferentes tipode de jogos por aí,
+	então num esforço de formar uma linguagem única que todos podem usar, eu irei descrever cada
+	um deles e dar um breve histótico. </para>
+
+
+		<sect2 id="arcade"><title>Estilo Arcade</title>
+
+			<para> Apesar dos jogos arcade estarem no auge na década de 80, eles ainda são sem 
+			nenhuma dúvida muito popular. Nunca nada vai substituir a sensação de entrar num
+			fliperama escuro, cheio e barulhento, pegar uma ficha e jogar um jogo antigo como
+			Space Invaders. Os  games do tipo Arcade tentam simular os próprios games arcade. Existe
+			um enorme número dessas coisas que são quase impossíveis de enumerar, mas isso inclui
+			os clones do Asteroids, Space Invaders, Pac-Man, Missile Command e Galaxian.
+			</para>
+
+		</sect2>
+ 
+		<sect2 id="cardboard"><title>Jogos de cartas,raciocínio e tabuleiro</title>
+
+			<para> Jogos de carta no computador (poker, paciência, etc) são o tipo de jogo que 
+			você jogaria numa mesa com os amigos, mas o computador simula os seus adversários.
+			</para>
+
+			<para> Jogos de raciocício normalmente simulam aqueles jogos como Sabe Tudo que
+			você vai evoluindo conforme resolve as respostas de algum quebra-cabeça</para>
+
+			<para> Jogos de tabuleiro são aqueles jogos do tipo Banco Imobiliário, Xadrez ou damas, onde o 
+			computador simula o adversário. </para>
+
+		</sect2>
+
+
+
+		<sect2 id="interactivefiction"><title>Adventures</title>
+
+			<para> Era uma vez, quando Apple ][, Commodore e Atari dominavam o mundo, os
+			adventures eram a opção para os `caras inteligentes'. Você estava numa situação e precisava
+			fazer alguma coisa para sair dela:
+			
+  		   <screen>
+		    Você está num quarto. Está muito escuro e você é uma presa fácil.
+		    > acenda lampião com fósforo.
+		    Você acendeu o lampião.  Esse quarto parece ser a cozinha.  Existe uma mesa com um livro no meio.
+            Você também vê o fogão,o refrigerador e a porta para oeste.
+		    > abra o fogão.
+		    Dentro do fogão você vê um saco de papel.
+		    > Pegue o saco. Abra o saco. Feche o fogão.
+		    Dentro do sado tem um sanduíche de queijo e um pouco de alho. O fogão está fechado agora.
+			</screen>
+			
+			Eles eram auto executáveis em disquetes (ou até mesmo em fitas cassetes). 	Atualmente eles são um pouco mais
+            sofisticados que isso. Hoje existe um arquivo de dados e um interpretador. O interpretador
+			lê os dados implementados por um linguagem de script. Então você póderia ter os dados de
+            Scott Adams &ldquo;The Count.dat&rdquo;, e &ldquo;Voodoo Castle.dat&rdquo; por exemplo.Para
+            realmente jogar você precisa chamar o interpretador scottfree junto com o nome do arquivo
+            que deseja jogar.</para>
+
+			<para> O primeiro jogo de adventure foi Adventure (na verdade &ldquo;ADVENT&rdquo;,
+			escrito em um PDP-1 em 1972).  Você pode jogar o adventure quando quiser (na realidade,
+			um descendente); pois ele acompanha o &ldquo;bsd games&rdquo;, disponível na maioria das distribuições. </para>
+
+			<para> Eles ficaram populares pelo Scott Adams,que é amplamente considerado o pai 
+			do adventure. Você pode jogar as aventuras de Scott Adams usando <application>scottfree</application>,
+			um interpretador de jogos criado por Alan Cox, e os arquivos do jogo, que são shareware
+			agora e podem ser baixados do site do Scott Adams.
+			</para>
+
+			<para> Os adventures estavam em alta nos anos 80 com a Infocom.  Existem diversos 
+			interpretadores Infocom para Linux; sendo o mais popular o <application>frotz</application>.
+ 			Você ainda irá precisar dos arquivos de dados do jogo, que comercialmente pertencem
+			à Activision.</para>
+
+			<para> Como os gráficos no computador passaram a ser mais fáceis de fazer e bem poderosos,
+			os adventures baseados em texto evoluiram para adventures gráficos. A morte dos adventures
+			baseados em texto mais ou menos coincidiram com a falência da Infocom. </para>
+
+ 		</sect2>
+
+
+
+		<sect2 id="graphicaladventure"><title>Adventures Gráficos</title>
+ 
+			<para> Os Adventures Gráficos nada mais são do que adventures baseados em texto melhorados.
+			O grau de uso desses gráficos varia muito. Nos anos 80, eles eram nada mais do que 
+		    adventures que mostravam na tela gráficos estáticos. Quando você pegava algum item, o
+		    fundo era redesenhado sem o item pegado aparecendo. O melhor exemplo desses é tipo 
+		    chamado `Hi-Res Adventures' como The Wizard And The Princess. Mais tarde, os gráficos
+		    sofisticados nos adventures tinham o seu personagem andando na tela, e podia até mesmo
+		    usar o mouse, mas a interfac e permanecia puramente texto. </para>
+			
+			<para> Em seguida vem os `adventures de apontar e clicar' que basicamente não tem nenhum
+		    interface de texto, e normalmente tem gráficos dinâmicos, como um gatinho rondeando o quarto
+		    enquanto você pensa no que fazer em seguida. Nesses jogos você aponta para os objetos ( por 
+		    exemplo, um livro) e pode escolher o que fazer com ele numa lista de funções. É um tipo
+		    de adventure orientado a objeto.  :) Não existem muitos adventures gráficos escritos 
+		    nativamente para Linux. O único que eu consigo lembrar é Hopkins FBI (o qual é o
+		    meu jogo predileto para Linux).
+			</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Simuladores (ou Sims)</title>
+
+			<para> Simuladores tentam colocar o jogador atrás dos controles de algo que eles
+			normalmente não tem acesso. Isso pode algo como um avião de combate ou outra coisa
+			imaginária como uma unidade mecânica de combate. Em qualquer um dos casos, os 
+			simuladores tentam chegar ao realismo. </para>
+		
+			<para> Alguns simuladores tem pouca ou nenhuma estratégia. Eles simplesmente põe você no
+			controle com a tarefa de dirigir o avião. Alguns deles são considerados complexos  e
+			normalmente existe uma margem bem pequena que diferencia os simuladores dos jogos de 
+			estratégia (veja a próxima seção). Um bom exemplo seria Heavy Gear III ou Flight Gear.  
+			Hoje em dia os jogos de estratégia e simuladores parecem quase iguais, mas há muito
+			tempo os simuladores eram em tempo real e os de estratégia eram baseados em turnos.
+			Isso é de uma certa maneira esquisito pra hoje, pois jogos como Warcraft onde todos
+			conhecem como estratégia, seria por definição um simulador. </para>
+		
+		</sect2>
+
+
+
+		<sect2><title>Estratégia (ou Strats)</title>
+
+			<para> Jogos de estratégia tem suas raízes no antigo jogo de tabuleiro do tipo Avalon 
+			como Panzer Leader e o antigo jogo vendido pela SSI.  Geralmente eles simulam algum
+			tipo de cenário. Esse cenário pode ser pacífico, como administrando uma cidade 
+			inteira ou uma operação ilegal de tráfico de drogas (SimCity ou DrugWars).  O cenário
+			pode ser também totalmente de guerra como o Myth II. Os tipos de jogos normalmente
+			demoram mais para terminar e precisam de bastantes neurônios.</para>
+
+			<para>Esses jogos podem ser divididos claramente em dois tipos: os de tempo real e
+			os de turnos. Os de tempo real são baseados no conceito de bobeou dançou. Por exemplo,
+			se você está administrando uma cidade e o surge uma erupção em algum lugar. Quanto
+			mais você demora pra mandar os bombeiros, maior será o estrago. Os jogos de turnos
+			são mais parecidos com os de xadrez --- o computador tem a vez dele e depois a vez
+			do jogador.
+			</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Atirador em Primeira Pessoa</title>
+
+			<para> O que pode ser uma luz distante na tela?  Deve ser um flash de uma espingarda!
+			Nós temos diversas histórias malucas de jogos em primeira pessoa que começam quando
+			a ID Games lançou o código fonte do Doom.  O código principal foi dividido e juntado
+			várias vezes.Outras engines anteriores surgiram, sendo jogáveis via emulador; muitos
+			jogos comerciais no Linux começaram com um projeto aberto. Embora você não seja capaz
+			de jogar seu jogo <emphasis>preferido</emphasis> no Linux (Half Life roda muito bem em
+			 winex), o Linux não tem essa deficiência!</para>
+
+			<para> Atiradores em primeira pessoa são caracterizados por duas coisas. Primeiro, 
+			você praticamente destroi tudo o que vê. Depois, as ações acontecem em primeira pessoa.
+			Isto é, você olha pelos olhos do personagem que faz todos os tiros. Você poderá até
+			ver suas mãos ou armas na parte de baixo da tela. Algumas tem o tema de fantasia (Hexen),
+			outros de ficção científica(Quake II) , e outros são da `vida real' (Soldier Of Fortune). 
+			</para>
+
+			<para> Assim como os adventures, os jogos em primeira pessoa usam o formato engine/datafile.
+			O engine refere ao jogo em si (Doom, Quake, Heretic2) e roda os mapas e os inimigos por
+			um arquivo de dados ou datafile (doom2.wad, pak0.pak, etc).  Muitos jogos permitem que 
+			as pessoas seus próprios datafiles.  Existem centenas, ou talvez milhares de datafiles do
+			Doom que podem ser baixados gratuitamente da internet. Muitas vezes as companias descartam
+			seus engines e colocam os da comunidade open source para poder analisar e melhorar.
+			Entretanto, os datafiles originais são considerados proprietários. Hoje você ainda tem que 
+			comprar o datafile <filename>doom.wad</filename>. </para>
+
+		</sect2>
+
+
+
+		<sect2><title>Aventura (Side Scrollers)</title>
+
+			<para> Jogos de aventura são semelhantes aos de atiradores de primeira pessoa, mas são em 2D
+			e você vê o seu personagem correndo por várias telas atirando em coisas ou fazendo algumas 
+			tarefas. Alguns exemplos seriam Abuse for Linux o original Duke Nukem. Eles não precisam ser
+			necessariamente violentos, pois temos jogos como <application>xscavenger</application>, 
+			um clone do antigo jogo de 8-bits chamado Lode Runner.
+			</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Atirador em Terceira Pessoa</title>
+
+			<para> Parecido com os de primeira pessoa, mas o personagem fica em terceira pessoa e
+			e em 3D. Nos modernos jogos de tiro de terceira pessoa você pode fazer manobras radicais
+			no estilo Jackie Chan. O exemplo básico seria Tomb Raider. Na plataforma linux nós temos o
+			Heretic 2 e o Heavy Metal FAKK.  </para>
+
+		</sect2>
+
+
+
+		<sect2 id="rpg"><title>Role Playing Game (ou RPG)</title>
+
+			<para> Qualquer um que tenha jogado Dungeons & Dragons ou Call of Cthulhu sabe exatamente
+			o que é um RPG. Você joga como um personagem, as vezes mais do que um, caracterizado por
+   		 alguma coisa particular (como força,poder), níveis (como explosivos, cestas) e
+   		 propriedades (fases, dinheiro). 
+			properties (levels, cash). Conforme você joga, o personagem se torna mais poderoso e 
+			o jogo se ajusta de acordo, então ao invés de lutar com ogros, nas fases finais você
+			acaba lutando com dragões negros.  As recompensas crescem de acordo.  Nas primeiras fases
+			você poderá ganhar algumas barras de ouro como recompensa de ter ganho uma luta.
+			Nas últimas fases, você pode ganhar uma espada mágica ou um arrasante rifle de ataque. </para>
+
+			<para> Os RPG's generalmente tem uma missão com uma finalidade bem definida. 
+			No nethack você precisa buscar o amuleto de Yendor para o seu Deus. No Ultima II, você
+			destoi a bruxa demoníaca Minax. Em algum ponto, o seu personagem fica  poderoso o
+			suficiente para poder tentar completar a sua missão. </para>
+
+			<para> O RPG básico do Linux é o Rogue (a biblioteca ncurses pode ser usada para
+			manipular as rotinas originais do Rogue!) e suas infindáveis versões como
+			Zangband e Nethack (que por sua vez tem infinitas variantes também).  Alguns deles são
+			um tanto complicados e muito bem programados. Parece existir uma falta de RPGs
+			comerciais para Linux. Se você não contar todas as versões variantes do rogue variants,
+			existe uma falta de RPGs open source também.  </para>
+
+			<para> Existem também as extremamente populares séries Ultima, escritas por Richard Garriot
+			(conhecido como Lord British) para a Origin, não foi o primeiro RPG a se popularizar e
+			e assumir o gênero RPG no mercado.  Ultima I foi lançado em 1987 e foi o jogo que teve
+			9 (dependendo de como você contar) sequências bem populares, finalizando com Ultima IX:
+			Ascension.  Você pode jogar Ultima VII no Linux com Exult. </para>
+
+		</sect2>
+
+</sect1>
+
+
+
+<sect1><title>Bibliotecas</title>
+
+<para> Nós iremos descrever as diferentes bibliotecas que você verá no Linux.  </para>
+
+	<sect2><title>O que é Glide2?</title>
+
+		<para> Glide2 é uma API gráfica de baixo nível com um driver que acessa funções de
+		hardware de aceleradoras gráficas como as Voodoo I, II e III da 3dfx,
+		 sobre a XFree86 3.*. </para>
+
+		<para> Um programa pode SOMENTE usar as características de hardware acelerado
+		pela placa usando a biblioteca Glide2 de duas maneiras: </para>
+
+		<itemizedlist>
+			<listitem><para>diretamente: escrito de forma nativa usando Glide2 (Myth II, Descent III) </para>
+				</listitem>
+			<listitem><para>indiretamente: usa a biblioteca Mesa com Glide2 para simular o OpenGL
+				(Rune, Deux Ex, Unreal Tournament) </para></listitem>
+		</itemizedlist>
+
+		<para> A 3dfx abriu suas especificações e liberou seu código fonte para a comunidade.
+		Isso permitiu Daryll Strauss portar Glide2 para Linux, o que possibilitou os usuários do XFree86 3.*
+		utilizar suas placas Voodoo I, II e III no Linux. </para>
+		
+		<para> Como a Glide2 acessa a placa de video diretamente, as suas aplicações precisam
+		ser executadas como root. Uma maneira de contornar esse problema é criar um módulo do
+		kernel 3dfx.Esse módulo (e seu device /dev/3dfx) permitem o acesso ao hardware Glide2
+		para usuários não-root.</para>
+
+		<para> Infelizmente a Glide2 é também um caso perdido.  Somente é usado pelas placas Voodoo I, II
+		e III (que já são antigas) no XFree86 3.* (a maioria já usa o XFree86 4.*).
+		E desde que a 3dfx é uma empresa inexistente, é quase uma certeza que nada mais será
+		feito usando Glide2 e nenhum jogo será mais escrito usando Glide2. </para>
+	
+	</sect2>
+
+
+
+	<sect2><title>O que é Glide3?</title>
+
+		<para>O Glide3 não é uma API de acesso direto ao hardware como era a Glide2.  Existe suporte
+		apenas para DRI na Voodoo III, IV e V boards no XFree86 4.*.   Nenhum dos jogos que usam a
+		Glide2 vai funcionar com a Glide3.  Isso não deveria ser uma surpresa, pois Glide2 e Glide
+		3 suportam diferentes placas de video e diferentes versões de XFree86.  A única placa de vídeo
+		que pode usar o Glide2 (no XFree86 3.*) e Glide3 (no XFree86 4.*) é a Voodoo III.  Foi relatado
+		que uma Voodoo III usando a Glide2 é melhor que uma Voodoo III usando a Glide3. </para>
+
+		<para> Quando você usa uma Voodoo III, IV ou V no XFree86 4.*, você deverá usar o
+		Mesa (consulte <xref linkend="mesa">) que  foi compilado para usar o Glide3 para assegurar
+		o OpenGL do hardware acelerado no seu sistema. </para>
+
+	</sect2>
+
+
+
+	<sect2><title>O que é OpenGL?</title>
+
+		<para> OpenGL é uma API gráfica de alto nível criada pela SGI, tornando-se um padrão
+		de mercado para programação gráfica 2D e 3D. Ela é definida e mantida pela Architectural 
+		Revision Board (ARB), uma organização que inclue empresas como SGI,IBM, DEC e Microsoft.
+		O OpenGL gera um conjunto poderoso e completo de operações gráficas 2D e 3D.</para>
+
+		<para> Existem três partes básicas do OpenGL: </para>
+
+		<itemizedlist>
+
+			<listitem><para> GL: as principais chamadas do OpenGL </para></listitem>
+
+			<listitem><para> GLU: o utilitário das chamadas </para></listitem>
+
+			<listitem><para> GLUT: ferramentas para sistemas independentes de tratamento de
+			eventos de janela (eventos de mouse, teclado, etc.). </para></listitem>
+
+		</itemizedlist>
+
+		<para> OpenGL não é só uma API, é também uma implementação escrita pela SGI. 
+		Essa implementação tenta usar a aceleração do hardware para diversas operações
+		gráficas sempre que possível, dependendo do tipo de placa que você tem no seu
+		computador. Se a aceleração do hardware não for possível para determinada tarefa,
+		o OpenGL falha na renderização via software.
+		Isso significa que quando você pega a OpenGL da SGI, se você quiser qualquer tipo
+		de aceleração de hardware, deve escrever e especificar no OpenGL essas
+		placas de video específicas. Caso contrário, tudo o que você terá será a
+		renderização via software. A mesma coisa acontece para os clones do OpenGL,
+		como o Mesa.  </para>
+
+		<para> OpenGL é o open source equivalente ao Direct3D, um componente do DirectX (<xref
+		linkend="directx">).  A diferença importante é que pelo OpenGL ser aberto (e o DirectX ser
+		proprietário,fechado), os jogos escritos em OpenGL são muito mais fáceis de portar para
+		Linux do que os games escritos para DirectX. </para>
+
+	</sect2>
+
+
+	<sect2 id="mesa"><title>O que é Mesa?</title>
+
+		<para> Mesa &lt;<ulink url="www.mesa3d.org</ulink>&gt; é uma implementação
+		gratuita da API da OpenGL, projetada e escrita por Brian Paul. Enquanto não é 
+		oficialmente certificada (que custaria mais dinheiro do que o projeto open source tem),
+		é quase uma implementação totalmente compatível com a implementação OpenGL conforme
+		as especificações ARB. Dizem que o Mesa é ainda mais rápido que a implementação
+		OpenGL da própria SGI. </para>
+
+		<para> Assim como a OpenGL,o Mesa usa a aceleração do hardware sempre que possível.
+		Quando uma tarefa particularmente gráfica não puder usar a aceleração do hardware
+		da placa de vídeo, será renderizada via software, ou seja, a tarefa será executada
+		pela sua CPU.  Isso significa que existem diferentes implementações do Mesa,
+		dependendo do tipo de placa de vídeo que você tem. Cada implementação usa uma
+		biblioteca diferente como um renderizador de apoio. Por exemplo, se você tem uma placa
+		Voodoo I, II ou III sobre o XFree86 3.*, você irá usar o mesa+glide2 (escrito por
+		David Bucciarelli) que é a implementação Mesa do OpenGL que usa o Glide2 como
+		um renderizador de apoio para operações gráficas. </para>
+
+	</sect2>
+
+
+
+	<sect2><title>O que é DRI?</title>
+
+		<para> A renderização gráfica é feita por 3 ambientes: a aplicação cliente (como Quake 3),
+		o servidor X e o hardware ( a placa de video). Antes disso, as aplicações clientes estavam
+		proibidas de escrever diretamente para o hardware, e existia uma boa razão para isso.
+		Um programa que permite a escrita direta ao hardware pode derrubar o sistema de várias
+		maneiras. Mais do que confiar em programadores que programam sem bugs, os programas
+		cooperativos que acessam o hardware, o Linux simplesmente não permite isso. Entretanto
+		isso mudou no X 4.* com DRI (Direct Rendering Infrastructure &lt;<ulink
+		url="www.dri.sourceforge.net</ulink>&gt;. O DRI permite clientes X para escrever
+		renderização 3D diretamento à placa de video de uma maneira segura e cooperativa. </para>
+
+		<para> O DRI tira o servidor X do caminho, assim o driver 3D (Mesa ou OpenGL) pode conversar
+		diretamente com o hardware. Isso acelera as coisas.  A informação de renderização 3D não
+		precisa sequeer ser de aceleração de hardware. Numa notação técnica, isso oferece inúmeras
+		vantagens.
+		</para>
+
+		<itemizedlist>
+
+			<listitem><para> os dados de Vertex não precisam estar codificados/decodificados via GLX. </para>
+			</listitem>
+
+			<listitem><para> os dados gráficos não precisam ser enviados via socket ao servidor X.
+			</para> </listitem>
+
+			<listitem><para> em máquinas de um único processor, a CPU não precisa ficar mudando de contexto
+			entre o X e seu cliente para renderizar os gráficos. </para> </listitem>
+
+		</itemizedlist>
+
+	</sect2>
+
+
+
+	<sect2><title>O que é GLX?</title>
+
+		<para> GLX é uma extensão do X usada por programas OpenGL, é a união entre o de plataforma
+		independente OpenGL e o de platforma dependente X.  </para>
+
+	</sect2>
+
+
+
+	<sect2><title>O que é Utah GLX?</title>
+
+		<para> O Utah-GLX é o precursor do DRI.  Ele faz algumas decisões de projeto diferente,
+		visando a separação dos dados e métodos que acessam a placa de vídeo (por exemplo,
+		usar privilégios de root é melhor que ter que criar uma infrastrutura de kernel necessária
+		para acesso seguro).  Providencia o suporte (hoje) para algumas placas que não bem suportadas
+		pelo DRI.  Particularmente existe a família ATI Rage Pro, S3 Virge (talvez alguém use isto para
+		jogar, bem, que seja), e o driver open source TNT/TNT2 (que é bem incompleto).  O driver
+		TNT/TNT2 é baseado na engenharia reversa de um obscuro código para o X 3.3 drivers pela
+		nVidia. Entretanto eles estão realmente incompletos e, efetivamente inúteis.  </para>
+
+	</sect2>
+
+
+
+	<sect2 id="xlib"><title>O que é xlib?</title>
+
+		<para> De vez enquando você verá um louco (com todo o respeito) escrever um jogo em xlib.
+		Isso é um conjunto de bibliotecas em C que usa o mais baixo nível da linguaguem para o
+		XFree86.  Qualquer programação em X normalmente faz uso da biblioteca xlib.  </para>
+
+		<para> Não é verdade dizer que a xlib é arcaica e complicada. Um programa que simplesmente
+		conecta um servidor X, cria uma janela e não faz mais nada poderia ser um programa de 40
+		linhas de código com funções de arcaicos e bem longos nomes.  Por isso mesmo existem
+		diversas bibliotecas que ocultam os seus detalhes de programação xlib.</para>
+
+		<para>Enquanto alguns jogos são escritos em xlib, como o Doom Editor Yadex, o xlib não é
+		uma biblioteca de games para ser levada a sério. A maioria dos jogos não precisam da 
+		interface de baixo nível que a xlib oferece. Além disso, usando as bibliotecas de alto nível,
+		o desenvolvedor de jogos pode desenvolver seu jogo em várias plataformas, até mesmo nas que não 
+		usam XFree86.</para>
+			
+	</sect2>
+
+
+
+	<sect2 id="sdl"><title>O que é SDL (Simple DirectMedia Layer)?</title>
+
+		<para>O SDL &lt;<ulink url="www.libsdl.org</ulink>&gt; é uma biblioteca de
+		Sam Lantiga da Loki Software (formado em UCD, yeah!).  Na verdade é uma meta biblioteca,
+		significando que tem bibliotecas gráficas não só escondem os detalhes da programação
+		como o xlib, mas apresentam uma interface simples para o som,a música e o tratamento de eventos.
+		O SDL é LGPL(gratuito e aberto) e suporta joystick e OpenGL.  O arcaico programa de 40 linhas
+		que mencionei na seção xlib section pode ser facilmente escrito em 6 linhas tranquilamente
+		usando SDL.  </para>
+
+		<para> A melhor parte do SDL é sua biblioteca multiplataforma. Com exceção de alguns
+		detalhes no cabeçalho dos arquivos e na compilação, um programa escrito em SDL vão
+		compilar no Linux, MS Windows, BeOS, MacOS, MacOS X, Solaris, IRIX, FreeBSD, QNX e
+		OSF. Existem extensões do SDL escritas por diversas pessoas para tratar qualquer formato
+		de arquivo de imagem que você imaginar, tocar mpegs, exibir fontes truetype, tratamento
+		de sprites e muitas outras coisas.O SDL é um exemplo que todas as bibliotecas deveriam seguir.
+		</para>
+
+		<para> Sam teve um grande motivo para escrever uma biblioteca tão boa. Ele era o programador
+		lider da Loki Software, que usou o SDL em todos os games, exceto Quake3. </para>
+
+	</sect2>
+
+	<sect2 id="widgetset"><title>O que é um conjunto de widget?</title>
+
+        <para>Os Widgets são objetos que compõem a interface gráfica de uma aplicação. Entre esses 
+        objetos temos componentes das janelas, como os menus pulldown menus,
+		radio buttons ae caixas de texto. O Gtk é o exemplo
+		básico de widget no Linux, mas existem muitos outros como fltk (um pequeno widget em C++),
+		Xaw, Qt (o widget do KDE), e o Motif (o widget usado pela Netscape). O Motif era o rei
+		do mundo Unix, mas tinha uma licença muito cara. O Open Group liberou a licença do Motif
+		para uso não comercial, mas isso foi um pouco tarde demais. As pessoas agora usam o
+		Lesstif, um clone do Motif.</para>
+		
+	</sect2>
+
+	<sect2 id="ggi"><title>O que é GGI?</title>
+
+		<para>O GGI &lt;<ulink url="www.ggi-project.org</ulink>&gt; é um projeto que
+		visa implementar uma camada gráfica abstata em linguagem de baixo nível, colocando o suporte
+		de hardware gráfico em um lugar, trazendo alta estabilidade e portabilidade para aplicações
+		gráficas e substituindo a SVGAlib, fb, e outros servidores X tratando diretamente com o 
+		hardware. A julgar pelas screenshots, essa é uma biblioteca bem poderosa. </para>
+
+		<para>Aplicações que usam diretamente a LibGGI sãoHeroes, Ultrapoint, Quake, e Berlin.
+		A maioria das aplicações usam SVGALib pode rodar em X ou qualquer outro backend LibGGI usando
+		uma biblioteca wrapper qie re-implementa a SVGALib (<xref linkend="svgalib">) usando a LibGGI. 
+		O SDL (<xref linkend="sdl">) e as aplicações clanlib (<xref linkend="clanlib">) podem exibir 
+		em LibGGI mas normalmente os drivers nativos para essas bibliotecas são mais rápidos, 
+		mas isso é uma boa maneira de ter aplicações SDL, clanlib, e SVGALib para rodar onde não rodava antes.</para>
+
+		<para>GGI tem um projeto irmão,o KGI, que é uma alternativa no nível do kernel para sistemas como 
+		o linux framebuffer e o DRI.  Esse projeto é muito menos que o LibGGI, mas promete combinar a velocidade do nível
+		DRI com a estabilidade e segurança que os usuários UNIX esperam..</para>
+
+	</sect2>
+
+
+
+	<sect2 id="svgalib"><title>O que é a SVGAlib? E o Frame buffer?E a Console?</title>
+
+		<para> A console é aquela tela não gráfica que o seu computador tem assim que
+		você liga (e você não tem nada <application>xdm</application> ou
+		<application>gdm</application> rodando).  Isso é o oposto ao que ocorre no ambiente
+		X, que tem vários tipos de GUI como o xterms.  É um erro comum dizer que X significa
+		"com gráficos" e console significa "sem gráficos".  Certamente existem gráficos
+		na console &mdash; nós iremos discutir os dois meios mais comums de conseguir
+		isso. </para>
+
+		<para>A SVGAlib é uma biblioteca gráfica que permite o desenho de gráficos no console.
+		Existem várias aplicações gráficas e jogos que usa a SVGAlib como
+		<application>zgv</application> (um visualizador gráfico de imagens),
+		<application>prboom</application> e <application>hhexen</application>.  Eu fui um fan
+		dessa biblioteca e dos games de console em geral, porque eles são bem rápidos e
+		funcionam na tela toda.  Existem três desvantagens da SVGAlib.  Primeiro,os executáveis
+		SVGAlib precisam ser executados pelo root ou ter o setuid do root, entretanto, a
+		a biblioteca libera o status de root log depois que começa a rodar. Em segundo lugar,
+		a SVGAlib depende de cada tipo de placa de vídeo&ndash; se a sua placa de vídeo
+		não é suportada pela SVGAlib,azar o seu. Em terceito lugar,a SVGAlib foi feita só		
+		pra Linux. Os jogos escritos em SVGAlib só funcionarão em Linux. </para>
+
+		<para> Os Frame buffers são consoles implementados mais por graficos do que texto.
+		Por que você simularia um ambiente texto de um modo gráfico?  Isso permite rodar
+		coisas gráficas no console, algo como escolher a fonte do display (que normalmente
+		é determinada pela BIOS).  Imagine ter um console com a fonte Comic Sans MS?
+		Existe um bom howto de Frame Buffer howto disponível na LDP.  </para>
+
+	</sect2>
+
+
+
+	<sect2 id="openal"><title>O que é OpenAL?</title>
+
+		<para> OpenAL &lt;<ulink url="www.openal.org</ulink>&gt; pretende ser
+		para o som o que a OpenGL(<xref linkend="opengl">) é para os gráficos.
+		 
+		A Loki não está mais na ativa, mas a Creative e comunidade open source tem
+		mantido o projeto ativo. Ela tem
+		licença LGPL e suas especificações podem ser encontradas gratuitamente no site OpenAL.
+		
+        Existe suporte para nVidia (baseado em placas mãe nForce2/3 motherboards com bibliotecas 
+        OpenAL MS Windows para o áudio on-board), a Apple adicionou has added o OpenAL para o seu
+        framework de áudio para o OSX e pode ser encontrado na engine Unreal da Epic Games</para>
+
+		<para>Atualmente, não é uma maravilha entre as plataformas.  Praticamente não existe suporte
+		para melhorias como EAX ou qualquer aceleração para Linux, mesmo que isso existe na implementação
+		para Windows. Entretanto, se você possuir uma placa Creative SoundBlaster ou Audigy
+		(com o chip emu10x), e usar os drivers de som da ALSA, você pode ter as bibliotecas OpenAL
+		de <ulink url="http://www.lost.org.uk"></ulink> que proporcionam aceleração de hardware e
+		um suporte de surround decente.</para>
+			
+	</sect2>
+
+
+	<sect2 id="directx"><title>O que é DirectX?</title>
+
+		<para> O DirectX é coleção de APIs multimedia de código proprietário, primeiramente
+		desenvolvido pela Microsoft em 1995 para os seus diversos Windows. Seria um erro dizer
+		algo do tipo "o DirectX é como o OpenGL" ou  "o DirectX é como o SDL", assim como é 
+		dito em diversos livros e tutoriais de DirectX. As APIs multimedia são mais centralizadas
+		em Windows do que em Linux. Uma declaração mais precisa seria: "o DirectX é como a combinação
+		de DRI, OpenGL e SDL". Em fevereiro de 2002, a versão mais recente era o DirectX is 8.1.
+		Os componentes do DirectX são: </para>
+
+		<variablelist>
+
+ 		<varlistentry><term>DirectDraw</term>
+			<listitem><para> DirectDraw dá um acesso direto à memória de vídeo, como o like DRI,
+			assim você pode acessar os gráficos 2D direto da placa de vídeo ao invés
+			de fazer isso com a memória do computador e depois na memória da placa de vídeo.
+			O DirectDraw é como se fosse um componente do SDL, mas com acesso direto à memória da
+			placa de vídeo, que é deito pelo DRI ao invés do SDL. Este é o motivo que o jogo
+			pode facilmente sair do ambiente Windows, mas dificilmente algum sai do ambiente Linux.
+			</para> </listitem> </varlistentry>
+
+		<varlistentry><term>Direct3D (D3D)</term>
+			<listitem><para> O Direct3D, assim como o OpenGL, proporciona uma API gráfica de 3D.
+			Onde o OpenGL é aberto, de baixo nível e compila em várias plataformas, o D3D é
+			proprietário, de alto nível e compila só em Windows. Infelizmente, a maioria dos
+			programadores de jogos para Windows escolhe o D3D e não o OpenGL, e também o D3D
+			quase não sem suporte nos tradutores de API, como o wine, e praticamente não são 
+			suportados pelas máquinas virtuais como o vmware no Linux. O D3D apareceu pela 
+			primeira vez no DirectX 2, criado em 1996. </para> </listitem> </varlistentry>
+
+		<varlistentry><term>DirectXAudio </term>
+			<listitem><para>O Direct Audio é uma combinação de 2 API's de audio,o DirectSound e o DirectMusic,
+			que dão o acesso direto da placa de som para a reprodução de músicas. </para> </listitem>
+			</varlistentry>
+
+		<varlistentry><term>DirectInput</term>
+			<listitem><para>O DirectInput dá suporte para dispositivos de entradas de jogos, como por exemplo 
+			o joystick. </para>
+			</listitem></varlistentry>
+
+		<varlistentry><term>DirectPlay</term>
+			<listitem><para>O DirectPlay dá suporte simplificado para jogos em rede e jogos multiplayer. </para>
+			</listitem></varlistentry>
+
+		<varlistentry><term>DirectShow</term>
+			<listitem><para>O DirectShow dá suporte a arquivos de animação como AVI e MPG. Isso era uma
+			API separada do DirectX, mas agora foi integrada no DirectX 8. </para> </listitem>
+			</varlistentry>
+
+		<varlistentry><term>DirectSetup</term>
+			<listitem><para> Essa API permite instalar o DirectX de dentro de sua aplicação
+			Ela foi desenvolvida para simplificar a instalação de jogos. </para></listitem> </varlistentry>
+
+		</variablelist>
+
+		<para> O DirectX é  "meio que" suportado pelo winex (<xref linkend="winex">), e muito pouco
+		suportado pelo wine (<xref linkend="wine">), e tão pouco suportado pelo vmware (<xref linkend="vmware">)
+		e não suportado pelo Win4Lin (<xref linkend="win4lin">). </para>
+
+		<para> Um comentário sobre portabilidade. Cada componente do DirectX tem diversos similares
+		correspondentes no Linux. Entretanto, o desenvolvedor de jogos que usa as bibliotecas como OpenGL,
+		GGI ou SDL vai escrever o jogo que compilará no Windows, Linux e muitos outros SO's.  As empresas
+		de jogos ainda insistem em usar DirectX e portanto limitam o seu público para somente os usuários
+		do Windows.Se você é um desenvolvedor de jogos, por favor pense em usar bibliotecas compatíveis
+		entre as plataformas e evitar o uso do DirectX. </para>
+		
+		<para> Uma compania chamada realtechVR começou um projeto open source chamado "DirectX Port"
+		&lt<ulink url="http://www.v3x.net/directx</ulink>&gt; que, assim como o wine,
+		 emula a camada Direct3D que implementa as chamadas do Direct3D. A princípio o projeto estava
+		 focado no BeOS, mas agora está focado no MacOS e no Linux.  O DirectX Port é open source e 
+		 você pode pegar o último cvs da página da sourceforge em &lt;<ulink
+		url="http://sourceforge.net/projects/dxglwrap</ulink>&gt;. </para>
+
+	</sect2>
+	
+	<sect2 id="clanlib"><title>Clanlib</title>
+
+		<para>O ClanLib é um kit de desenvolvimento de nível mediano. No nível mais baixo, ele proporciona uma
+		plataforma independente (o quanto for possível em C++) para trabalhar com o display,som , input,
+		rede, arquivos, threading e o resto. O  ClanLib constroi uma framework genérico de desenvolvimento
+		de jogos, permitindo a facilidade de manipulação de recursos, replicação de objetos na rede, 
+		interface gráfica com suporte a temasm script de jogos e muito mais.</para>
+
+	</sect2>
+
+</sect1>
+
+
+<sect1><title>XFree86 e Você</title>
+
+	<para> Se você vai jogar no X, é crucial que você conheça alguma coisa sobre ele.  O "X
+	Window User HOWTO", e especialmente "man XF86Config" são leituras <emphasis>obrigatórias</emphasis>.
+	Não se engane, leia-os. Eles tem um alto percentual de informação. Muitos problemas podem ser facilmente
+	corrigidos se você conhecer bem o seu <filename>XF86Config</filename> (ou <filename>XF86Config-4</filename>). </para>
+
+
+
+	<sect2><title>Buscando informação sobre o seu sistema X</title>
+
+
+		<sect3><title>Probeonly</title>
+
+			<para> Uma das melhores ferramentas de diagnóstico e fonte de informação sobre o seu sistema X é a
+			saída do <command>probeonly</command>. Para usá-la, dê um kill no X se já estiver rodando e digite
+			do console: </para>
+
+			<screen>
+    X -probeonly 2> X.out
+			</screen>
+
+			<para> Sim, é só isso mesmo. A saída do X vai para o stderr, então precisamos redireciona-la
+			com o "2>" para um arquivo chamado X.out. Esse arquivo terá quase tudo que se possa saber sobre
+			o seu X. É crucial que você saiba a diferença entre os diferentes marcadores que você verá na
+			saída do probeonly : </para>
+
+			<screen>
+    (--) probed              (**) from config file    (==) default setting
+    (++) from command line   (!!) notice              (II) informational
+    (WW) warning             (EE) error               (??) unknown.
+    
+     Que significam:                        
+    
+    (--) detectado           (**) do arquivo de configuração (==) configuração padrão
+    (++) da linha de comando (!!) observação                 (II) informativo
+    (WW) aviso               (EE) erro                       (??) desconhecido
+			</screen>
+
+			<para> Aqui temos um exemplo de algumas informações que recolhi da minha saída: </para>
+
+
+			<para>Estou rodando com as cores em 16 bpp:</para>
+
+			<screen>
+    (**) TDFX(0): Depth 16, (--) framebuffer bpp 16
+			</screen>
+
+			<para>O X detectou que o chipset e a ram da minha placa de vídeo são:</para>
+
+			<screen>
+    (--) Chipset 3dfx Voodoo5 found
+    (--) TDFX(0): VideoRAM: 32768 kByte Mapping 65536 kByte
+			</screen>
+
+		</sect3>
+
+
+<!-- here -->
+
+		<sect3><title>Pegando informação sobre sua configuração: xvidtune</title>
+
+			<para> <application>xvidtune</application> é seu amigo quando a tela do seu X está 
+			um pouco torta ou um pouco para a direita, ou o comprimento vertical é muito pequeno
+			para caber no seu monitor. Mesmo assim, é uma ótima ferramenta de diagnóstico
+			também. Ela irá te mostrar: </para>
+
+			<itemizedlist>
+			<listitem><para>a faixa de hsync/vsync do seu arquivo XF86Config
+				</para></listitem>
+			<listitem><para>Os 4 números na horizontal e os 4 números na vertical definem
+			        o seu modo de vídeo.O seu videomode (o primeiros números na horizontal/vertical
+				mostram a resolução). Esses 8 números dirão o modelo do X.
+				Veja o XFree86 Video Modetiming Howto para mais informações.</para></listitem>
+			<listitem><para>a frequência que sua placa de vídeo está rodando.</para>
+				</listitem>
+			</itemizedlist>
+
+		</sect3>
+
+
+
+		<sect3><title>Pegando informação sobre a sua configuração: xwininfo</title>
+
+			<para>O xwininfo mostra toda a espécie de informação sobre o ambiente X.			
+			Na verdade, a sua janela "background" ou "root" é considerada uma janela
+			também. Então, quando o xwininfo perguntar de qual janela deseja informação,
+			clique na janela de background.  Isso mostrará informações como:resulução da tela,
+			profundidade da cor, gravidade da janela (que dá uma dica ao gerenciador de janelas
+			onde colocar uma nova janela), e muito mais.</para>				
+			</sect3>
+
+
+
+			<sect3><title>Outras fontes de informação</title>
+
+				<para>O comando <command>xdpyinfo</command> mostra informações interessantes, como a versão do X e 
+				as extensões carregadas (indispensável para saber o que falta, como por exemplo GLX, DRI, XFree86-VidMode, etc.).</para>
+
+			</sect3>
+
+
+
+			<sect3><title>Pegando informação do seu ambiente 3D</title>
+
+				<para>O comando <command>glxinfo</command> informa várias informações úteis sobre OpenGL: 
+				se o direct rendering está ativo, as versões atuais do glx e do  mesa, informações do fabricante,
+				as bibliotecas do GL utilizadas e muito mais.</para>
+
+			</sect3>
+
+
+		</sect2>
+
+
+
+		<sect2 id="nowm"><title>Jogando no X sem um gerenciador de janelas</title>
+
+			<para>Ao jogar um jogo sob X, você deve considerar começar X sem um gerenciador de janelas (WM). 
+			Os mais pesados WMs, como o Enlightenment, ou os ambientes desktop robustos  como GNOME ou KDE, 
+			podem produzir uma lentidão visível. Mesmo WMs mais leves, como o twm, dominam o seu processador 
+			central (e no caso do twm, mesmo os jogos da tela cheia terão um frame em torno da janela). 
+			Rodar um jogo sem um WM ou um DE depende de como você acessa o X. Se você geralmente loga em um 
+			console virtual e inicia o X com &quot; startx&quot; tente o seguinte: </para>
+
+			<para>Modifique <filename>~/.xinitrc</filename>, que informa ao X como iniciar. Esse é o meu:</para>
+
+			<screen>
+      #quake3 +set r_gldriver libGR.so.1
+      #exec ut
+      #lsdldoom -server 2
+      #exec tribes2
+      exec /usr/bin/enlightenment
+			</screen>
+
+			<para>Você verá geralmente um gerenciador de janelas ou do desktop que está sendo executado deste
+			arquivo (GNOME ou KDE). Comente as linhas do seu WM ou gerenciador de desktop com um sinal do 
+			vogo da velha (#) e coloque o seu jogo em uma linha nova como o comando que você quer passar. 
+			Se o jogo não ficar no sei $PATH, informe o caminho completo.</para>
+
+			<para>Se você logar diretamente no X usando o gdm, as coisas são um pouco diferentes.
+			Essas instruções valem para o gdm 2.4 ou superior. Eles *podem* funcionar com o kde, mas eu não
+			posso garantir com certeza.</para>
+
+			<para>Em primero lugar, cheque o seu arquivo <filename>gdm.conf</filename> (normalmente em <filename
+			role="directory">/etc/X11/gdm</filename> ou <filename role="directory">/etc/gdm</filename>)
+			na linha que começa com "<literal>SessionDesktopDir=blah</literal>".  Um dos diretórios listados
+			deve ser "<filename	role="directory">/usr/share/xsessions</filename>", e esse é diretório que será usado
+			nesse examplo. Como root, mude o diretório "<filename role="diretório">/usr/share/xsessions</filename>" 
+			e verifique seu conteúdo.Deve conter alguns arquivos <filename>.desktop</filename>, cada um correspondendo
+            à uma entrada no menu gdm de Session, como por exemplo <filename>gnome.desktop</filename>,
+			<filename>enlightenment.destop</filename>.  Esse exemplo mostrará a você como logar no Doom3.
+			Copie qualquer um dos arquivos desktop para "<filename>doom3.desktop</filename>" e abra o novo arquivo no			
+			seu editor de textos favorito.  O arquivo será cheio de opções de idiomas, então tire tudo o que não 
+			interessa e faça o arquivo parecido com esse:</para>
+
+			<screen>
+      [Desktop Entry]
+      Encoding=UTF-8
+      Name=DOOM III
+      Comment=iD's Doom III
+      #se o jogo não estiver no path, lembre-se de colocar o caminho completo
+      Exec=/usr/games/doom3/doom3      
+      Icon=
+      Type=Application
+			</screen>
+
+
+			<para>Grave o arquivo e saia do seu seu gerenciador de janelas.  Na tela de login do gdm login screen, você 
+			deverá ver agora "<literal>DOOM III</literal>" como uma das opções em "Sessions".  Naturalmente você 
+			pode adicionar um arquivo .desktop para cada jogo que você tiver instalado</para>
+
+		</sect2>
+
+
+</sect1>
+
+
+
+
+<sect1><title>Vários Tópicos</title>
+
+
+	<sect2 id="mtrr"><title>Tipo de faixa de registradores de memória</title>
+
+		<para>Começando com a classe de processadores Pentium e incluindo Athlon, K6-2 e outros CPUs,
+		existem tipo de faixa de registradores de memória (Memory Digite Range Registers ou MTRR) 
+		que controlam como o processador acessa as localidades de faixas de memória.
+		Basicamente, ele transforma várias pequenas escritas separadas na placa de vídeo em
+		uma única escrita (chamada burst).  Isso aumenta a eficiência de escrita na placa de vídeo e
+        pode acelerar seus gráficos em 250% ou mais.</para>
+
+		<para>Veja <filename>/usr/src/linux/Documentation/mtrr.txt</filename> para mais detalhes.  Note que
+		desde que esse arquivo foi escrito, o XFree86 foi automaticamente alterado para detectar o tamanho 
+		da sua base de endereço da RAM de vídeo econfigurar os MTRRs.</para>
+
+	</sect2>
+
+
+
+	<sect2 id="milkingperformance"><title>Buscando performance para o seu sistema vale a pena</title>
+
+		<itemizedlist>
+
+		<listitem><para>Se por algum motivo você está usando X 3.3, siga the instruções de 
+		<filename>mtrr.txt</filename> (veja <xref linkend="mtrr">) para configurar seu MTRRs. O X 4.0 faz isso
+		automaticamente para você.</para></listitem>
+
+		<listitem><para>Se você está jogando um jogo no ambiente X, não rode um gerenciador de janelas, e
+		<emphasis>com certeza</emphasis> não rode num gerenciador de desktop como GNOME ou KDE.  Veja <xref linkend="nowm"> para mais detalhes.</para>
+
+		<para>Mate todos processos desnecessários (você precisa se logar como root para fazer isso) usando os scripts de inicialização do
+		seu sistema.  No Debian, os scripts de inicialização par ao run-level 2 ficam em /etc/rc2.d/.  
+		Você pode matar um serviço de uma maneira ordenada com o comando `stop':</para>
+
+		<screen>
+    # cd /etc/rc2.d
+    # ./ntpd stop
+		</screen>
+
+		<para>Outra opção (radical) é simplesmente ficar em modo de usuário single com</para>
+
+		<screen>
+    # telinit 1
+		</screen>
+
+		<para>Isso vai ajudar; seu sistema vai rodar só o que é  absolutamente
+		crucial para funcionar.  Você terá mais ou menos 10 processos rodando.  A desvantagem é 
+		que você deverá jogar o jogo como root.  Mas a sua tabela de processos não será problema, e toda
+		CPU extra irá diretamente para o seu jogo.</para></listitem>
+		</itemizedlist>
+
+	</sect2>
+
+
+
+	<sect2><title>Sobre bibliotecas no Linux</title>
+
+		<para>Um problema comum você verá em jogos é o arquivo da biblioteca não ser encontrado. Eles são meio 
+		misteriosos e tem nomes engraçados, portanto vamos falar um pouco deles. Existem dois tipos
+		de bibliotecas, as estáticas e as dinâmicas.  Quando você compila um programa, por padrão,
+		<command>gcc</command> usa bibliotecas dinâmicas , mas você pode fazer o <command>gcc</command> usar
+		bibliotecas estáticas usando a opção <option>-static</option> .  Ao menos que você planeje 
+		compilar seu games do código fonte, você usará praticamente bibliotecas dinâmicas.</para>
+
+
+
+		<sect3><title>Bibliotecas dinâmicas</title>
+
+			<para>Bibliotecas dinâmicas, também chamadas de &ldquo;shared library&rdquo;, oferecem um código de 
+			objeto para uma aplicação enquanto ela estiver rodando. Assim, o código fica linkado com o executável
+			em tempo de execução oposto ao tempo de compilação.  É a mesma coisa que os arquivos <literal>.dll</literal>' usados pelo
+			Windows.  O programa responsável pelo processo de link &ldquo;na hora&rdquo; é chamado de
+			<command>/etc/ld.so</command>, e as bibliotecas dinâmicas normalmente tem a extensão
+			<literal>.so</literal> com um número de versão, algo como:</para>
+
+			<screen>
+    /usr/lib/libSDL.so
+    /lib/libm.so.3
+			</screen>
+
+			<para>Quando usar o <command>gcc</command>, você referencia essas bibliotecas tirando 
+			os literais  <literal>lib</literal>, <literal>.so</literal> e os números das versões.  Então para essas
+			duas bibliotecas, você deve passar ao <command>gcc</command> os parâmetros <literal>-lSDL -lm</literal>.
+			O <command>gcc</command> colocará num lugar dentro do executável para procurar os arquivos 
+			<filename> /usr/lib/libSDL.so</filename> e<filename>/lib/libm.so.3</filename> sempre que as funções de
+			SDL ou matemáticas forem usadas.</para>
+		
+		</sect3>
+
+
+
+		<sect3><title>Bibliotecas estáticas</title>
+
+			<para>Ao contrário das bibliotecas dinâmicas que oferecem código enquando a aplicação roda, as
+			bibliotecas estáticas contém código que linka (insere) dentro do programa enquanto for compilado. 
+			No código que for executado tem tudo o que precisa dentro dele. As bibliotecas normalmente
+			tem extensão <literal>.a</literal> seguida da versão do número, algo como:</para>
+
+			<screen>
+    /usr/lib/libSDL.a
+    /usr/lib/libm.a
+			</screen>
+
+			<para>Os arquivos <literal>.a</literal>  são na verdade um arquivo com vários arquivos
+			<literal>.o</literal> (objetos) juntos , parecido com um arquivo tar.  Você pode usar
+			o comando <command>nm</command> para ver que funções essa biblioteca estática contém:</para>
+
+			<screen>
+    % nm /usr/lib/libm.a
+    ...
+    e_atan2.o:
+    00000000 T __ieee754_atan2
+    
+    e_atanh.o:
+    00000000 T __ieee754_atanh
+    00000000 r half
+    00000010 r limit
+    00000018 r ln2_2
+    ...
+			</screen>
+
+			<para>Quando usar o <command>gcc</command>, você deve referenciar essas bibliotecas tirando 
+			as strings &ldquo;lib&rdquo;, &ldquo;.a&rdquo; e os números das versões.  Então para essas duas 
+			bibliotecas, você deve usar o comando <command>gcc</command> com os parâmetros  <literal>-lSDL -lm</literal>.
+			O comando <command>gcc</command> ler o código dos arquivos <filename
+			class="libraryfile">/usr/lib/SDL.a</filename> e <filename
+			class="libraryfile">/usr/lib/libm.a</filename> sempre que uma função matemática for usada no processo de
+			compilação.</para>
+	
+		</sect3>
+
+		<sect3><title>Como arquivos de biblioteca são encontrados</title>
+	
+			<para>Se você compilar seu próprios jogos, seu maior problema com bibliotecas será quando o
+			<command>gcc</command> não encontra uma biblioteca estática ou talvez a biblioteca não exista
+			seu sistema.  Quando for jogar de um binário, sua biblioteca vai sofrer se o 
+			<command>ld.so</command> não puder encontrar a biblioteca ou ela não existir no seu system.
+			Então faz sentido falar de como o <command>gcc</command> e o <command>ld.so</command>
+			faz para encontrar as bibliotecas.</para>
+
+			O <para><command>gcc</command> procura pelas  bibliotecas nos ``diretórios de sistema padrão'' e mais
+			alguns diretórios que você especificar com a opção <option>-L</option>.  Você pode encontrar quais são
+			os diretórios do sistema padrão com o comando <command>gcc -print-search-dirs</command></para>
+			<para><command>ld.so</command> procura por um binário contendo o arquivo chamado 
+			<filename>/etc/ld.so.cache</filename> para uma lista de diretórios que contenham as bibliotecas dinâmicas
+			disponíveis. Desde que contenha dados binários, você não pode modificar esse arquivo diretamente.  Entretanto, 
+			o arquivo é gerado de um arquivo texto <filename>/etc/ld.so.conf</filename> que você pode editar.
+			Esso arquivo contém a lista de diretórios que você quer <command>ld.so</command> para procurar pelas
+			bibliotecas dinâmicas.  Se você quiser colcoar bibliotecas dinâmicas em 
+			<filename>/home/joecool/privatelibs</filename>, você deve adicionar esse diretório em
+			<filename>/etc/ld.so.conf</filename>.  Isso não muda no cache 
+			<filename>/etc/ld.so.cache</filename> até você todar o comando <command>ldconfig</command>; que ao ser
+			chamado, o <command>ld.so</command> começa a procurar por bibliotecas no seu diretório.</para>
+	
+			<para>Além disso, messmo que você adicione bibliotecas extra para seu sistema, você deve atualizar o
+			<filename>ld.so.cache</filename> para refletir a presença de novas bibliotecas.</para>
+
+		</sect3>
+
+
+		<sect3><title>Descobrindo as bibliotecas que o jogo precisa</title>
+
+			<para>A maioria dos jogos comerciais será linkada dinamicamente com várias bibliotecas LGPL ,
+			como OpenAL ou SDL. Por exemplo, o jogo Bioware's NeverWinter Nights &lt;<ulink
+			url="http://nwn.bioware.com"></ulink>&gt; será usado.</para>
+
+			<para>Para encontrar as bibliotecas que o jogo usa, nós podemos usar o comando  "<filename>ldd</filename>".  
+			Cd para <filename role="diretório">/usr/jogos/nwn</filename>, ou onde você
+			instalou e verifique os arquivos.  Você verá  um arquivo parecido com esse arquivo chamado
+			<filename>nwmain</filename>; esse é o verdadeiro binário do jogo . Digite "<literal>ldd
+			nwmain</literal>" e você verá:</para>
+
+			<screen>
+   $ ldd nwmain
+       linux-gate.so.1 =>  (0xffffe000)
+       libm.so.6 => /lib/libm.so.6 (0x40027000)
+       libpthread.so.0 => /lib/libpthread.so.0 (0x40049000)
+       libGL.so.1 => /usr/lib/libGL.so.1 (0x4009b000)
+       libGLU.so.1 => /usr/X11R6/lib/libGLU.so.1 (0x40103000)
+       libmss.so.6 => not found
+       libSDL-1.2.so.0 => /usr/lib/libSDL-1.2.so.0 (0x40178000)
+       libc.so.6 => /lib/libc.so.6 (0x401ff000)
+       /lib/ld-linux.so.2 (0x40000000)
+       libGLcore.so.1 => /usr/lib/libGLcore.so.1 (0x40319000)
+       libnvidia-tls.so.1 => /usr/lib/libnvidia-tls.so.1 (0x409f1000)
+       libXext.so.6 => /usr/X11R6/lib/libXext.so.6 (0x409f3000)
+       libX11.so.6 => /usr/X11R6/lib/libX11.so.6 (0x40a01000)
+       libdl.so.2 => /lib/libdl.so.2 (0x40acd000)
+       libstdc++.so.5 => /usr/lib/libstdc++.so.5 (0x40ad1000)
+       libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x40b88000)
+       libasound.so.2 => /usr/lib/./libasound.so.2 (0x40b90000)
+			</screen>
+
+			<para>ldd mostra todas as bibliotecas que um executável dinâmico tem, e mostra onde estão. 
+			Ele também mostra as dependências das dependências.  Por exemplo, enquanto NWN não
+			depende do arquivo <filename role="library">libnvidia-tls.so</filename>, o Nvidia junto com o 
+			libGL no seu sistema depende.</para>
+
+			<para>Bibliotecas faltando?</para>
+
+			<para>No exemplo acima, nós podemos ver que o arquivo <filename>nwmain</filename> precisa do <filename
+			role="library">libmss.so.6</filename>, e o likador não pode ser encontrado.  Normalmemte, uma biblioteca
+			que falta é um crash esperando para acontecer.  Existe algo mais para considerar:
+			a maioria de jogos são na verdade chamados por um "wrapper", que é um script shell que faz alguma mágica
+			para rodar o jogo.  No caso do NWN, o wrapper é chamado de 
+			<filename>nwn</filename>.  Vamos verificar esse arquivo agora:</para>
+
+			<screen>
+   $ less nwn
+   #!/bin/sh
+   
+   # Esse script roda o Neverwinter Nights do diretório corrente 
+   
+   export SDL_MOUSE_RELATIVE=0
+   export SDL_VIDEO_X11_DGAMOUSE=0
+   
+   # Se você não quiser usar a biblioteca SDL incluída no pacote, remova
+   # o ./lib do LD_LIBRARY_PATH
+   export LD_LIBRARY_PATH=./lib:./miles:$LD_LIBRARY_PATH
+   
+   ./nwmain $@
+			</screen>
+
+			<para>Esse script configura algumas variáveis de ambiente, depois chama o binário do jogo com 
+			qualquer opção de linha de comando que for adicionada. A parte relevante é a variável de ambiente
+			chamada "LD_LIBRARY_PATH". Esse é o jeito de adicionar para os linkers procurarem o caminho. Tente copiar a 
+			linha para o seu shell e ver o que acontece quando você roda o ldd novamente.</para>
+
+			<screen>
+   $ export LD_LIBRARY_PATH=./lib:./miles:$LD_LIBRARY_PATH
+   $ ldd nwmain
+       linux-gate.so.1 =>  (0xffffe000)
+       libm.so.6 => /lib/libm.so.6 (0x40027000)
+       libpthread.so.0 => /lib/libpthread.so.0 (0x40049000)
+       libGL.so.1 => /usr/lib/libGL.so.1 (0x4009b000)
+       libGLU.so.1 => /usr/X11R6/lib/libGLU.so.1 (0x40103000)
+       libmss.so.6 => ./miles/libmss.so.6 (0x40178000)
+       libSDL-1.2.so.0 => ./lib/libSDL-1.2.so.0 (0x401ec000)
+       libc.so.6 => /lib/libc.so.6 (0x4025e000)
+       /lib/ld-linux.so.2 (0x40000000)
+       libGLcore.so.1 => /usr/lib/libGLcore.so.1 (0x40378000)
+       libnvidia-tls.so.1 => /usr/lib/libnvidia-tls.so.1 (0x40a50000)
+       libXext.so.6 => /usr/X11R6/lib/libXext.so.6 (0x40a52000)
+       libX11.so.6 => /usr/X11R6/lib/libX11.so.6 (0x40a60000)
+       libdl.so.2 => /lib/libdl.so.2 (0x40b2c000)
+       libstdc++.so.5 => /usr/lib/libstdc++.so.5 (0x40b30000)
+       libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x40be7000)
+			</screen>		
+
+			<para>Como você pode ver, dá um resultado um pouco diferente. A biblioteca NWN procura nos diretórios
+			do caminho, então agora o linker pode encontrar <filename
+			role="library">libmss.so.6</filename> no diretório "<filename role="diretório">./miles</filename>"
+			, e também encontrar a cópia local do libSDL primeiro, não usando mais a cópia do sistema.</para>
+
+			<para>Existe outro benefício desses scripts: eles são facilmente editáveis para permitir que você use sua 
+			própria cópia da biblioteca.  Qualquer cópia de biblioteca que vem junto com o jogo com OpenAL ou SDL é
+		    para ser compilada com o processador mais simples possível, como o i486 ou i686. Se você possuir um
+			Pentium4 ou um AthlonXP, você pode compilar sua versão específica para o seu processador.
+			O compilador tentará otimizar o binário resultante, aumentando um pouco a performance.
+			Veja na <ulink url="http://gcc.gnu.org">homepage da GCC</ulink> para mais informações.</para>
+
+			<para>Fazer o NWN usar sua cópia do sistema é fácil.  Isso está indicado no script de wrapper!  Remova
+			o "./lib:" da linha do <literal>LD_LIBRARY_PATH</literal>, e pronto.</para>
+
+			<para>Outro bom truque é para jogos que usam OpenAL para a sua saída de som (e.g.
+			jogos baseados em Unreal: UT, Postal, Rune, etc.).  Desde que o Open Sound System (OSS) foi descontinuado
+			em favour do ALSA, todas as distribuições Linux que eu tenho visto já distribuem o suporte ao ALSA como
+			padrão, sem o suporte do OSS, que na verdade é substituido pelas bibliotecas compatíveis do ALSA.
+			As cópias distribuídas com <filename role="library">openal.so</filename> dos jogos normalmente não
+			suportam ALSA, então fazer o jogo usar uma cópia compilada por você mesmo permitirá que você utilize ALSA
+			nativamente.</para>
+
+		</sect3>
+
+
+	</sect2>
+
+
+</sect1>
+
+
+
+<sect1><title>Quando coisas ruims acontecem com pessoas boas</title>
+
+
+	<para>Evidentemente nós não podemos cobrir todos os problemas que possam ocorrer, mas eu listarei alguns problemas comuns.</para>
+
+	<para>Existem dois tipos de coisas ruins: aleatória e repetida. É muito difícil para analisar ou 
+	arrumar um problema aleatório que você não sabe quando vai acontecer. Entretanto, se
+	o problema é repetido, do tipo "acontece quando eu teclo seta para esquerda duas vezes", então você já sabe.</para>
+
+
+		<sect2><title>LAPDM(RTFM)!</title>
+
+			<para>Leia a porcaria do manual.  O `manual' pode ter vários formatos.  Abra o código fonte dos jogos,
+			deve ter um arquivo readme (leia-me) que acompanha o jogo. Jogos comerciais terão um manual impresso
+			e talvez alguns arquivos readme no CD que acompanha o jogo.  Não esqueça de navegar pelo CD de seu
+			jogo para procurar por preciosas dicas e truques.</para>
+
+			<para>Não esqueça do website do jogo. O autor do jogo provavelmente já viu gente com um problema
+                        exatamente igual ao seu. Deve haver alguma informação que te interesse lá. O melhor exemplo disso
+                        são os FAQs online da Loki Software localizados em 
+                        <ulink url="http://faqs.lokigames.com"></ulink>.</para>
+
+		</sect2>
+
+
+
+		<sect2><title>Procure Updates e Patches</title>
+
+			<para>Se você está jogando um jogo open source que você compilou, certifique-se que você possui a última
+			versão verificando no site do jogo.  Se seu jogo vem de uma distribuição certifique-se que não
+			seja necessário atualizar um rpm/deb para o jogo.</para>
+
+			<para>Empresas de Jogos comerciais como a Loki lançam patches de correções para os seus jogos.  Frequentemente um 
+			jogo tem vários patches (Myth2) e alguns jogos não dá para jogar sem eles (Heretic2).  Verifique no site do jogo
+			para patches sempre que você tiver problemas rodando um jogo ou não; provavelmente deverá existir uma atualização
+			para um problema de segurança que você nem sabia nada a respeito.</para>
+
+			<para>Além disso, a Loki tem um aplicativo que busca por software da Loki no seu hard drive
+			e automaticamente os atualiza.  Confira: <ulink
+			url="http://updates.lokijogos.com"></ulink>.</para>
+
+		</sect2>
+				
+
+		<sect2><title>Newsgroups</title>
+
+			<para>Se você não sabe o que a netnews (Usenet) é, então isso definitivamente vale a pena gastar
+			30 minutos para aprender. Instale um newsreader.  Eu prefiro ferramentas de console, logo eu uso o tin,
+			mas o slrn também é bem popular.  O Netscape tem um newsreader gráfico bem agradável também.</para>
+
+			<para>Por exemplo, eu posso navegar no servidor de news da Loki com o comando <command>tin -g
+			news.lokigames.com</command>.  Você pode também especificar outro servidor de news usando a variável de 
+			ambiente <varname>$NNTP</varname> ou com o arquivo <filename>/etc/nntpserver</filename>.</para>
+
+		</sect2>
+		
+		<sect2><title>Busca no Google Group</title>
+		

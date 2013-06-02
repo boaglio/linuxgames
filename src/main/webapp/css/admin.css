@@ -1,0 +1,18 @@
+
+div.banner { margin: 0pt; font-size: 80%; font-weight: bold; line-height: 1.1; text-align: center; position: fixed; top: 2em; left: auto; width: 8.5em; right: 2em; }
+
+div.banner p { border: thin outset rgb(153, 0, 0); margin: 0pt; padding: 0.3em 0.4em; background: rgb(153, 0, 0) none repeat scroll 0%; font-family: Arial,sans-serif; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; color: white; }
+
+div.banner a, div.banner em { margin: 0pt 0.5em; display: block; }
+
+div.banner a, div.banner em { border-top: 2px groove rgb(153, 0, 0); }
+
+div.banner a:first-child { border-top: medium none; }
+
+div.banner em { color: rgb(204, 255, 204); }
+
+div.banner a:link { text-decoration: none; color: white; }
+
+div.banner a:visited { text-decoration: none; color: rgb(204, 204, 204); }
+
+div.banner a:hover { background: black none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; color: white; }

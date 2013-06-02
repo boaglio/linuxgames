@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="LinuxGames" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name> LinuxGames.com.br </display-name>
+ <description> LinuxGames.com.br - o maior site de games de linux do Brasil </description>
+
+   <!-- Mentawai Debug Mode -->
+   <filter>
+    <filter-name>debugMode</filter-name>
+     <filter-class>
+       org.mentawai.util.DebugServletFilter
+     </filter-class>
+   </filter>
+
+   <!-- MessAdmin Servlet Filter -->
+   <filter>
+        <filter-name>MessAdminFilter</filter-name>
+        <filter-class>clime.messadmin.filter.MessAdminFilter</filter-class>
+    </filter>
+
+   <!-- Map the filter to a file extension -->
+   <filter-mapping>
+    <filter-name>debugMode</filter-name>
+    <url-pattern>*.action</url-pattern>
+   </filter-mapping>
+
+   <filter-mapping>
+     <filter-name>MessAdminFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+   <!-- encoding UTF8 para Jetty -->
+   <filter>
+    <filter-name>requestEncodeFilter</filter-name>
+    <filter-class>br.com.linuxgames.controller.filtros.RequestEncodeFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+    <filter-name>requestEncodeFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+ 	<!--  zipa as requests!
+   <filter>
+    <filter-name>Compress</filter-name>
+    <filter-class>br.com.linuxgames.controller.filtros.zip.GZIPFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Compress</filter-name>
+    <url-pattern>*.js</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Compress</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Compress</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Compress</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+-->
+
+<!-- MessAdmin listener -->
+<listener>
+  <listener-class>clime.messadmin.core.MessAdminListener</listener-class>
+</listener>
+
+<!-- quartz listener -->
+<listener>
+  <listener-class>
+   br.com.linuxgames.controller.job.AgendadorTarefaServetListener
+  </listener-class>
+</listener>
+
+<!-- The Mentawai controller -->
+<servlet>
+ <servlet-name>Controller</servlet-name>
+ <servlet-class>org.mentawai.core.PrettyURLController</servlet-class>
+ <load-on-startup>1</load-on-startup>
+</servlet>
+
+<!-- MessAdmin Administration Servlet -->
+<servlet>
+	<servlet-name>AdminMessageInjectorServlet</servlet-name>
+	<servlet-class>clime.messadmin.admin.MessAdminServlet</servlet-class>
+	<init-param>
+       <param-name>AuthorizationPassword</param-name>
+       <param-value>patterns</param-value>
+	</init-param>
+	<load-on-startup>-1</load-on-startup>
+</servlet>
+
+<!--
+<servlet>
+ <servlet-name>imagem</servlet-name>
+ <servlet-class>br.com.linuxgames.controller.ImageServlet</servlet-class>
+ <load-on-startup>-1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>imagem</servlet-name>
+ <url-pattern>/imagem</url-pattern>
+</servlet-mapping>
+-->
+
+<!--  RSS -->
+<servlet>
+ <servlet-name>rss</servlet-name>
+ <servlet-class>br.com.linuxgames.controller.rss.FeedWriter</servlet-class>
+ <load-on-startup>-1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>rss</servlet-name>
+ <url-pattern>/rss</url-pattern>
+</servlet-mapping>
+
+<!-- mentawai action -->
+<servlet-mapping>
+ <servlet-name>Controller</servlet-name>
+ <url-pattern>*.action</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+ <servlet-name>Controller</servlet-name>
+ <url-pattern>/games/*</url-pattern>
+</servlet-mapping>
+
+<!-- MessAdmin Administration Servlet -->
+<servlet-mapping>
+    <servlet-name>AdminMessageInjectorServlet</servlet-name>
+    <url-pattern>/AdminMessageInject</url-pattern>
+</servlet-mapping>
+
+<!-- Indice do Site -->
+<welcome-file-list>
+ <welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+<!-- pagina de erro interno - 500 -->
+ <error-page>
+  <error-code>500</error-code>
+  <location>/erroInterno.jsp</location>
+ </error-page>
+
+<!-- pagina de erro nao encontrado - 404 -->
+ <error-page>
+  <error-code>404</error-code>
+  <location>/naoAchei.jsp</location>
+ </error-page>
+
+<!-- mentawai /mentawai
+<taglib>
+ <taglib-uri>mentawai</taglib-uri>
+ <taglib-location>/WEB-INF/lib/mentawai.jar</taglib-location>
+</taglib>
+-->
+
+<!-- datasource -->
+<!--
+ <resource-env-ref>
+  <description>
+   DB Connection
+  </description>
+  <resource-env-ref-name>
+   jdbc/linuxgames
+  </resource-env-ref-name>
+  <resource-env-ref-type>
+   javax.sql.DataSource
+  </resource-env-ref-type>
+ </resource-env-ref>
+ -->
+
+</web-app>
