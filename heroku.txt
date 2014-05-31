@@ -21,6 +21,11 @@ export:
 pg_dump -Fc --no-acl --no-owner lg > data.dump
 
 
+import da base:
+
+PGPASSWORD=aZfwV0rIwivil2S_8MhKLB742D  pg_restore --verbose --clean --no-acl --no-owner -h ec2-23-23-234-207.compute-1.amazonaws.com  -U zyomeykynflplk  -d d7l094977s74jf  -p 5432  /tmp/data.dump
+
+
 lista processos:
 
 

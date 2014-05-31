@@ -9,13 +9,13 @@ public class LoginAction extends BaseLoginAction {
 	private static final String GRUPO_ADMINS = "admins";
 
 	private String ADMIN_LOGIN="fb";
-	private String ADMIN_PASSWD="****";
+	private String ADMIN_PASSWD="";
 
 	private String COLABORADOR_LOGIN="colaborador";
-	private String COLABORADOR_PASSWD="****";
+	private String COLABORADOR_PASSWD="";
 
 	private String EDITOR_LOGIN="editor";
-	private String EDITOR_PASSWD="***";
+	private String EDITOR_PASSWD="";
 
 
 	public boolean bypassAuthentication(String arg0) {

@@ -11,7 +11,7 @@ public class TwitterUtil {
 	private static Logger logger = Logger.getLogger(TwitterUtil.class);
 
 	public static void postar(String mensagem,String url) {
-	    Twitter twitter = new Twitter("linuxgamesbr","*****");
+	    Twitter twitter = new Twitter("linuxgamesbr","");
 	    Status status;
 		try {
 			status = twitter.updateStatus(mensagem+" "+url);

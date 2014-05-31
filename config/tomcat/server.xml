@@ -32,7 +32,7 @@
          <Resource
             name="jdbc/linuxgames"
             type="javax.sql.DataSource"
-            password=""
+            password="lgrocks"
             driverClassName="com.mysql.jdbc.Driver"
             username="boaglio_fb"
             url="jdbc:mysql://localhost/boaglio_linuxgames"
