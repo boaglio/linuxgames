@@ -1,2 +1,11 @@
-target
-bin
+target/
+build/
+.classpath
+.project
+.settings/
+*.jar
+*.war
+*.class
+*.iml
+bin/
+
